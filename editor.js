@@ -80,44 +80,48 @@ window.onload = function() {
 		//console.log(positions);
 		//now positions is sorted by color, we need to sort by block
 		//armorFrom "All" "Armor" "Alloy" "Glass" "Heavy armour" "Lead" "Metal" "Rubber""Wood" "Other"
-		let armors = ["Alloy","Glass","Heavy","Lead ","Metal","Rubbe","Wood "];//truncated to make things easier
+		let fullArmors = ["Alloy ","Glass ","Heavy Armour ","Lead ","Metal ","Rubber ","Wood "];//there once was an armors array, its gone now
 		switch(armorFrom.value){
 			case "All"://do nothing
 			break;//leave
 			case "Armor"://any armor type
-				//loop through
+				//loop through each position
 				for(i in positions){
-					if (positions[i]){//no need ti check falses
-						let block = translator(target["BlockIds"][i]).slice(0,5);
-						if (armors.indexOf(block) == -1){//is it an armor?
-							//nope, set false
-							positions[i] = false;
-						}
+					if (positions[i]){//no need to check false
+						//assume false
+						positions[i] = false;
+						//loop through each armor
+						for(let j in fullArmors){
+							// if readable name of block starts with armor name
+							if (translator(target["BlockIds"][i]).startsWith(fullArmors[j])){
+								//set this position to true
+								positions[i] = true;
+							}
+						}//end armor loop
 					}//end if 
 				}//end loop
 			break;
 			case "Other"://above, but inverted
 				//loop through
 				for(i in positions){
-					if (positions[i]){//no need ti check falses
-						let block = translator(target["BlockIds"][i]).slice(0,5);
-						//console.log(block);
-						if (armors.indexOf(block) != -1){//is it an armor?
-							//yes, set false
-							positions[i] = false;
-						}
+					if (positions[i]){//no need to check false
+						//loop through each armor
+						for(let j in fullArmors){
+							// if readable name of block starts with armor name
+							if (translator(target["BlockIds"][i]).startsWith(fullArmors[j])){
+								//set this position to false
+								positions[i] = false;
+							}
+						}//end armor loop
 					}//end if 
 				}//end loop
 			break;
 			default:// its a specific armor
 				//loop through
 				for(i in positions){
-					if (positions[i]){//no need ti check falses
-						let block = translator(target["BlockIds"][i]);
-						if (block.slice(0,armorFrom.value.length) != armorFrom.value){//do the strings start the same?
-							//nope, set false
-							positions[i] = false;
-						}
+					if (positions[i]){//no need to check false
+						// if readable name of block starts with armor name, then set position accordingly
+						positions[i] = translator(target["BlockIds"][i]).startsWith(armorFrom.value);
 					}//end if 
 				}//end loop
 			//'break'
@@ -140,7 +144,6 @@ window.onload = function() {
 		
 		
 		//armorTo "None" "Delete" "Alloy" "Glass" "Heavy armour" "Lead" "Metal" "Rubber" "Wood"
-		let fullArmors = ["Alloy","Glass","Heavy Armour","Lead","Metal","Rubber","Wood"];
 		switch(armorTo.value){
 			case "None"://do nothing
 			break;//leave
@@ -149,20 +152,30 @@ window.onload = function() {
 				///-------------------------------------------------ToDo
 			break;
 			default:// its a specific armor
-				//loop through
 				//console.log(blueprint["ItemDictionary"]);
+				//loop through
 				for(i in positions){
 					if (positions[i]){//only change if true, no need to check falses
+						//get readable name of block
 						let block = translator(target["BlockIds"][i]);
-						let index = armors.indexOf(block.slice(0,5));
+						//index
+						let index=-1;
+						//loop through each armor
+						for(let j in fullArmors){
+							// if block starts with armor name
+							if (block.startsWith(fullArmors[j])){
+								//set index
+								index = j;
+							}
+						}//end armor loop
+						
 						if (index != -1){//is it an armor?
 							//yes find replacement
 							
-							//rename the block
+							//rename the block, add new armor name to the old string with the length of the old name cut off
 							let newBlock = armorTo.value + block.slice(fullArmors[index].length);
 							//find id of new block 
 							//iterate through dictionary(may at some point make an inverted array), will also make a reverse translator
-							//console.log(block +" > "+newBlock);
 							let found=false;
 							for(let j in dictionary){
 								if (dictionary[j] == newBlock){//we found the id
@@ -193,8 +206,9 @@ window.onload = function() {
 								}
 							}//end add through dictionary
 							if (found ==false){
-								console.log(newBlock+" not found");
-								error.innerHTML+="<br/>"+newBlock+" not found";
+								//console.log(block +" > "+newBlock);
+								//console.log(newBlock+" not found");
+								error.innerHTML+="<br/>tried:"+block +" To "+newBlock+" failed, not found";
 							}
 						} else {
 							//no block found 

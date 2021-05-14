@@ -1,6 +1,6 @@
 var dictionary = {
 	"unknown block":"unknown block",
-	"755d86c3-86cd-456f-9256-5a274780faba":"Allow Plate Slope",
+	"755d86c3-86cd-456f-9256-5a274780faba":"Alloy Plate Slope",
 	"e8c5c921-b116-45cd-b0de-7a37973d5158":"Alloy Plate Triangle L",
 	"819dea06-da54-4236-a041-7346e3dad3d2":"Alloy Plate Triangle R",
 	"5dc0032d-d532-4766-b081-4204947bcaa0":"Applique Panel 2m",
@@ -61,10 +61,10 @@ var dictionary = {
 	"e3dcb476-5dae-4d64-ad60-e25b69009ab8":"Chain Large",
 	"24013612-7711-4f1a-8e5a-d9c540aa4884":"Coal Pile Large",
 	"0c0d49f3-83c0-41db-85f1-e7c27390cbdb":"Coal Pile",
-	"6f2ebbbc-6f9c-499e-8850-7725712e4cf2":"Door Bulkhead Alloy",
-	"9ea523b6-af69-4809-b5e4-88351099b2dc":"Door Bulkhead Metal",
-	"83e3a5e9-cfb8-4a0c-9ced-6f53822cd2f1":"Door Hatch Alloy",
-	"a8fcb3c2-49bb-4a0c-970e-2c200f9c6c0d":"Door Hatch Metal",
+	"6f2ebbbc-6f9c-499e-8850-7725712e4cf2":"Alloy Door Bulkhead",
+	"9ea523b6-af69-4809-b5e4-88351099b2dc":"Metal Door Bulkhead",
+	"83e3a5e9-cfb8-4a0c-9ced-6f53822cd2f1":"Alloy Door Hatch",
+	"a8fcb3c2-49bb-4a0c-970e-2c200f9c6c0d":"Metal Door Hatch",
 	"6c2979f0-365a-4e9c-88ee-7b9d931409cb":"Ladder",
 	"c613bc5d-5018-4961-bf19-d3e2ec694b59":"Mannequin",
 	"ae37018a-2b07-422c-b281-87f10fb95d3c":"Metal Plate",
@@ -427,7 +427,7 @@ var dictionary = {
 	"e3bffdbf-01eb-4309-bdb5-4358662eaac4":"Sign Post",
 	"b06788d5-4715-4168-8f7d-d6380f73fe54":"Smoke generator",
 	"0586026e-8167-4594-a151-dd16df0434f0":"Sound block",
-	"7fbe7409-5884-4387-8348-d279e312f86b":"Spaw o matic",
+	"7fbe7409-5884-4387-8348-d279e312f86b":"Spawn o matic",
 	"6d58d927-2e19-491c-b2d5-451cc47bf4d8":"Spot Light fitting",
 	"9a0d25cc-f5c2-4780-b674-38fe17e73f8e":"Stairs",
 	"1576f21e-9ca2-4f29-8b14-53ce98205a5b":"Standard door",
@@ -854,34 +854,34 @@ var dictionary = {
 	"66d91ba8-5540-4806-97f6-888c0146d277":"Alloy 1m to 2m inverse transition right",
 	"559146d5-618d-48a3-811d-5292fee0b112":"Alloy 1m to 2m inverse transition right",
 	"c099b76c-f011-4c87-ad8e-20c968c1eb76":"Alloy 1m to 2m slope transition left",
-	"5de2adf7-76fb-42ea-8120-209ee5a42624":"Alloy 1m to 2m slope transition (mirrored)",
+	"5de2adf7-76fb-42ea-8120-209ee5a42624":"Alloy 1m to 2m slope transition right",
 	"4b2033a2-d233-47f0-a9cf-ecc798072802":"Alloy 1m to 3m inverse transition left",
 	"71f02e31-0baf-497d-bf13-e568d8baa117":"Alloy 1m to 3m inverse transition left",
 	"80a03fbd-b4fc-4a03-a7dc-bc4ba61c9782":"Alloy 1m to 3m inverse transition right",
 	"83aaf521-2335-46fd-ab73-85bc9eab379d":"Alloy 1m to 3m inverse transition right",
-	"2d1d0f03-0751-4430-b023-b660749187dd":"Alloy 1m to 3m slope transition (mirrored)",
-	"faafca6a-e060-4a5f-97c4-80e89173e004":"Alloy 1m to 3m slope transition right",
-	"84cd2d26-9521-450d-8c6b-96101341e865":"Alloy 1m to 3m slope transition",
+	"2d1d0f03-0751-4430-b023-b660749187dd":"Alloy 1m to 3m slope transition right",//there are three? confirmed right
+	"faafca6a-e060-4a5f-97c4-80e89173e004":"Alloy 2m square backed corner right",
+	"84cd2d26-9521-450d-8c6b-96101341e865":"Alloy 1m to 3m slope transition left",//there are three? assumption
 	"567281a0-cf1d-4bcf-aaf1-2c2020d8e754":"Alloy 1m to 4m inverse transition left",
 	"a14fc7d8-f7bf-462f-947b-4df1301b6f26":"Alloy 1m to 4m inverse transition left",
 	"94704fd4-d54d-45cc-b247-34d7492e4d51":"Alloy 1m to 4m inverse transition right",
 	"b03a2c1b-69b5-4a1b-8daf-6b5b46ffe750":"Alloy 1m to 4m inverse transition right",
-	"6df35bc7-4799-43bc-9f49-782e1e9a53a4":"Alloy 1m to 4m slope transition (mirrored)",
-	"ab8dda56-4b5e-47cf-886c-219a0259018b":"Alloy 1m to 4m slope transition",
+	"6df35bc7-4799-43bc-9f49-782e1e9a53a4":"Alloy 1m to 4m slope transition right",
+	"ab8dda56-4b5e-47cf-886c-219a0259018b":"Alloy 1m to 4m slope transition left",//why u no left/right!!
 	"20f74da8-3052-4e5a-8b9a-28252781f37b":"Alloy 2m offset left",
 	"ccb16d68-186c-4896-82e3-9e9213271ace":"Alloy 2m offset right",
 	"10c36664-41f1-4429-8a1e-0ff3dade19c2":"Alloy 2m to 3m inverse transition left",
 	"77b48c53-c300-46f7-9f1d-7bd3ea99768d":"Alloy 2m to 3m inverse transition left",
 	"5a49b8cb-0255-414d-9fb4-fd36aade3429":"Alloy 2m to 3m inverse transition right",
 	"e2389407-d04d-4b2d-a02b-4085bbe4d4df":"Alloy 2m to 3m inverse transition right",
-	"44b7168c-4c2b-4875-a1b5-f77029cf4658":"Alloy 2m to 3m slope transition (mirrored)",
-	"cc10dea1-469d-4574-b672-61c786284cf0":"Alloy 2m to 3m slope transition (mirrored)",
+	"44b7168c-4c2b-4875-a1b5-f77029cf4658":"Alloy 2m to 3m slope transition left",//assumption
+	"cc10dea1-469d-4574-b672-61c786284cf0":"Alloy 2m to 3m slope transition right",//confirmed right
 	"b5f4a946-dea1-4f99-93cf-6f0741c3b4e6":"Alloy 2m to 4m inverse transition left",
 	"d0a7a581-b9a3-4358-a455-cbf90e763327":"Alloy 2m to 4m inverse transition left",
 	"081a7cf8-c80d-4e22-9140-1cab6a875db9":"Alloy 2m to 4m inverse transition right",
 	"21907204-b5a0-466b-aa32-5c1b09f9c55b":"Alloy 2m to 4m inverse transition right",
-	"4cbd1e09-0cb0-4d91-a488-58725bcff7c3":"Alloy 2m to 4m slope transition (mirrored)",
-	"1fc1a1b6-bd6d-4907-8e96-f3b6e7b49670":"Alloy 2m to 4m slope transition",
+	"4cbd1e09-0cb0-4d91-a488-58725bcff7c3":"Alloy 2m to 4m slope transition right",//confirmed right
+	"1fc1a1b6-bd6d-4907-8e96-f3b6e7b49670":"Alloy 2m to 4m slope transition left",//assumption
 	"77b5b1be-56a8-4699-b9fb-a967a03897c5":"Alloy 3m offset left",
 	"903ed616-47a5-4aa2-a85c-f3e18ce9e620":"Alloy 3m offset right",
 	"ddaa81f0-cc9e-4585-ad4f-34b0a295953d":"Alloy 3m square backed corner left",
@@ -890,11 +890,11 @@ var dictionary = {
 	"e7b8b9c0-f071-42ed-8cee-bb868ab4b245":"Alloy 3m to 4m inverse transition left",
 	"6debd577-7c5b-4b96-984d-6f830a33c47c":"Alloy 3m to 4m inverse transition right",
 	"d4330968-0024-425c-82e4-8ff04985ac09":"Alloy 3m to 4m inverse transition right",
-	"872ace7e-5f07-4e1f-ac4e-ff8811484ee4":"Alloy 3m to 4m slope transition (mirrored)",
-	"83e8ef5c-b943-4896-8a35-0ab346eaeb40":"Alloy 3m to 4m slope transition",
+	"872ace7e-5f07-4e1f-ac4e-ff8811484ee4":"Alloy 3m to 4m slope transition right",//confirmed right
+	"83e8ef5c-b943-4896-8a35-0ab346eaeb40":"Alloy 3m to 4m slope transition left",//assumption
 	"54b18bde-2698-4840-a2aa-a37efba89ff4":"Alloy 4m offset left",
 	"fdba2b5d-3570-43fb-a9e1-10a0c0bba0ef":"Alloy 4m offset right",
-	"80277222-e122-44c4-8e8f-83ba7fb370ce":"Alloy 4m Square backed corner left",
+	"80277222-e122-44c4-8e8f-83ba7fb370ce":"Alloy 2m square backed corner left",
 	"a7e535a6-e684-4afc-b354-b2470094b014":"Alloy 4m square backed corner left",
 	"3a0be065-8983-46ea-8a1f-099ff9d544c7":"Alloy 4m square backed corner right",
 	"8f9dbf41-6c2d-4e7b-855d-b2432c6942a2":"Alloy beam (2m)",
@@ -1032,35 +1032,35 @@ var dictionary = {
 	"495a4c41-467f-4586-b385-276512f9c827":"Heavy Armour 1m to 2m inverse transition left",
 	"3564752b-f31b-4796-a948-5c0a202653cf":"Heavy Armour 1m to 2m inverse transition left",
 	"c0398bba-7893-47f0-b02e-da2925d365ed":"Heavy Armour 1m to 2m inverse transition right",
-	"f36d81a6-f11d-4d8b-8ae5-25699f5380e3":"Heavy Armour 1m to 2m slope transition (mirrored)",
+	"f36d81a6-f11d-4d8b-8ae5-25699f5380e3":"Heavy Armour 1m to 2m slope transition right",//assumption
 	"e2fb4854-f848-48a1-a850-7512116a19b9":"Heavy Armour 1m to 2m slope transition left",
 	"0fdc488b-2019-4d4c-b2a5-e4d3b409a3e0":"Heavy Armour 1m to 3m inverse transition right",
 	"4b22faf5-c964-4ed3-a6bb-806c3a8363a8":"Heavy Armour 1m to 3m inverse transition left",
 	"4ba5a5b9-4bf6-4a45-8a04-a454aa380602":"Heavy Armour 1m to 3m inverse transition left",
 	"6faabd84-f5a7-4775-be42-a3db66292ae7":"Heavy Armour 1m to 3m inverse transition right",
-	"23b923a7-742c-4c7a-aac4-6ec0ff7c80cd":"Heavy Armour 1m to 3m slope transition (mirrored)",
-	"c3264d31-08c3-40f8-adfb-859b51e3b02f":"Heavy Armour 1m to 3m slope transition right",
-	"54998e4e-7abe-47f6-9b82-f762a4bcd312":"Heavy Armour 1m to 3m slope transition",
+	"23b923a7-742c-4c7a-aac4-6ec0ff7c80cd":"Heavy Armour 1m to 3m slope transition right",//assumption
+	"c3264d31-08c3-40f8-adfb-859b51e3b02f":"Heavy Armour 2m square backed corner right",
+	"54998e4e-7abe-47f6-9b82-f762a4bcd312":"Heavy Armour 1m to 3m slope transition left",//assumption
 	"8cdce26c-0d33-4b48-9e3f-f9669f7e2c99":"Heavy Armour 1m to 4m inverse transition right",
 	"88795c9b-c11b-4a12-9288-a629b6b839ce":"Heavy Armour 1m to 4m inverse transition left",
 	"91495bf6-f7a4-4b0b-b0bb-f2f7f5b7cf20":"Heavy Armour 1m to 4m inverse transition right",
 	"df59c7a9-2412-4e11-91a9-a359c8f11386":"Heavy Armour 1m to 4m inverse transition left",
-	"317d535d-6d0b-4865-8bf4-a6784d668435":"Heavy Armour 1m to 4m slope transition (mirrored)",
-	"59bb19e7-9293-42e1-ada2-a1bb21300164":"Heavy Armour 1m to 4m slope transition",
+	"317d535d-6d0b-4865-8bf4-a6784d668435":"Heavy Armour 1m to 4m slope transition right",//assumption
+	"59bb19e7-9293-42e1-ada2-a1bb21300164":"Heavy Armour 1m to 4m slope transition left",//assumption
 	"a03bb56f-2113-456d-939f-265c672e5e0f":"Heavy Armour 2m offset left",
 	"b8a325d6-1867-4097-b768-10a6d5888d6f":"Heavy Armour 2m offset right",
 	"58a21be6-163e-4b0a-aab0-995b246ea15c":"Heavy Armour 2m to 3m inverse transition left",
 	"56583174-67d9-4091-8a05-20aec4e7ef1e":"Heavy Armour 2m to 3m inverse transition right",
 	"c4a2455b-cae5-4657-8db5-d5eef2e4aeb7":"Heavy Armour 2m to 3m inverse transition left",
 	"c486d719-cab3-4c0c-8018-fdf00b7c0448":"Heavy Armour 2m to 3m inverse transition right",
-	"a67d4597-ecf6-44f5-994b-8afbcd3f2931":"Heavy Armour 2m to 3m slope transition (mirrored)",
-	"b174cad8-a3e7-4c22-9215-ac208b8596da":"Heavy Armour 2m to 3m slope transition (mirrored)",
-	"09e714a3-3a04-4a8d-b488-31bbc576094a":"Heavy Armour 2m to 4m inverse transition left",
-	"84fe8b2a-c074-4de7-ac00-3e0434586d64":"Heavy Armour 2m to 4m inverse transition right",
+	"a67d4597-ecf6-44f5-994b-8afbcd3f2931":"Heavy Armour 2m to 3m slope transition right",
+	"b174cad8-a3e7-4c22-9215-ac208b8596da":"Heavy Armour 2m to 3m slope transition left",
+	"09e714a3-3a04-4a8d-b488-31bbc576094a":"Heavy Armour 2m to 4m inverse transition left",//assumption
+	"84fe8b2a-c074-4de7-ac00-3e0434586d64":"Heavy Armour 2m to 4m inverse transition right",//assumption
 	"1371d396-33b3-4510-817f-222cb0df4426":"Heavy Armour 2m to 4m inverse transition right",
 	"70340fad-2ce1-4ce6-ba43-ad03677cd278":"Heavy Armour 2m to 4m inverse transition left",
-	"c0a43f45-42ea-481f-85c3-6e640bdd2036":"Heavy Armour 2m to 4m slope transition (mirrored)",
-	"db58ac8f-af7b-468e-91a0-6e8114fb7800":"Heavy Armour 2m to 4m slope transition",
+	"c0a43f45-42ea-481f-85c3-6e640bdd2036":"Heavy Armour 2m to 4m slope transition right",//assumption
+	"db58ac8f-af7b-468e-91a0-6e8114fb7800":"Heavy Armour 2m to 4m slope transition left",//assumption
 	"281689d3-1cce-4740-95ff-76a1c4d1a6a1":"Heavy Armour 3m offset left",
 	"d20ec006-ee98-4ff3-89d0-34da13e5b253":"Heavy Armour 3m offset right",
 	"d1424dbf-197c-4b5d-b361-1a2ea39b1e47":"Heavy Armour 3m square backed corner left",
@@ -1069,12 +1069,12 @@ var dictionary = {
 	"aa877350-43f7-490f-88a0-150f9af32c93":"Heavy Armour 3m to 4m inverse transition left",
 	"b37ac31e-42ff-4a72-b7f7-b186e76cba45":"Heavy Armour 3m to 4m inverse transition left",
 	"b43207de-f0a3-40c1-8150-5074d1b6cc64":"Heavy Armour 3m to 4m inverse transition right",
-	"85d4464a-a6cc-4cab-a34c-802f99b6a9c3":"Heavy Armour 3m to 4m slope transition (mirrored)",
-	"3b0108f0-e792-44e6-80d5-861d32891e6d":"Heavy Armour 3m to 4m slope transition",
+	"85d4464a-a6cc-4cab-a34c-802f99b6a9c3":"Heavy Armour 3m to 4m slope transition right",//assumption
+	"3b0108f0-e792-44e6-80d5-861d32891e6d":"Heavy Armour 3m to 4m slope transition left",//assumption
 	"9965f5e6-64eb-456c-b0af-434b6fb23603":"Heavy Armour 4m offset left",
 	"158676b2-faca-421b-b99a-c43667cbe234":"Heavy Armour 4m offset right",
 	"39d6e8dd-ce7c-4429-a840-9a21e915a9f5":"Heavy Armour 4m square backed corner left",
-	"eee38852-9106-4946-a5ce-7fae2dfa4a12":"Heavy Armour 4m Square backed corner left",
+	"eee38852-9106-4946-a5ce-7fae2dfa4a12":"Heavy Armour 2m square backed corner left",
 	"604cbbd5-8d8b-4e77-9ec0-e66f2f6c0c12":"Heavy Armour 4m square backed corner right",
 	"242e07fa-399f-4caa-bfc2-1b77bd2bd538":"Heavy Armour beam (2m)",
 	"49714981-369a-4158-aff6-e562ee5f98d5":"Heavy Armour beam (3m)",
@@ -1132,34 +1132,34 @@ var dictionary = {
 	"9f5df742-512c-48b6-8169-3e6c205d2c22":"Lead 1m to 2m inverse transition right",
 	"68a33101-b1e0-4cae-be64-e94f5ffa2ece":"Lead 1m to 2m inverse transition right",
 	"bde67122-056b-4e43-9e7d-5d34596fa69e":"Lead 1m to 2m slope transition left",
-	"70d56187-181b-4dd4-b49a-937e30f6f442":"Lead 1m to 2m slope transition (mirrored)",
+	"70d56187-181b-4dd4-b49a-937e30f6f442":"Lead 1m to 2m slope transition right",//assumption
 	"b5d23070-4083-41a6-b154-79faaf51fd86":"Lead 1m to 3m inverse transition left",
 	"feb69d2b-56ec-492f-91fe-50360992eb5c":"Lead 1m to 3m inverse transition left",
 	"475e9779-a705-48c5-a553-2cb118ae181e":"Lead 1m to 3m inverse transition right",
 	"04474e69-83e7-424a-802f-512ece09925d":"Lead 1m to 3m inverse transition right",
-	"33407abf-5365-4058-8ce5-b65d3e131688":"Lead 1m to 3m slope transition (mirrored)",
-	"39fccb33-d334-479b-9b69-5571bd2cba38":"Lead 1m to 3m slope transition right",
-	"922205f4-94f0-45da-9e46-86a8bc033842":"Lead 1m to 3m slope transition",
+	"33407abf-5365-4058-8ce5-b65d3e131688":"Lead 1m to 3m slope transition right",//assumption
+	"39fccb33-d334-479b-9b69-5571bd2cba38":"Lead 2m square backed corner right",
+	"922205f4-94f0-45da-9e46-86a8bc033842":"Lead 1m to 3m slope transition left",//assumption
 	"5bdde677-6886-452b-b34f-4031b56bb8cc":"Lead 1m to 4m inverse transition left",
 	"f7a52cfe-6507-48c3-b4c5-344bf838d06d":"Lead 1m to 4m inverse transition left",
 	"844e895c-b4bc-4670-acc7-104bec8b4703":"Lead 1m to 4m inverse transition right",
 	"ee80686d-2abc-478e-a552-d4978cd98984":"Lead 1m to 4m inverse transition right",
-	"fde2ff75-db92-45ff-bb86-2037d4b5f98f":"Lead 1m to 4m slope transition (mirrored)",
-	"91b89bcf-5822-4e77-b0cc-8d3271620700":"Lead 1m to 4m slope transition",
+	"fde2ff75-db92-45ff-bb86-2037d4b5f98f":"Lead 1m to 4m slope transition right",//assumption
+	"91b89bcf-5822-4e77-b0cc-8d3271620700":"Lead 1m to 4m slope transition left",//assumption
 	"89e1c5b3-cf7c-4399-98ff-ed91e14cc948":"Lead 2m offset left",
 	"7f7ec39a-013f-46a2-b499-be2a0de8ea11":"Lead 2m offset right",
 	"2357f431-3baf-45d1-94de-f845fec9b501":"Lead 2m to 3m inverse transition left",
 	"d64bcbc1-873d-4175-89eb-13ae966415d5":"Lead 2m to 3m inverse transition left",
 	"89c75c03-ac8d-4bf8-afe5-e36bb674c84d":"Lead 2m to 3m inverse transition right",
 	"326a2f34-1bfd-4547-92b1-43a9f0c05dea":"Lead 2m to 3m inverse transition right",
-	"a34cb834-1741-4b26-9ed8-21c85c28e088":"Lead 2m to 3m slope transition (mirrored)",
-	"cef66a85-b517-4e1a-9dbe-643771a24e2e":"Lead 2m to 3m slope transition (mirrored)",
+	"a34cb834-1741-4b26-9ed8-21c85c28e088":"Lead 2m to 3m slope transition right",//assumption
+	"cef66a85-b517-4e1a-9dbe-643771a24e2e":"Lead 2m to 3m slope transition left",//assumption
 	"2d827849-1ad0-4093-b037-c5e14e74d8ec":"Lead 2m to 4m inverse transition left",
 	"ccc7063c-781d-47d1-bd32-da219641552e":"Lead 2m to 4m inverse transition left",
 	"61b27590-b3ae-4eb4-bd59-0fef7eb91ac1":"Lead 2m to 4m inverse transition right",
 	"c7f59e0e-cceb-4aa3-9a3a-1c577b1f24e2":"Lead 2m to 4m inverse transition right",
-	"653daa39-beac-4aa2-980f-c4a49052f9ab":"Lead 2m to 4m slope transition (mirrored)",
-	"d78bbac3-a00e-4c77-ac0c-6da5a95e2d72":"Lead 2m to 4m slope transition",
+	"653daa39-beac-4aa2-980f-c4a49052f9ab":"Lead 2m to 4m slope transition right",//assumption
+	"d78bbac3-a00e-4c77-ac0c-6da5a95e2d72":"Lead 2m to 4m slope transition left",//assumption
 	"76f9ce05-57dd-4c70-8219-71c48f63a716":"Lead 3m offset left",
 	"5e50a9c4-2a8b-40fd-a8ab-d62d9b22f37b":"Lead 3m offset right",
 	"a783e64e-941b-4e1d-b360-e2d5fa52e4bb":"Lead 3m square backed corner left",
@@ -1168,11 +1168,11 @@ var dictionary = {
 	"d0fac21b-bf1d-48f9-b8dc-a372ec74ebef":"Lead 3m to 4m inverse transition left",
 	"03ea7bdc-2ec3-4cf6-a8af-9aa21126a074":"Lead 3m to 4m inverse transition right",
 	"6d4063d2-c81c-48ac-8abd-4e9d255f8415":"Lead 3m to 4m inverse transition right",
-	"fdcbee9f-3473-45a2-ab98-d827eb102274":"Lead 3m to 4m slope transition (mirrored)",
-	"c77ee831-9744-4d74-9a1e-f5c8b9c8202c":"Lead 3m to 4m slope transition",
+	"fdcbee9f-3473-45a2-ab98-d827eb102274":"Lead 3m to 4m slope transition right",//assumption
+	"c77ee831-9744-4d74-9a1e-f5c8b9c8202c":"Lead 3m to 4m slope transition left",//assumption
 	"53ace348-3082-4b41-9630-197a60f8e658":"Lead 4m offset left",
 	"1e27893d-eece-4a43-9de2-6d6636a02f65":"Lead 4m offset right",
-	"4de09dc2-b68b-4fd3-a7fb-9031d9a064f2":"Lead 4m Square backed corner left",
+	"4de09dc2-b68b-4fd3-a7fb-9031d9a064f2":"Lead 2m square backed corner left",
 	"e823e772-3774-45d5-932c-da64f412f32b":"Lead 4m square backed corner left",
 	"3a5581af-da8b-44d7-bddf-363ed49c632e":"Lead 4m square backed corner right",
 	"d5e50322-fbc0-4e09-bfab-050f431146a9":"Lead beam (2m)",
@@ -1231,34 +1231,34 @@ var dictionary = {
 	"0a0754e4-024e-4622-9a06-506a7f4a6ca3":"Metal 1m to 2m inverse transition right",
 	"9102cf1b-8ef1-4c6d-8933-5cd07bd5ca52":"Metal 1m to 2m inverse transition right",
 	"8ae14459-075e-4384-bd95-1fef61b4021f":"Metal 1m to 2m slope transition left",
-	"4035532b-9d7b-4570-8ede-68ebfe42418d":"Metal 1m to 2m slope transition (mirrored)",
+	"4035532b-9d7b-4570-8ede-68ebfe42418d":"Metal 1m to 2m slope transition right",//assumption
 	"3b6e3500-bbdf-4de3-95cc-0eea2495b2be":"Metal 1m to 3m inverse transition left",
 	"59a2df51-5afa-4139-9f92-b29e8c8f2546":"Metal 1m to 3m inverse transition left",
 	"0dc84af2-12e8-4523-b5db-284cfc6b5b45":"Metal 1m to 3m inverse transition right",
 	"c36bae1b-3aba-4341-a488-bb4ada6d594a":"Metal 1m to 3m inverse transition right",
-	"d7767631-2bc3-4a3f-8260-444e37b950aa":"Metal 1m to 3m slope transition (mirrored)",
-	"d6b944ee-04fc-411c-9d22-935d5f4b2440":"Metal 1m to 3m slope transition right",
-	"f4c0e758-b44d-48d8-976a-1f8ae33d7969":"Metal 1m to 3m slope transition",
+	"d7767631-2bc3-4a3f-8260-444e37b950aa":"Metal 1m to 3m slope transition right",//assumption
+	"d6b944ee-04fc-411c-9d22-935d5f4b2440":"Metal 2m square backed corner right",
+	"f4c0e758-b44d-48d8-976a-1f8ae33d7969":"Metal 1m to 3m slope transition left",//assumption
 	"7e4ef4ba-95ad-4248-a989-59a71a983ce2":"Metal 1m to 4m inverse transition left",
 	"f8f9f747-7a12-46e5-a7de-e61fec31d2bf":"Metal 1m to 4m inverse transition left",
 	"928e927f-d394-453a-824c-24374d883e35":"Metal 1m to 4m inverse transition right",
 	"cc4adc34-9881-4d4e-849c-2a05e4b48f2e":"Metal 1m to 4m inverse transition right",
-	"0d62d218-3370-40c2-b0d8-9052a2e8598f":"Metal 1m to 4m slope transition (mirrored)",
-	"5bde06fa-3244-4059-8dd1-1efa60c0076f":"Metal 1m to 4m slope transition",
+	"0d62d218-3370-40c2-b0d8-9052a2e8598f":"Metal 1m to 4m slope transition right",//assumption
+	"5bde06fa-3244-4059-8dd1-1efa60c0076f":"Metal 1m to 4m slope transition left",//assumption
 	"aeb8c2da-d589-44dc-a4cd-4c4d35543c70":"Metal 2m offset left",
 	"f4cbeb0b-fc70-439a-870f-fa9ade1cf913":"Metal 2m offset right",
 	"0f9d31f1-b48e-4931-88be-b6368f029ef0":"Metal 2m to 3m inverse transition left",
 	"9be3f3e5-4d6f-41b6-9c09-621dff76c7db":"Metal 2m to 3m inverse transition left",
 	"b5c51d4d-b881-433a-9290-8c2b2ae491ba":"Metal 2m to 3m inverse transition right",
 	"e8b1d941-d737-486c-b53a-76548bb74a2e":"Metal 2m to 3m inverse transition right",
-	"3a42ac8c-2c51-429c-a375-5d0f2c41742e":"Metal 2m to 3m slope transition (mirrored)",
-	"c5550009-2b37-41ff-a788-d413b39376ae":"Metal 2m to 3m slope transition (mirrored)",
+	"3a42ac8c-2c51-429c-a375-5d0f2c41742e":"Metal 2m to 3m slope transition left",//assumption
+	"c5550009-2b37-41ff-a788-d413b39376ae":"Metal 2m to 3m slope transition right",//assumption
 	"d9d0a930-c60a-4cdc-a69b-f9db59003bf4":"Metal 2m to 4m inverse transition left",
 	"ff73c486-0327-4d3e-bfbf-2cce173e2dd9":"Metal 2m to 4m inverse transition left",
 	"8a428506-4727-4049-b71c-731acaffa1f0":"Metal 2m to 4m inverse transition right",
 	"e4522ade-004d-4fd3-93b0-9fb0884b3972":"Metal 2m to 4m inverse transition right",
-	"06148e1a-1ab1-413b-bcb8-03acac4f51c4":"Metal 2m to 4m slope transition (mirrored)",
-	"d8a658e9-1994-40d0-b988-2cc754490a31":"Metal 2m to 4m slope transition",
+	"06148e1a-1ab1-413b-bcb8-03acac4f51c4":"Metal 2m to 4m slope transition right",//assumption
+	"d8a658e9-1994-40d0-b988-2cc754490a31":"Metal 2m to 4m slope transition left",//assumption
 	"0358dee0-2d87-4b29-bb73-5c9e3399fd4e":"Metal 3m offset left",
 	"de7aab07-7fec-438f-872a-d66b0e942b42":"Metal 3m offset right",
 	"ffa8a7a0-4f05-40f2-81c2-9fef6b60b349":"Metal 3m square backed corner left",
@@ -1267,12 +1267,12 @@ var dictionary = {
 	"7044722a-bfb2-470c-b2d2-87fc9b121138":"Metal 3m to 4m inverse transition left",
 	"b1d536bd-ffb7-4c9a-a4d1-67536a2b5e7c":"Metal 3m to 4m inverse transition right",
 	"bd15e298-36b1-44ed-8835-11d70f6de7ac":"Metal 3m to 4m inverse transition right",
-	"31055780-b250-4f02-b0c1-92296219e028":"Metal 3m to 4m slope transition (mirrored)",
-	"4d8b8dca-49ac-4995-b36c-791317b13fc1":"Metal 3m to 4m slope transition",
+	"31055780-b250-4f02-b0c1-92296219e028":"Metal 3m to 4m slope transition right",//assumption
+	"4d8b8dca-49ac-4995-b36c-791317b13fc1":"Metal 3m to 4m slope transition left",//assumption
 	"a2983545-008e-4926-a54a-89cc56de8f48":"Metal 4m offset left",
 	"5a0d6e26-7939-437f-ba35-33d9b3cf193f":"Metal 4m offset right",
 	"0f1a577f-2ad8-47d1-ace0-ae0c6d95a7c6":"Metal 4m square backed corner left",
-	"c531f93d-7309-43d7-ae46-a16ba73efaba":"Metal 4m Square backed corner left",
+	"c531f93d-7309-43d7-ae46-a16ba73efaba":"Metal 2m square backed corner left",
 	"f5d7869b-825d-4095-9693-8d78c830d377":"Metal 4m square backed corner right",
 	"2a22f176-01c2-42f2-a7d2-2c7054504aa9":"Metal beam (2m)",
 	"46f54639-5f91-4731-93eb-e5c0a7460538":"Metal beam (3m)",
@@ -1322,34 +1322,34 @@ var dictionary = {
 	"424a1483-28f5-4958-9332-4d373731bcc0":"Rubber 1m to 2m inverse transition right",
 	"b21ee34b-3080-4715-81d6-af41901585e6":"Rubber 1m to 2m inverse transition right",
 	"1a1a821f-33e7-4c06-8989-00e359ecb0db":"Rubber 1m to 2m slope transition left",
-	"50791855-e917-4e2e-ae9c-0fe22fff9018":"Rubber 1m to 2m slope transition (mirrored)",
+	"50791855-e917-4e2e-ae9c-0fe22fff9018":"Rubber 1m to 2m slope transition right",//assumption
 	"8b68280b-3106-43c0-afcb-45058673122a":"Rubber 1m to 3m inverse transition left",
 	"9f69a39b-2d16-476b-afa3-935029cea5fb":"Rubber 1m to 3m inverse transition left",
 	"a9eaa512-c8e7-4109-b3a9-88bb5065c619":"Rubber 1m to 3m inverse transition right",
 	"b30c6be9-1c46-4653-b78f-308aefe667cd":"Rubber 1m to 3m inverse transition right",
-	"28f4d320-7ff4-4d08-8586-c41c0a53a216":"Rubber 1m to 3m slope transition (mirrored)",
-	"f4a993f3-e9ec-4405-bf36-7ae5d90e6b95":"Rubber 1m to 3m slope transition right",
-	"c0e6ee78-0b7f-43f8-b5b9-3c96306734c6":"Rubber 1m to 3m slope transition",
+	"28f4d320-7ff4-4d08-8586-c41c0a53a216":"Rubber 1m to 3m slope transition right",//assumption
+	"f4a993f3-e9ec-4405-bf36-7ae5d90e6b95":"Rubber 2m square backed corner right",
+	"c0e6ee78-0b7f-43f8-b5b9-3c96306734c6":"Rubber 1m to 3m slope transition left",//assumption
 	"bf8156d8-2fc9-4f0f-bb88-11e1024327af":"Rubber 1m to 4m inverse transition left",
 	"d48cb1f9-f0c5-4709-a151-cef8d7eb9dc1":"Rubber 1m to 4m inverse transition left",
 	"43095483-b1be-4a7e-9228-cee78746d6ac":"Rubber 1m to 4m inverse transition right",
 	"f5e58aea-4550-4ac6-85d5-58b0bec8e720":"Rubber 1m to 4m inverse transition right",
-	"f5d09c0f-1a85-40ac-a6d8-2f7f7c416657":"Rubber 1m to 4m slope transition (mirrored)",
-	"e4f8c207-e538-49c3-a17c-af0cedb43b9d":"Rubber 1m to 4m slope transition",
+	"f5d09c0f-1a85-40ac-a6d8-2f7f7c416657":"Rubber 1m to 4m slope transition right",//assumption
+	"e4f8c207-e538-49c3-a17c-af0cedb43b9d":"Rubber 1m to 4m slope transition left",//assumption
 	"4731964e-37b7-42d4-a3a5-763abb56d27e":"Rubber 2m offset left",
 	"dafbcb70-da67-4474-ad22-05e73b827572":"Rubber 2m offset right",
 	"25f1eceb-03f4-435e-946e-eec907e768f4":"Rubber 2m to 3m inverse transition left",
 	"f508e2d8-9a5c-4424-8e60-371f0d31f6e1":"Rubber 2m to 3m inverse transition left",
 	"bb192177-bbc8-43a9-a022-28c891148f67":"Rubber 2m to 3m inverse transition right",
 	"d1664a75-8448-4f05-8163-76773198d770":"Rubber 2m to 3m inverse transition right",
-	"69dc80f1-943d-4f60-a011-bfe038c002d9":"Rubber 2m to 3m slope transition (mirrored)",
-	"087fe9e0-63cb-4511-adc8-5e7b943dd71b":"Rubber 2m to 3m slope transition (mirrored)",
+	"69dc80f1-943d-4f60-a011-bfe038c002d9":"Rubber 2m to 3m slope transition right",//assumption
+	"087fe9e0-63cb-4511-adc8-5e7b943dd71b":"Rubber 2m to 3m slope transition left",//assumption
 	"75fb3a6f-61f7-4336-a978-7037821f9a5c":"Rubber 2m to 4m inverse transition left",
 	"07538fcc-c67f-4f0c-8cc6-0de63f3951d1":"Rubber 2m to 4m inverse transition left",
 	"47c90188-765d-4b36-a024-5f2910e1a402":"Rubber 2m to 4m inverse transition right",
 	"f7d2cfac-e4fd-47e3-b852-a61238287b48":"Rubber 2m to 4m inverse transition right",
-	"c8bb1819-1763-46d1-83e8-dbdc3d61e612":"Rubber 2m to 4m slope transition (mirrored)",
-	"253dd48f-7f37-47c2-9497-3e5489c09329":"Rubber 2m to 4m slope transition",
+	"c8bb1819-1763-46d1-83e8-dbdc3d61e612":"Rubber 2m to 4m slope transition right",//assumption
+	"253dd48f-7f37-47c2-9497-3e5489c09329":"Rubber 2m to 4m slope transition left",//assumption
 	"fe063db5-9a03-4c93-bb4f-c25a4f7c9914":"Rubber 3m offset left",
 	"374dc36e-c905-4a79-968a-b8bdd64ecaf0":"Rubber 3m offset right",
 	"a33738ad-a617-446c-82ae-f657c7ecf471":"Rubber 3m square backed corner left",
@@ -1358,11 +1358,11 @@ var dictionary = {
 	"c5116acc-11a2-4d7d-b392-8e420fbdb1ed":"Rubber 3m to 4m inverse transition left",
 	"8c9d5fcc-4e49-4b14-b9dc-4d8080e75445":"Rubber 3m to 4m inverse transition right",
 	"b899d054-b4b8-44c9-9f6d-002578dd75cd":"Rubber 3m to 4m inverse transition right",
-	"c6f2e2ea-a894-449e-800d-473cb73966cb":"Rubber 3m to 4m slope transition (mirrored)",
-	"1c289eb1-94d0-4e89-a829-0a979841ca15":"Rubber 3m to 4m slope transition",
+	"c6f2e2ea-a894-449e-800d-473cb73966cb":"Rubber 3m to 4m slope transition right",//assumption
+	"1c289eb1-94d0-4e89-a829-0a979841ca15":"Rubber 3m to 4m slope transition left",//assumption
 	"b74cf011-75ce-4408-a0c9-d69cbc45f0ac":"Rubber 4m offset left",
 	"7b5cb254-9320-4ed1-82fa-2441ee33867b":"Rubber 4m offset right",
-	"099e452e-baae-40a9-bc40-a2124bb2224f":"Rubber 4m Square backed corner left",
+	"099e452e-baae-40a9-bc40-a2124bb2224f":"Rubber 2m square backed corner left",
 	"aa064b4c-e7a2-4eeb-af1e-153d8ef69b94":"Rubber 4m square backed corner left",
 	"6be71bca-f7ca-4b2e-85a6-d29371bf1b7b":"Rubber 4m square backed corner right",
 	"7e0913f6-9961-4697-b9cb-c87ca8b90dd7":"Rubber beam (2m)",
@@ -1421,34 +1421,34 @@ var dictionary = {
 	"64596359-2a3e-484d-962c-8204beb8bbd8":"Stone 1m to 2m inverse transition right",
 	"a6648d34-3f29-4998-b900-9a55dca7b918":"Stone 1m to 2m inverse transition right",
 	"c7b1810e-c9ee-414e-9b41-b789c9023b93":"Stone 1m to 2m slope transition left",
-	"e3f40e91-96fa-43e6-84a4-8e54a35210b5":"Stone 1m to 2m slope transition (mirrored)",
+	"e3f40e91-96fa-43e6-84a4-8e54a35210b5":"Stone 1m to 2m slope transition right",//assumption
 	"4f15965a-ff4c-4423-9d18-1056519d7f32":"Stone 1m to 3m inverse transition left",
 	"72858bf1-7523-45ef-8412-5e571bbfddf5":"Stone 1m to 3m inverse transition left",
 	"9445a647-5034-4f32-8ae5-b156e6ee1d46":"Stone 1m to 3m inverse transition right",
 	"ec22d5da-516b-45d4-965b-873f0ac5e101":"Stone 1m to 3m inverse transition right",
-	"c0a0c8ff-a554-4a9e-97ea-e0e1aa3cb99c":"Stone 1m to 3m slope transition (mirrored)",
+	"c0a0c8ff-a554-4a9e-97ea-e0e1aa3cb99c":"Stone 1m to 3m slope transition right",//assumption
 	"e183a579-7839-4226-83c1-99ddeb5540cc":"Stone 1m to 3m slope transition right",
-	"dde01453-fb08-4818-a85e-d56cb3a3e060":"Stone 1m to 3m slope transition",
+	"dde01453-fb08-4818-a85e-d56cb3a3e060":"Stone 1m to 3m slope transition left",//assumption
 	"810a82d5-0dd6-4a3e-8426-b5dc34ca27ea":"Stone 1m to 4m inverse transition left",
 	"da9f856c-d8f1-46be-ae04-1e527bdd60f2":"Stone 1m to 4m inverse transition left",
 	"3e31d403-1ae3-466f-8c1f-d0a1c8e213eb":"Stone 1m to 4m inverse transition right",
 	"ccacc040-9525-4240-ae6e-dd45cb749462":"Stone 1m to 4m inverse transition right",
-	"969cd026-e5d6-407f-9877-70f60092b9a4":"Stone 1m to 4m slope transition (mirrored)",
-	"e5fddc8d-d1e4-470e-af8e-3039d5aa1173":"Stone 1m to 4m slope transition",
+	"969cd026-e5d6-407f-9877-70f60092b9a4":"Stone 1m to 4m slope transition right",//assumption
+	"e5fddc8d-d1e4-470e-af8e-3039d5aa1173":"Stone 1m to 4m slope transition left",//assumption
 	"d010466a-44bc-4572-96fb-94ae72f93009":"Stone 2m offset left",
 	"1dfa3fef-9e64-4ee4-b6a8-e89df1bba0fa":"Stone 2m offset right",
 	"957eb503-8d98-456f-b6fb-876fa06ebdca":"Stone 2m to 3m inverse transition left",
 	"dcf13dfe-2d18-4c7e-a5f1-2304df008aa2":"Stone 2m to 3m inverse transition left",
 	"2eb50cb8-4b24-4f4a-9da1-82dcf43f79b2":"Stone 2m to 3m inverse transition right",
 	"55639e97-ed09-4703-bbad-b9aaa9f6a872":"Stone 2m to 3m inverse transition right",
-	"5ebf9caa-ee7e-476d-b45d-33ca3f5ea93a":"Stone 2m to 3m slope transition (mirrored)",
-	"79c7b25d-b286-445f-9942-b1bcabbedc05":"Stone 2m to 3m slope transition",
+	"5ebf9caa-ee7e-476d-b45d-33ca3f5ea93a":"Stone 2m to 3m slope transition left",//assumption
+	"79c7b25d-b286-445f-9942-b1bcabbedc05":"Stone 2m to 3m slope transition right",//assumption
 	"19a7c9e2-b1cb-414c-bc9d-c6510fd4ee76":"Stone 2m to 4m inverse transition left",
 	"068b569a-72bb-43c5-98e9-400ba47154cf":"Stone 2m to 4m inverse transition left",
 	"27e6ec03-6de1-4d6c-886e-1ff33403651d":"Stone 2m to 4m inverse transition right",
 	"56816490-49a9-4766-b317-c1109331baf7":"Stone 2m to 4m inverse transition right",
-	"526f6cb0-0c6f-4de0-8e6a-c409ced014d0":"Stone 2m to 4m slope transition (mirrored)",
-	"c5aaf2f4-ccf1-4c34-9ebf-a16eb5451920":"Stone 2m to 4m slope transition",
+	"526f6cb0-0c6f-4de0-8e6a-c409ced014d0":"Stone 2m to 4m slope transition right",//assumption
+	"c5aaf2f4-ccf1-4c34-9ebf-a16eb5451920":"Stone 2m to 4m slope transition left",//assumption
 	"6b0d80a1-06ea-47f6-a09f-a59084e985fb":"Stone 3m offset left",
 	"64b961b7-0117-4db2-8b94-2f89db082909":"Stone 3m offset right",
 	"b199d3d7-8c91-4b6b-aa60-d4b8da77309f":"Stone 3m square backed corner left",
@@ -1457,12 +1457,12 @@ var dictionary = {
 	"ca2f5ae8-2b47-4de7-986c-e50dde3f4783":"Stone 3m to 4m inverse transition left",
 	"1488e9ed-e89b-4902-883e-bc4a0613ed72":"Stone 3m to 4m inverse transition right",
 	"d2e37b39-512a-44c2-ab7d-99bf8d18c569":"Stone 3m to 4m inverse transition right",
-	"2133124d-dc7e-436f-bca5-19f6b7c1da87":"Stone 3m to 4m slope transition (mirrored)",
-	"0b98aca0-1db4-4545-a43a-37fdf57a346f":"Stone 3m to 4m slope transition",
+	"2133124d-dc7e-436f-bca5-19f6b7c1da87":"Stone 3m to 4m slope transition right",//assumption
+	"0b98aca0-1db4-4545-a43a-37fdf57a346f":"Stone 3m to 4m slope transition left",//assumption
 	"def31246-d999-49f8-9daf-acacd802d3ec":"Stone 4m offset left",
 	"e640d817-209a-42af-b478-7627a06296cc":"Stone 4m offset right",
 	"5bef17ae-6cad-4034-b063-82e25e24566a":"Stone 4m square backed corner left",
-	"e0a33722-5b20-4f51-9c34-7a05fecc20ba":"Stone 4m Square backed corner left",
+	"e0a33722-5b20-4f51-9c34-7a05fecc20ba":"Stone 2m square backed corner left",
 	"fa398fc2-0458-4e18-be78-9d34ca85d62f":"Stone 4m square backed corner right",
 	"6cd6c6bd-da8b-483f-ace2-fa427a07d91a":"Stone beam (2m)",
 	"d47815a1-9052-4885-8d17-8c9cb3eab72b":"Stone beam (3m)",
