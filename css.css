@@ -9,29 +9,35 @@ body {
 	*/
 }
 #blocklist {
-	height :700px;
-	overflow: scroll;
+	max-height :700px;
+  overflow-x: hidden; /* Hide horizontal scrollbar, may not be needed */
 }
+
+
 #error {
 	background-color:#ff0000;
 }
-/* Hide scrollbar for Chrome, Safari and Opera */
-#blocklist::-webkit-scrollbar {
-  display: none;
-}
-
-/* Hide scrollbar for IE, Edge and Firefox */
-#blocklist {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
-}
 
 .side {
-	width:50%;
+	box-sizing: border-box;
+	width: calc(50% - 20px);
+	border: 5px solid black;
+	border-radius: 10px;
 	display: inline-block;
-	margin:0px;
-	padding:0px;
-	float:left;
+	margin: 10px;
+	padding: 5px;
+	float: left;
+}
+.side h2 {
+	margin-top: 0;
+	margin-bottom: 0;
+	text-align: center;
+}
+.side hr {
+	border-top: 2px solid black;
+}
+.side div, .side canvas {
+	display:none;
 }
 #fileinput {
 	background-color:#00ff00;
@@ -58,11 +64,11 @@ body {
 #bp, #item {
 	display:none
 }
-#Mconvertoer, #DL{
+#massConverterBttn, #DL{
 	font-family: OCR-A, monospace;
 	font-size:1em;
 }
-#fileinput label, #Mconvertoer, #DL {
+#fileinput label, #massConverterBttn, #DL {
 	background-color: #5555ee;
 	padding:.25em;
 	color: white;
@@ -71,7 +77,7 @@ body {
 	height: auto;
 }
 
-#fileinput label:hover, #Mconvertoer:hover, #DL:hover {
+#fileinput label:hover, #massConverterBttn:hover, #DL:hover {
 	background-color: #ee5555;
 	color: white;
 }

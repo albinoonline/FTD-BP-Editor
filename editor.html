@@ -12,7 +12,10 @@
 </head>
 <body>
 	<div id='pagewrapper'>
-		<header><h1>Albino's Blueprint Fuckery</h1></header>
+		<header>
+			<h1>Albino's Blueprint Fuckery</h1>
+			<p>NYT= Not Yet Implemented, i'll get around to it</p>
+		</header>
 		<div id="fileinput">
 			<span id="bpspan">
 				<label for="bp">Select Blueprint Here</label>
@@ -25,26 +28,36 @@
 				<label for="item">Import Modded Items Here</label>
 				<input type="file" id="item" name="item" accept='.itemduplicateandmodify,.item' multiple>
 			</span>
-		</div>
-		<div>
-			<div id="error"></div>
-			<section class="side" id="blocklist"><h2>Blocklist</h2></section>
-			<section id="converter" class="side">
-				<h2>Modify</h2>
-				<form>
-				<h2>Mass converter</h2>
+		</div><!-- end fileinput -->
+		<div id="error"></div>
+		<section class="side">
+			<h2 class="dropdown" >RENDER(NYI) ▼</h2>
+			<canvas id="viewer"></canvas>
+		</section>
+		<section class="side">
+			<h2 class="dropdown" >SINGLE REPLACE(NYI) ▼</h2>
+			<div id="singleReplace"><hr></div>
+		</section>
+		<section class="side">
+			<h2 class="dropdown" >MASS REPLACE ▼</h2>
+			<div id="massConverter" >
+				<hr>
+					<h3>Convert From:</h3>
 				<p>
 					<label for="armorFrom">Chose block type:</label>
 					<select name="armorFrom" id="armorFrom">
 						<option value="All">All Blocks</option>
 						<option value="Armor">All Armor</option>
-						<option value="Alloy ">Alloy</option>
-						<option value="Glass ">Glass</option>
-						<option value="Heavy Armour ">Heavy Armor</option>
-						<option value="Lead ">Lead</option>
-						<option value="Metal ">Metal</option>
-						<option value="Rubber ">Rubber</option>
-						<option value="Wood ">Wood</option>
+						<option value="Light-weight Alloy Block">Alloy</option>
+						<option value="Glass Block">Glass</option>
+						<option value="Heavy Armour">Heavy Armor</option>
+						<option value="Lead Block">Lead</option>
+						<option value="Metal Block">Metal</option>
+						<option value="Rubber Block">Rubber</option>
+						<option value="Stone Block">Stone</option>
+						<option value="Wood Block">Wood</option>
+						<option value="Applique Panel">Appliqué</option>
+						<option value="Reinforced Wood">Decking</option>
 						<option value="Other">Non armor</option>
 					</select>
 				</p>
@@ -52,19 +65,20 @@
 					<label for="colorFrom">limit color choice? leave empty to ignore</label>
 					<input type="number" id="colorFrom" name="colorFrom" min="0" max="31"/>
 				</p>
+					<h3>Convert To:</h3>
 				<p>
-					<h3>convert to:</h3>
 					<label for="armorTo">Chose block type:</label>
 					<select name="armorTo" id="armorTo">
 						<option value="None">No conversion</option>
-						<option value="Alloy ">Alloy</option>
-						<option value="Glass ">Glass</option>
-						<option value="Heavy Armour ">Heavy Armor</option>
-						<option value="Lead ">Lead</option>
-						<option value="Metal ">Metal</option>
-						<option value="Rubber ">Rubber</option>
-						<option value="Wood ">Wood</option>
-						<option value="Delete">Destroy(not yet implemented)</option>
+						<option value="Light-weight Alloy Block">Alloy</option>
+						<option value="Glass Block">Glass</option>
+						<option value="Heavy Armour">Heavy Armor</option>
+						<option value="Lead Block">Lead</option>
+						<option value="Metal Block">Metal</option>
+						<option value="Rubber Block">Rubber</option>
+						<option value="Stone Block">Stone</option>
+						<option value="Wood Block">Wood</option>
+						<option value="Delete">Destroy(NYI)</option>
 					</select>
 				</p>
 				<p>
@@ -72,10 +86,26 @@
 					<input type="number" id="colorTo" name="colorTo" min="0" max="31"/>
 				</p>
 				
-				<input type="button" id="Mconvertoer" value="convert"/> <input type="button" id="DL" value="Download"/>
-				</form>
-			</section>
-		</div>
+				<input type="button" id="massConverterBttn" value="convert"/> <input type="button" id="DL" value="Download"/>
+			</div>
+			
+		</section><!-- end mass converter -->
+		<section class="side">
+			<h2 class="dropdown" >PALETTE TOOL(NYI) ▼</h2>
+			<div id="colorTool"><hr></div>
+		</section>
+		<section class="side">
+			<h2 class="dropdown" >LIMIT TO AREA(NYI) ▼</h2>
+			<div id="region"><hr></div>
+		</section>
+		<section class="side">
+			<h2 class="dropdown" >BLOCK LIST ▼</h2>
+			<div id="blocklist"><hr></div>
+		</section>
+		<section class="side">
+			<h2 class="dropdown" >CONSTRUCT DATA ▼</h2>
+			<div id="data"><hr></div>
+		</section>
 	</div>
 </body>
 </html>
