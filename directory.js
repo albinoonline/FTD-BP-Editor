@@ -32,12 +32,14 @@ Manually added:
 Reinforced Wood
 To add:
 clips solid/hollow
+exoughst and other steam pipes
 
 
 
 refrence extractor:for(let i in dictionary){error.innerHTML+=dictionary[i]["reference"] +"<br/>"};
 dictionary extractor error.innerHTML=JSON.stringify(dictionary);
 
+elements to add to dictionary: cost, weight, size.
 
 */
 

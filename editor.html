@@ -32,24 +32,23 @@
 		<div id="error"></div>
 		<section class="side">
 			<h2 class="dropdown" >RENDER(NYI) ▼</h2>
-			<canvas id="viewer"></canvas>
+			<div class="down"><canvas id="viewer"></canvas></div>
 		</section>
 		<section class="side">
 			<h2 class="dropdown" >SINGLE REPLACE(NYI) ▼</h2>
-			<div id="singleReplace"><hr></div>
+			<div class="down" id="singleReplace"></div>
 		</section>
 		<section class="side">
 			<h2 class="dropdown" >MASS REPLACE ▼</h2>
-			<div id="massConverter" >
-				<hr>
-					<h3>Convert From:</h3>
-				<p>
+			<div class="down" id="massConverter" >
+				<h3>Convert From:</h3>
+				<p>Note: Appliqué and Decking do not properly mass replace, but do paint fine.
 					<label for="armorFrom">Chose block type:</label>
 					<select name="armorFrom" id="armorFrom">
 						<option value="All">All Blocks</option>
 						<option value="Armor">All Armor</option>
 						<option value="Light-weight Alloy Block">Alloy</option>
-						<option value="Glass Block">Glass</option>
+						<option value="Glass block">Glass</option><!--yup glass block is undercase. FFS -->
 						<option value="Heavy Armour">Heavy Armor</option>
 						<option value="Lead Block">Lead</option>
 						<option value="Metal Block">Metal</option>
@@ -71,7 +70,7 @@
 					<select name="armorTo" id="armorTo">
 						<option value="None">No conversion</option>
 						<option value="Light-weight Alloy Block">Alloy</option>
-						<option value="Glass Block">Glass</option>
+						<option value="Glass block">Glass</option>
 						<option value="Heavy Armour">Heavy Armor</option>
 						<option value="Lead Block">Lead</option>
 						<option value="Metal Block">Metal</option>
@@ -91,20 +90,88 @@
 			
 		</section><!-- end mass converter -->
 		<section class="side">
-			<h2 class="dropdown" >PALETTE TOOL(NYI) ▼</h2>
-			<div id="colorTool"><hr></div>
+			<h2 class="dropdown" >PALETTE TOOL (WIP) ▼</h2>
+			<div class="down" id="colorTool">
+				
+				<div id="colorControll">
+					<h3>Color Editor:</h3>
+					<label for="colorPreview" id="labelPreview">99</label>
+					<input type="color" id="colorPreview" value="#ffffff"/>
+					<div id="colorManInput"><!--vertical manual entry and readout-->
+						<span><label for="red">Red:</label><input id="red" type="number" min="0" max="1" step="0.000001" value="1"/></span>
+						<span><label for="green">Green:</label><input id="green" type="number" min="0" max="1" step="0.000001" value="1"/></span>
+						<span><label for="blue">Blue:</label><input id="blue" type="number" min="0" max="1" step="0.000001" value="1"/></span>
+						<span><label for="alpha">Alpha:</label><input id="alpha" type="number" min="0" max="1" step="0.000001" value="1"/></span>
+						<span><label for="shiny">Shiny:(NYI)</label><input id="shiny" type="number" min="0" max="1" step="0.000001" value="1"/></span>
+					</div>
+					<input type="range" id="alphar" min="0" value="1" max="1" step="0.000001" orient="vertical">
+					<input type="range" id="shinyr" min="0" value="1" max="1" step="0.000001" orient="vertical">
+				</div>
+				<span class="colorSquare">0</span>
+				<span class="colorSquare">1</span>
+				<span class="colorSquare">2</span>
+				<span class="colorSquare">3</span>
+				<span class="colorSquare">4</span>
+				<span class="colorSquare">5</span>
+				<span class="colorSquare">6</span>
+				<span class="colorSquare">7</span>
+				<span class="colorSquare">8</span>
+				<span class="colorSquare">9</span>
+				<span class="colorSquare">10</span>
+				<span class="colorSquare">11</span>
+				<span class="colorSquare">12</span>
+				<span class="colorSquare">13</span>
+				<span class="colorSquare">14</span>
+				<span class="colorSquare">15</span>
+				<span class="colorSquare">16</span>
+				<span class="colorSquare">17</span>
+				<span class="colorSquare">18</span>
+				<span class="colorSquare">19</span>
+				<span class="colorSquare">20</span>
+				<span class="colorSquare">21</span>
+				<span class="colorSquare">22</span>
+				<span class="colorSquare">23</span>
+				<span class="colorSquare">24</span>
+				<span class="colorSquare">25</span>
+				<span class="colorSquare">26</span>
+				<span class="colorSquare">27</span>
+				<span class="colorSquare">28</span>
+				<span class="colorSquare">29</span>
+				<span class="colorSquare">30</span>
+				<span class="colorSquare">31</span>
+			</div>
 		</section>
 		<section class="side">
-			<h2 class="dropdown" >LIMIT TO AREA(NYI) ▼</h2>
-			<div id="region"><hr></div>
+			<h2 class="dropdown" >LIMIT TO AREA ▼</h2>
+			<div class="down" id="region">
+				<p>Will Applly to Mass and single convert, may apply to blocklist in future. Blocks measured by origin.</p>
+				<label for="enableLTA">Enable:</label><input type="checkbox" id="enableLTA"/>
+				<label for="invertLTA">Invert:</label><input type="checkbox" id="invertLTA"/>
+				<label for="recursiveLTA">Sub Objects and Vehicles:</label><input type="checkbox" id="recursiveLTA"/>
+				<p>Length, positive is Forward</p>
+				<label for="Lmin">Back:</label><input id="Lmin" type="number" step="1" value="-100"/>
+				<label for="Lmax">Front:</label><input id="Lmax" type="number" step="1" value="100"/>
+				<p>Width, positive is Right</p>
+				<label for="Wmin">Left:</label><input id="Wmin" type="number" step="1" value="-100"/>
+				<label for="Wmax">Right:</label><input id="Wmax" type="number" step="1" value="100"/>
+				<p>Height, positive is Up</p>
+				<label for="Hmin">Down:</label><input id="Hmin" type="number" step="1" value="-100"/>
+				<label for="Hmax">Up:</label><input id="Hmax" type="number" step="1" value="100"/>
+				<p>Format W, H, l, when using the Health and AC tool in-game, Note: this is the origin of the highlighted block, not the current position of the cursor.</p>
+				<p>I know this isn't of much use without the renderer...</p>
+			</div>
 		</section>
 		<section class="side">
 			<h2 class="dropdown" >BLOCK LIST ▼</h2>
-			<div id="blocklist"><hr></div>
+			<div class="down" id="blocklist">
+				
+			</div>
 		</section>
 		<section class="side">
 			<h2 class="dropdown" >CONSTRUCT DATA ▼</h2>
-			<div id="data"><hr></div>
+			<div class="down" id="data">
+				
+			</div>
 		</section>
 	</div>
 </body>

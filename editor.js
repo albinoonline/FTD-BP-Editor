@@ -1,5 +1,7 @@
 /*
 ToDo:
+streamline replacer
+multiple DL buttons, just make em a class and loop
 make the "not form" nicer looking
 make dl a function rather than shoving it in an event listener
 blocklist sort/additional info (parent block (ex:wood slopes parent is wood block)), origin mod
@@ -8,52 +10,84 @@ renderer: nothing fancy, each block will just be a sphere or cube, but properly 
 	block locater: add a button to each line of the blocklist that will highlight the blocks in the renderer
 	should also just dump positional data, not sure where though
 fully map the blueprint file
-warn if armorfrom is All, AND armorto is NOT None. also if all or all armor is selected, with delete, also note if app or deck is selected, it is paint only
+	color viewer/editor (mising shiny, camostuffs)
+		fleet to personal color button, moving fleet colors down 4+ (selectable) and copying COL data
+		random colors
+	get delete working
+	
+warn if armorfrom is All, AND armorto is NOT None. also if all or all armor is selected, with delete, also note if app or deck is selected, it is not fully supported
 error div condenser/ error function that checks previous errors, and just adds a number, like the console
-other replace tool:
-	ammo clips
-	plates
-	doors/hatches
+other replace tool:(switches between the two types)
+	ammo clips,	plates,	doors/hatches
 vehicle stat block, list SCI info, number of sub constructs(in total, top level, deepest chain) and sub vehicle names, weapon systems firepower 
-color viewer/editor
-	fleet to personal color button, moving fleet colors down 4+ (selectable) and copying COL data
-	random colors
-get delete working
 region definer, limit changes to massConvert and other functions to defined regions
 	blueprint split/translate tool translater
 	TO DEMONSTRATE THE POWER OF THIS TOOL I WILL SAW THIS BOAT IN HALF (will be region restricted mass convert delete > delete)
-blueprint merger
+blueprint merger?
 cashe mods
 reformat the CSI
-spinblock exeptions for replacer tool
+spin block exceptions for replacer tool
+include vehicle type in top bar, ex: vehicle, fortress or structure
+include a link to the github on the page
+dont show dropdowns until a bp is loaded
+color tooltips with RGBAS
 
 replacer tool: Wood Block Variant handler
 */
 window.onload = function() {
+	
 	//define things
 	//var dictionary made in other file
 	//find things on the page
+	//there ought to be a better way to do this...
 	const Bpinput = document.getElementById('bp');//bp input
 	const Modinput = document.getElementById('item');//mod input
 	const name = document.getElementById('bpname');//top middle section
 	const error = document.getElementById('error');//top banner for use with errors
 	const blocklist = document.getElementById('blocklist'); // blocklist output panel
 	const dropdowns = document.getElementsByClassName("dropdown");//dropdowns
-	//form info
+	
+	//mass convert
 	const armorFrom = document.getElementById('armorFrom'); 
 	const colorFrom = document.getElementById('colorFrom'); 
 	const armorTo = document.getElementById('armorTo'); 
 	const colorTo = document.getElementById('colorTo'); 
 	const DL = document.getElementById('DL'); 
 	const miscData = document.getElementById("data");//construct data
+	const colorTool = document.getElementById("colorTool");//the color tool div
 	
+	//color
+	const colorPreview = document.getElementById("colorPreview");//the color input (RGB)
+	const labelPreview = document.getElementById("labelPreview");//the color label
+	const red = document.getElementById("red");//the red input
+	const green = document.getElementById("green");//the green input
+	const blue = document.getElementById("blue");//the blur input
+	const alpha = document.getElementById("alpha");//the alpha input
+	const shiny = document.getElementById("shiny");//the shiny input
+	const alphar = document.getElementById("alphar");//the alpha range input
+	const shinyr = document.getElementById("shinyr");//the shiny range input
+	const colorSquares = document.getElementsByClassName("colorSquare");// all the colorSquare's
+	/// note for colors: each element of the array needs to be split when read and joined when saved
+	
+	//area limiter
+	const enableLTA = document.getElementById("enableLTA");//is limit to area enabled?
+	const invertLTA = document.getElementById("invertLTA");//is limit to area inverted?
+	const recursiveLTA = document.getElementById("recursiveLTA");//is limit to area recursive?
+	//W, H, l min/max
+	const Lmin = document.getElementById("Lmin");
+	const Lmax = document.getElementById("Lmax");
+	const Hmin = document.getElementById("Hmin");
+	const Hmax = document.getElementById("Hmax");
+	const Wmin = document.getElementById("Wmin");
+	const Wmax = document.getElementById("Wmax");
 	
 	var blueprint = {};//for storing the BP
 	
 	//add event listeners
-	Bpinput.addEventListener("change", function(){BPfill(BPparse())});
-	Modinput.addEventListener("change", Modparse);
-	massConverterBttn.addEventListener("click", massConvert);
+	
+	Bpinput.addEventListener("change", function(){BPfill(BPparse())});//the file input for bp
+	Modinput.addEventListener("change", Modparse);//the file inout for modded files
+	massConverterBttn.addEventListener("click", massConvert);//the button for mass convert
 	//dropdowns
 	for (let i of dropdowns){
 		i.addEventListener("click", function(){dropdown(i)});
@@ -76,11 +110,33 @@ window.onload = function() {
 	});
 	
 	///functions
+	async function colorUpdate(BP){//updates the colors from the BP update function
+		///camo stuffs is not in color :(
+		///shiny is encoded in red for some reason
+		//apply for camo is vehicledata[208], 0 for true? and 7 for false? apply camo seems to be fucking everywhere
+		//route to colors
+		let COL=BP["Blueprint"]["COL"];
+		console.log(COL);
+		//loop through all colors
+		for(let i =0; i<COL.length;i++){
+			//create a variable to process with
+			let color = COL[i];
+			//split into an array
+			color=color.split(",");
+			//change from percent to 255
+			let map=color.map(x => x * 255);
+			//convert to a format css wil understand
+			let RGB = `rgba(${map[0]},${map[1]},${map[2]},${color[3]})`;//this is a necessary step for some reason
+			//send to style
+			colorSquares[i].style.backgroundColor= RGB;
+		}
+	}
+	
 	
 	function dropdown(Htag){//operates the dropdowns
+		///this is jank and needs to be redone
 		//from the Htag we need to go to parent, then to the first div child, wich should be the 2nd child
 		let div = Htag.parentElement.children[1];
-		console.log();
 		// now er need to know whether to expand or reduce the child
 		if(Htag.innerHTML.endsWith("▼")){
 			//switch symbol
@@ -110,6 +166,7 @@ window.onload = function() {
 		//parse
 		let cFrom = parseFloat(colorFrom.value);
 		let cTo = parseFloat(colorTo.value);
+		
 		//does a blueprint exist?
 		if (typeof target === "undefined"){
 			error.innerHTML+="<br/>No BP";
@@ -123,13 +180,42 @@ window.onload = function() {
 		if(isNaN(cFrom)==false){
 			//remove blocks of incorrect color 
 			for(i in target["BCI"]){
-				//no need for an if, since we dont care about previous data
+				//if the color matches this returns true, else false.
 				positions[i] = (target["BCI"][i] == cFrom);
 			}
 		}
 		
-		///---------------------------------------------------------ToDo
-		//sort by position
+		//sort by location (limit to area)
+		
+		//are we at the top level?
+		let topLevel=target["blueprintName"] == blueprint["Name"];
+		//is LTA enabled?
+		if (recursiveLTA.checked ? (enableLTA.checked && topLevel) : enableLTA.checked){
+			//iterate through blocks
+			for(i in target["BLP"]){
+				//only do valid blocks
+				if (positions[i]){
+					//yes creata a variable to store progress
+					let valid = true;
+					
+					//position format is W, H, l, was string, converted to an array
+					let WHL = target["BLP"][i].split(",");
+					//make not a string
+					WHL = WHL.map(Number);
+					//check width
+					valid = (Wmin.value <= WHL[0]) && (WHL[0] <= Wmax.value);
+					//check height
+					valid = (Hmin.value <= WHL[1]) && (WHL[1] <= Hmax.value) && valid;
+					//check length
+					valid = (Lmin.value <= WHL[2]) && (WHL[2] <= Lmax.value) && valid;
+					//if valid is true the block is within bounds, check to see if it must be inverted. (this is a XOR operator)
+					positions[i] = (invertLTA.checked ? !valid : valid);
+					console.log("valid"+valid);
+					console.log("inverted"+invertLTA.checked);
+					console.log("labled"+positions[i]);
+				}//else block is already removed from positions
+			}//end block loop
+		}
 		
 		//now positions is sorted by color, we need to sort by block
 		
@@ -153,7 +239,6 @@ window.onload = function() {
 						//see if the blocks refrence is in the armor list
 						let index = allArmors.indexOf(block.reference);
 						// is the block an armor?
-						console.log(index);
 						if( index != -1){
 							//yes 
 							positions[i] = true;
@@ -206,12 +291,11 @@ window.onload = function() {
 		switch(armorTo.value){
 			case "None"://do nothing
 			break;//leave
-			case "Delete"://any armor type
-				//this ganna be sketch 
+			case "Delete"://ka-boom
+				//what could go wrong
 				///-------------------------------------------------ToDo
 			break;
 			default:// its a specific armor
-				
 				//loop through each position
 				for(i in positions){
 					if (positions[i]){//only do trues
@@ -224,7 +308,13 @@ window.onload = function() {
 						let index = armors.indexOf(block.reference);
 						//found flag
 						let found=false;
-							
+						///========================================== ToDO Lets not loop through the dictionary?
+						/*
+						alternative:
+						will return array, first entry is block id of block if found, length will be 0 if none found
+						Object.entries(dictionary).filter(o => ((o[1].reference ==armorTo.value)&&(o[1].searchableName ==block.searchableName)))];
+						*/
+						
 						//iterate through dictionary
 						for(let j in dictionary){
 							//is the block the correct material?
@@ -239,7 +329,6 @@ window.onload = function() {
 								//check block vs new shape
 								shape = "block" == dictionary[j].searchableName;
 							}
-							
 							if (type && shape){//we found the id
 								//console.log(dictionary[j]);
 								found=true;
@@ -268,9 +357,7 @@ window.onload = function() {
 							}
 						}//end add through dictionary
 						if (found ==false){
-							//console.log(block +" > "+newBlock);
-							//console.log(newBlock+" not found");
-							error.innerHTML+="<br/>tried to replace:"+block.readableName +" failed, not found";
+							error.innerHTML+="<br/>tried to replace:"+block.readableName +" failed, not found ";
 						}
 					}//end if
 				}//end loop
@@ -289,7 +376,7 @@ window.onload = function() {
 	}
 	//importer, fills out the dictionary
 	async function Modparse(){//this function imports files to the dictionary
-		blocklist.innerHTML ='<hr><h2>Imported:</h2>';
+		blocklist.innerHTML ='<h2>Imported:</h2>';
 		for(let i of Modinput.files){
 			let text = await i.text();
 			let data = JSON.parse(text);
@@ -334,7 +421,7 @@ window.onload = function() {
 	}
 
 	
-	async function BPparse(){//this function turns the file into usable data
+	async function BPparse(){//this function turns the uploaded file into usable data and shoves in blueprint
 		let file = Bpinput.files[0];
 		let text = await file.text();
 		let data = JSON.parse(text);
@@ -347,44 +434,69 @@ window.onload = function() {
 		let data= await lag;
 		//dump BP into the log
 		console.log(data);
-		
+		//store blocklist
+		let list="";
 		//fill name info
 		name.innerHTML = data["Name"]+" V"+data["Version"]+ " By: "+data["Blueprint"]["AuthorDetails"]["CreatorReadableName"];
-		
-		//nuke output
-		blocklist.innerHTML="<hr>";
+		// fill colors 
+		colorUpdate(data);
+				
+		//fill blocklist
+		//start table
+		list=" <table><thead><tr><th>Block Count</th><th>Block Name</th><th>Block Mod</th><th>Block Reference</th><th>Single replace</th></tr></thead>";
 		//define blocks variable for holding blocks
 		let blocks = []
+		
 		for(let i in  data["Blueprint"]["BlockIds"]){
+			//id is block id
 			let id = data["Blueprint"]["BlockIds"][i];
-			//header
-			//console.log(id);
+			
 			//have we encountered the block before?
 			if(typeof blocks[id] == "undefined"){
 				blocks[id]=1;//no add entry
 			} else {
 				blocks[id]++;//yes increment entry
 			}
-			///===============================================================================ToDo
-			//count based on reference, for additional display, maybe even have the specific blocks under reference
-		}
+		}	
+		
 		//define filterd blocks
 		let filteredBlocks = [];
-		//fill filtered blocks
+		//reference block count
+		let refBlock = [];
+		//iterate through blocks
 		for(let i in blocks){
-			let id = translator(i);
-			filteredBlocks.push({"num":blocks[i],"block":id});
+			//fill filtered blocks
+			let block = translator(i);
+			filteredBlocks.push({"num":blocks[i],"block":block});
+			//fill reference blocks
+			//check dupe entry
+			//have we encountered the ref before?
+			if(typeof refBlock[block["reference"]] == "undefined"){
+				refBlock[block["reference"]]=blocks[i];//no add entry
+			} else {
+				refBlock[block["reference"]]+=blocks[i];//yes increment entry
+			}
 		}
+		/*
+		we aren't currently doing anything with refBlock, and im not sure i will, its an arrayobject with keys as reference and value as count
+		console.log(refBlock);
+		*/
+		
 		//sort filtered blocks
 		filteredBlocks = filteredBlocks.sort(function(a, b) {
 			return b["num"] -a["num"];
 		});
 		//display filtered blocks
 		for (let i in filteredBlocks){
-			///==================================================================================ToDo
+			let block = filteredBlocks[i];
+			///==================================================================================ToDo (the replace button)
 			//make table with number of blocks, name, mod, replace buttons
-			blocklist.innerHTML +='<p> '+filteredBlocks[i]["num"]+': '+filteredBlocks[i]["block"]["readableName"]+" mod: "+filteredBlocks[i]["block"]["mod"]+'</p>';
+			list +=`<tr><th>${block['num']}</th><th>${block['block']['readableName']}</th><th>${block['block']['mod']}</th><th>${block['block']['reference']}</th><th>NYI</th></tr>`;
 		}
+		//end table
+		list +="</table>";
+		blocklist.innerHTML=list;
+		
 		//display CSI
 		
 		//clear data
@@ -395,7 +507,6 @@ window.onload = function() {
 		known[1] = {name:"Repair Bots"};//number of rep bots
 		known[3] = {name:"Harvesters"};//number of harvesters
 		known[5] = {name:"Steam Engine Power"};// steam power capacity
-		known[6] = {name:"Supply Chain?"};//material supply chain
 		known[7] = {name:"Fuel Engine Power"};// fuel power capacity
 		known[10] = {name:"Blueprint Spawners"};//blueprint spawner count
 		known[12] = {name:"Teleporters"};//teleporter count
@@ -408,7 +519,7 @@ window.onload = function() {
 		known[29] = {name:"Hearstone Extensions"};//number of hertstone extentions
 		known[30] = {name:"Weight/100"};//weight/100?
 		known[31] = {name:"Resupply Material %"};//% material to supply
-		known[36] = {name:"Material Type",translate:{"0":"None","1":"Creator","2":"Transporter","3":"Consumer"}};//maaterial type, producer transporter consumer none
+		known[36] = {name:"Resupply Type",translate:{"0":"None","1":"Creator","2":"Transporter","3":"Consumer"}};//maaterial type, producer transporter consumer none
 		known[38] = {name:"CRAM Firepower"};//cram cannon firepower
 		known[41] = {name:"Speed At Cruse"};//cruse speed
 		known[43] = {name:"Missile Firepower"};//missile firepower
@@ -417,7 +528,7 @@ window.onload = function() {
 		known[49] = {name:"Battery Capacity"};// battery capacity
 		known[50] = {name:"Resupply Energy %"};//% material to supply
 		known[51] = {name:"Fuel Use Per minute"};// fuel use per minute
-		known[52] = {name:"Travel Type",translate:{"-1":"Air","0":"All Terrain?","1":"Sea","2":"Land"}};// travel type, air sea land all terrain
+		known[52] = {name:"Travel Type",translate:{"-1":"Air","0":"All Terrain","1":"Sea","2":"Land"}};// travel type, air sea land all terrain
 		known[53] = {name:"Volume"};//volume
 		known[54] = {name:"Weapon mat/min"};//weapon material per minute
 		known[58] = {name:"Steam PPM"};//PPM- steam

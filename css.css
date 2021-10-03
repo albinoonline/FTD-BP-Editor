@@ -13,20 +13,84 @@ body {
   overflow-x: hidden; /* Hide horizontal scrollbar, may not be needed */
 }
 
-
 #error {
 	background-color:#ff0000;
 }
-
+.down {
+	display:none;
+}
+thead {
+	position: sticky; top: 0;
+	background-color:#eeeeee;
+}
+.colorSquare{
+	font-size:1rem;
+	box-sizing: border-box;
+	width: 3em;
+	border: .25em solid black;
+	border-radius: .5em;
+	display: inline-block;
+	margin: 0;
+	padding: .75em;
+	text-align: center;
+}
+#colorControll {
+	overflow: auto;
+}
+input[type="range"] {
+  writing-mode: bt-lr;
+  -webkit-appearance: slider-vertical;
+	width:2em;
+	height:15em;
+	display: inline-block;
+}
+#labelPreview {
+	font-size:5em;
+	box-sizing: border-box;
+	width: 3em;
+	border: .25rem solid black;
+	border-radius: .5em;
+	display: inline-block;
+	margin: 0;
+	padding: .75em;
+	text-align: center;
+	float:left;
+}
+#colorManInput {
+	display:inline-block;
+}
+#colorManInput span{
+	display:block;
+	text-align:right;
+}
+#colorManInput span input{
+	width:5.5em;
+}
+#colorPreview {
+	/* visibility:hidden; */
+	position: relative;
+	left: -15em;
+	top:-7em;
+	width:0;
+	margin:0;
+}
+#colorTool {
+	font-size:0;
+}
+#colorTool div {
+	font-size:1rem;
+}
 .side {
 	box-sizing: border-box;
 	width: calc(50% - 20px);
-	border: 5px solid black;
-	border-radius: 10px;
 	display: inline-block;
 	margin: 10px;
 	padding: 5px;
 	float: left;
+}
+.dropdown {
+	border: 5px solid black;
+	border-radius: 10px;
 }
 .side h2 {
 	margin-top: 0;
@@ -35,9 +99,6 @@ body {
 }
 .side hr {
 	border-top: 2px solid black;
-}
-.side div, .side canvas {
-	display:none;
 }
 #fileinput {
 	background-color:#00ff00;
