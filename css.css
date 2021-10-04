@@ -23,6 +23,7 @@ thead {
 	position: sticky; top: 0;
 	background-color:#eeeeee;
 }
+
 .colorSquare{
 	font-size:1rem;
 	box-sizing: border-box;
@@ -34,20 +35,22 @@ thead {
 	padding: .75em;
 	text-align: center;
 }
+#editing{
+	width: 4em;
+	border: .5em solid black;
+	margin: -0.5em;
+}
 #colorControll {
 	overflow: auto;
 }
 input[type="range"] {
-  writing-mode: bt-lr;
-  -webkit-appearance: slider-vertical;
-	width:2em;
-	height:15em;
-	display: inline-block;
+	width:20em;
 }
-#labelPreview {
+#preview {
 	font-size:5em;
 	box-sizing: border-box;
-	width: 3em;
+	width: 5em;
+	height: 5em;
 	border: .25rem solid black;
 	border-radius: .5em;
 	display: inline-block;
@@ -63,16 +66,8 @@ input[type="range"] {
 	display:block;
 	text-align:right;
 }
-#colorManInput span input{
-	width:5.5em;
-}
-#colorPreview {
-	/* visibility:hidden; */
-	position: relative;
-	left: -15em;
-	top:-7em;
-	width:0;
-	margin:0;
+#colorManInput span input[type=number]{
+	width:6em;
 }
 #colorTool {
 	font-size:0;

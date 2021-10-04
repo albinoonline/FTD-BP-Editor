@@ -1,9 +1,9 @@
 /*
 ToDo:
+hide DL button if a processes is in progress?
 streamline replacer
-multiple DL buttons, just make em a class and loop
 make the "not form" nicer looking
-make dl a function rather than shoving it in an event listener
+make dl a function rather than shoving it in an event listener?
 blocklist sort/additional info (parent block (ex:wood slopes parent is wood block)), origin mod
 	// single block type replace tool (will also be a button under blocklist, bring up a replace to drop down)
 renderer: nothing fancy, each block will just be a sphere or cube, but properly painted.
@@ -57,17 +57,14 @@ window.onload = function() {
 	const colorTool = document.getElementById("colorTool");//the color tool div
 	
 	//color
-	const colorPreview = document.getElementById("colorPreview");//the color input (RGB)
-	const labelPreview = document.getElementById("labelPreview");//the color label
+	const preview = document.getElementById("preview");//the color label
 	const red = document.getElementById("red");//the red input
 	const green = document.getElementById("green");//the green input
-	const blue = document.getElementById("blue");//the blur input
+	const blue = document.getElementById("blue");//the blue input
 	const alpha = document.getElementById("alpha");//the alpha input
 	const shiny = document.getElementById("shiny");//the shiny input
-	const alphar = document.getElementById("alphar");//the alpha range input
-	const shinyr = document.getElementById("shinyr");//the shiny range input
 	const colorSquares = document.getElementsByClassName("colorSquare");// all the colorSquare's
-	/// note for colors: each element of the array needs to be split when read and joined when saved
+	const colorRange = document.getElementsByClassName("colorRange");//all color ranges
 	
 	//area limiter
 	const enableLTA = document.getElementById("enableLTA");//is limit to area enabled?
@@ -82,12 +79,58 @@ window.onload = function() {
 	const Wmax = document.getElementById("Wmax");
 	
 	var blueprint = {};//for storing the BP
-	
 	//add event listeners
+	
+	
+	//colorSquares update editor
+	for (let i of colorSquares){
+		i.addEventListener("click", function(){
+			////remove the current edited color
+			document.getElementById("editing").removeAttribute("id");
+			//set the current color as edited
+			i.setAttribute("id","editing");
+			
+			//load values into rgba
+			//create an array of the colors variable to process with
+			let color = blueprint["Blueprint"]["COL"][parseInt(i.innerHTML)].split(",");
+			//parseint the array.=
+			color=color.map(x => parseFloat(x));
+			//change text fields
+			red.value=color[0];
+			green.value=color[1];
+			blue.value=color[2];
+			alpha.value=color[3];
+			//fireoff events as though the user changed inputs
+			red.dispatchEvent(new Event('input', {bubbles: true }));
+			green.dispatchEvent(new Event('input', {bubbles: true }));
+			blue.dispatchEvent(new Event('input', {bubbles: true }));
+			alpha.dispatchEvent(new Event('input', {bubbles: true }));
+			
+		});
+	}
+	//color range and number linkages
+	for (let i of colorRange){
+		let text = i.previousElementSibling;
+		//range to text
+		i.addEventListener("input", function(){
+			//update preview
+			previewUpdate()
+			//change value
+			text.value= i.value;
+		});
+		//text to range
+		text.addEventListener("input", function(){
+			//update preview
+			previewUpdate()
+			//change value
+			i.value	= text.value;
+		});
+	}
 	
 	Bpinput.addEventListener("change", function(){BPfill(BPparse())});//the file input for bp
 	Modinput.addEventListener("change", Modparse);//the file inout for modded files
 	massConverterBttn.addEventListener("click", massConvert);//the button for mass convert
+	
 	//dropdowns
 	for (let i of dropdowns){
 		i.addEventListener("click", function(){dropdown(i)});
@@ -110,13 +153,12 @@ window.onload = function() {
 	});
 	
 	///functions
-	async function colorUpdate(BP){//updates the colors from the BP update function
+	async function colorUpdate(BP){//updates the color squares from the BP update function
 		///camo stuffs is not in color :(
 		///shiny is encoded in red for some reason
 		//apply for camo is vehicledata[208], 0 for true? and 7 for false? apply camo seems to be fucking everywhere
-		//route to colors
+		//colors
 		let COL=BP["Blueprint"]["COL"];
-		console.log(COL);
 		//loop through all colors
 		for(let i =0; i<COL.length;i++){
 			//create a variable to process with
@@ -126,12 +168,23 @@ window.onload = function() {
 			//change from percent to 255
 			let map=color.map(x => x * 255);
 			//convert to a format css wil understand
-			let RGB = `rgba(${map[0]},${map[1]},${map[2]},${color[3]})`;//this is a necessary step for some reason
+			let RGBA = `rgba(${map[0]},${map[1]},${map[2]},${color[3]})`;
 			//send to style
-			colorSquares[i].style.backgroundColor= RGB;
+			colorSquares[i].style.backgroundColor= RGBA;
 		}
 	}
-	
+	function previewUpdate(){//updates the color preview box
+		//clearly a very complicated function, but i wanted to avoid copying it many times
+		///when shiny is added it will adjust the background color
+		let RGBA=`rgba(${red.value*255},${green.value*255},${blue.value*255},${alpha.value})`;
+		preview.style.backgroundColor=RGBA;
+		//find currently edited color
+		let editing = document.getElementById("editing");
+		//update color square
+		editing.style.backgroundColor=RGBA;
+		//update COL
+		blueprint["Blueprint"]["COL"][parseInt(editing.innerHTML)]= `${red.value},${green.value},${blue.value},${alpha.value}`;
+	}
 	
 	function dropdown(Htag){//operates the dropdowns
 		///this is jank and needs to be redone
