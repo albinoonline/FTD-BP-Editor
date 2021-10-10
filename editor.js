@@ -1,19 +1,21 @@
 /*
 ToDo:
 hide DL button if a processes is in progress?
+color pallet exporting
 streamline replacer
 make the "not form" nicer looking
 make dl a function rather than shoving it in an event listener?
 blocklist sort/additional info (parent block (ex:wood slopes parent is wood block)), origin mod
 	// single block type replace tool (will also be a button under blocklist, bring up a replace to drop down)
-renderer: nothing fancy, each block will just be a sphere or cube, but properly painted.
+renderer: 2 moded color mode, and material mode.
 	block locater: add a button to each line of the blocklist that will highlight the blocks in the renderer
-	should also just dump positional data, not sure where though
 fully map the blueprint file
 	color viewer/editor (mising shiny, camostuffs)
 		fleet to personal color button, moving fleet colors down 4+ (selectable) and copying COL data
 		random colors
 	get delete working
+
+have an all armor and standard armor dropdown option for mass replace
 	
 warn if armorfrom is All, AND armorto is NOT None. also if all or all armor is selected, with delete, also note if app or deck is selected, it is not fully supported
 error div condenser/ error function that checks previous errors, and just adds a number, like the console
@@ -65,6 +67,8 @@ window.onload = function() {
 	const shiny = document.getElementById("shiny");//the shiny input
 	const colorSquares = document.getElementsByClassName("colorSquare");// all the colorSquare's
 	const colorRange = document.getElementsByClassName("colorRange");//all color ranges
+	const swapStart = document.getElementById("swapStart");//the number input to start color conversion
+	const colorSwap = document.getElementById("colorSwap");//the button to swap colors
 	
 	//area limiter
 	const enableLTA = document.getElementById("enableLTA");//is limit to area enabled?
@@ -80,6 +84,41 @@ window.onload = function() {
 	
 	var blueprint = {};//for storing the BP
 	//add event listeners
+	
+	//swap FCPC
+	colorSwap.addEventListener("click", function(){
+		//get starting value
+		let start = parseInt(swapStart.value);
+		//parody FC, note we dont have to do anything with FC because the game overrides
+		//create alias
+		let col = blueprint["Blueprint"]["COL"];
+		col.splice(start, 4, col[28],col[29],col[30],col[31])
+		//reload color squares
+		colorUpdate(blueprint);
+		//recolor blocks
+		colorSwapRecursion(blueprint["Blueprint"]);
+	});
+	///out of place for testing
+	function colorSwapRecursion(target){
+		//parseint
+		let start = parseInt(swapStart.value);
+		//create alias
+		let BCI=target["BCI"];
+		//recolor blocks
+		for(i in BCI){
+			if((start <=BCI[i]) && (BCI[i] <=start+3)){//is the index in the PC?
+				//yes shift colors
+				BCI[i] +=(28-start);
+			} else if (28 <=BCI[i]){//is the index in the FC?
+				//yes shift colors
+				BCI[i] +=(start-28);
+			} //unaffected colors
+		}
+		//recursion, through subobjects, and yes we'll drill through them all
+		for(let i in target["SCs"]){
+			colorSwapRecursion(target["SCs"][i]);
+		}//end recursion
+	}
 	
 	
 	//colorSquares update editor
@@ -496,7 +535,7 @@ window.onload = function() {
 				
 		//fill blocklist
 		//start table
-		list=" <table><thead><tr><th>Block Count</th><th>Block Name</th><th>Block Mod</th><th>Block Reference</th><th>Single replace</th></tr></thead>";
+		list=" <table><thead><tr><th>Block Count</th><th>Block Name</th><th>Block Mod</th><th>Block Reference</th><th>Locate and Replace</th></tr></thead>";
 		//define blocks variable for holding blocks
 		let blocks = []
 		

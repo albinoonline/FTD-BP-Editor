@@ -20,7 +20,7 @@
 		<div id="fileinput">
 			<span id="bpspan">
 				<label for="bp">Select Blueprint Here</label>
-				<input type="file" id="bp" name="bp" accept='.blueprint,.blueprint_backup'>
+				<input type="file" id="bp" name="bp" accept='.blueprint,.blueprint_backup'><input type="button" id="DL" value="Download Modified Blueprint"/>
 			</span>
 			
 			<span id="bpname">No Blueprint Selected</span>
@@ -62,7 +62,7 @@
 					</select>
 				</p>
 				<p>
-					<label for="colorFrom">limit color choice? leave empty to ignore</label>
+					<label for="colorFrom">Limit color choice? leave empty to ignore</label>
 					<input type="number" id="colorFrom" name="colorFrom" min="0" max="31"/>
 				</p>
 					<h3>Convert To:</h3>
@@ -82,11 +82,11 @@
 					</select>
 				</p>
 				<p>
-					<label for="colorFrom">recolor to: leave empty to ignore</label>
+					<label for="colorFrom">Recolor to: leave empty to ignore</label>
 					<input type="number" id="colorTo" name="colorTo" min="0" max="31"/>
 				</p>
 				
-				<input type="button" id="massConverterBttn" value="convert"/> <input type="button" id="DL" value="Download"/>
+				<input type="button" id="massConverterBttn" value="Convert"/> 
 			</div>
 			
 		</section><!-- end mass converter -->
@@ -155,6 +155,13 @@
 				<span class="colorSquare">29</span>
 				<span class="colorSquare">30</span>
 				<span class="colorSquare">31</span>
+				<div class="FCPC conversion">
+					<h3>Fleet Color and Personal Color Conversion</h3>
+					<p>Swap colors 24-27 (configurable below) and 28-31 (fleet colors)</p>
+					<p>Does not effect mimics</p>
+					<label for="swapStart">Modify starting place:</label><input id="swapStart" type="number" min="0" max="24" step="1" value="24"/>
+					<input type="button" id="colorSwap" value="Swap"/>
+				</div>
 			</div>
 		</section>
 		<section class="side">
@@ -163,7 +170,7 @@
 				<p>Will Applly to Mass and single convert, may apply to blocklist in future. Blocks measured by origin.</p>
 				<label for="enableLTA">Enable:</label><input type="checkbox" id="enableLTA"/>
 				<label for="invertLTA">Invert:</label><input type="checkbox" id="invertLTA"/>
-				<label for="recursiveLTA">Sub Objects and Vehicles:</label><input type="checkbox" id="recursiveLTA"/>(you almost certainly don't want this)
+				<label for="recursiveLTA">Add Sub Objects and Vehicles:</label><input type="checkbox" id="recursiveLTA"/>(you almost certainly don't want this, Sub Objects have there own origin)
 				<p>Length, positive is Forward</p>
 				<label for="Lmin">Back:</label><input id="Lmin" type="number" step="1" value="-100"/>
 				<label for="Lmax">Front:</label><input id="Lmax" type="number" step="1" value="100"/>
