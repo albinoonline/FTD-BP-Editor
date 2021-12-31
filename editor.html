@@ -5,197 +5,27 @@
 -->
 <head>
 	<meta charset="utf-8" />
-	<title>Albino's Blueprint Fuckery</title>
+	<title>Albino's Sprocket Fuckery</title>
 	<link href="css.css" rel="stylesheet" />
-	<script src='directory.js'></script>
 	<script src='editor.js'></script>
 </head>
 <body>
 	<div id='pagewrapper'>
 		<header>
-			<h1>Albino's Blueprint Fuckery</h1>
-			<a href="https://github.com/albinoonline/FTD-BP-Editor">Browse on Github</a>
-			<p>NYT= Not Yet Implemented, i'll get around to it</p>
+			<h1>Albino's Sprocket Fuckery</h1>
+			<a href="https://github.com/albinoonline/sprocketgearcalculator">Browse on Github</a>
 		</header>
-		<div id="fileinput">
-			<span id="bpspan">
-				<label for="bp">Select Blueprint Here</label>
-				<input type="file" id="bp" name="bp" accept='.blueprint,.blueprint_backup'><input type="button" id="DL" value="Download Modified Blueprint"/>
-			</span>
+		<div id="input">
 			
-			<span id="bpname">No Blueprint Selected</span>
-			
-			<span id="filespan">
-				<label for="item">Import Modded Items Here</label>
-				<input type="file" id="item" name="item" accept='.itemduplicateandmodify,.item' multiple>
-			</span>
-		</div><!-- end fileinput -->
-		<div id="error"></div>
-		<section class="side">
-			<h2 class="dropdown" >RENDER(NYI) ▼</h2>
-			<div class="down"><canvas id="viewer"></canvas></div>
-		</section>
-		<section class="side">
-			<h2 class="dropdown" >SINGLE REPLACE(NYI) ▼</h2>
-			<div class="down" id="singleReplace"></div>
-		</section>
-		<section class="side">
-			<h2 class="dropdown" >MASS REPLACE ▼</h2>
-			<div class="down" id="massConverter" >
-				<h3>Convert From:</h3>
-				<p>Note: Appliqué and Decking do not properly mass replace, but do paint fine.
-					<label for="armorFrom">Chose block type:</label>
-					<select name="armorFrom" id="armorFrom">
-						<option value="All">All Blocks</option>
-						<option value="Armor">All Armor</option>
-						<option value="Light-weight Alloy Block">Alloy</option>
-						<option value="Glass block">Glass</option><!--yup glass block is undercase. FFS -->
-						<option value="Heavy Armour">Heavy Armor</option>
-						<option value="Lead Block">Lead</option>
-						<option value="Metal Block">Metal</option>
-						<option value="Rubber Block">Rubber</option>
-						<option value="Stone Block">Stone</option>
-						<option value="Wood Block">Wood</option>
-						<option value="Applique Panel">Appliqué</option>
-						<option value="Reinforced Wood">Decking</option>
-						<option value="Other">Non armor</option>
-					</select>
-				</p>
-				<p>
-					<label for="colorFrom">Limit color choice? leave empty to ignore</label>
-					<input type="number" id="colorFrom" name="colorFrom" min="0" max="31"/>
-				</p>
-					<h3>Convert To:</h3>
-				<p>
-					<label for="armorTo">Chose block type:</label>
-					<select name="armorTo" id="armorTo">
-						<option value="None">No conversion</option>
-						<option value="Light-weight Alloy Block">Alloy</option>
-						<option value="Glass block">Glass</option>
-						<option value="Heavy Armour">Heavy Armor</option>
-						<option value="Lead Block">Lead</option>
-						<option value="Metal Block">Metal</option>
-						<option value="Rubber Block">Rubber</option>
-						<option value="Stone Block">Stone</option>
-						<option value="Wood Block">Wood</option>
-						<option value="Delete">Destroy(NYI)</option>
-					</select>
-				</p>
-				<p>
-					<label for="colorFrom">Recolor to: leave empty to ignore</label>
-					<input type="number" id="colorTo" name="colorTo" min="0" max="31"/>
-				</p>
-				
-				<input type="button" id="massConverterBttn" value="Convert"/> 
-			</div>
-			
-		</section><!-- end mass converter -->
-		<section class="side">
-			<h2 class="dropdown" >PALETTE TOOL ▼</h2>
-			<div class="down" id="colorTool">
-				
-				<div id="colorControll">
-					<h3>Color Editor:</h3>
-					<p>when adjusting alpha, be mindful that the background is gray</p>
-					<p>the preview window will eventually have either textures or base colors of wood, metal, alloy and heavy armor as a background rather than grey</p>
-					<div id="preview"></div>
-					<div id="colorManInput"><!--vertical manual entry and readout-->
-						<span>
-							<label for="red">Red:</label><input id="red" type="number" min="0" max="1" step="0.000001" value="1"/>
-							<input type="range" class="colorRange" min="0" value="1" max="1" step="0.000001">
-						</span>
-						<span>
-							<label for="green">Green:</label><input id="green" type="number" min="0" max="1" step="0.000001" value="1"/>
-							<input type="range" class="colorRange" min="0" value="1" max="1" step="0.000001">
-						</span>
-						<span>
-							<label for="blue">Blue:</label><input id="blue" type="number" min="0" max="1" step="0.000001" value="1"/>
-							<input type="range" class="colorRange" min="0" value="1" max="1" step="0.000001">
-						</span>
-						<span>
-							<label for="alpha">Alpha:</label><input id="alpha" type="number" min="0" max="1" step="0.000001" value="1"/>
-							<input type="range" class="colorRange" min="0" value="1" max="1" step="0.000001">
-						</span>
-						<span>
-							<label for="shiny">Shiny:(NYI)</label><input id="shiny" type="number" min="0" max="1" step="0.000001" value="1"/>
-							<input type="range" class="colorRange" min="0" value="1" max="1" step="0.000001">
-						</span>
-					</div>
-				
-				</div>
-				<span class="colorSquare" id="editing">0</span>
-				<span class="colorSquare">1</span>
-				<span class="colorSquare">2</span>
-				<span class="colorSquare">3</span>
-				<span class="colorSquare">4</span>
-				<span class="colorSquare">5</span>
-				<span class="colorSquare">6</span>
-				<span class="colorSquare">7</span>
-				<span class="colorSquare">8</span>
-				<span class="colorSquare">9</span>
-				<span class="colorSquare">10</span>
-				<span class="colorSquare">11</span>
-				<span class="colorSquare">12</span>
-				<span class="colorSquare">13</span>
-				<span class="colorSquare">14</span>
-				<span class="colorSquare">15</span>
-				<span class="colorSquare">16</span>
-				<span class="colorSquare">17</span>
-				<span class="colorSquare">18</span>
-				<span class="colorSquare">19</span>
-				<span class="colorSquare">20</span>
-				<span class="colorSquare">21</span>
-				<span class="colorSquare">22</span>
-				<span class="colorSquare">23</span>
-				<span class="colorSquare">24</span>
-				<span class="colorSquare">25</span>
-				<span class="colorSquare">26</span>
-				<span class="colorSquare">27</span>
-				<span class="colorSquare">28</span>
-				<span class="colorSquare">29</span>
-				<span class="colorSquare">30</span>
-				<span class="colorSquare">31</span>
-				<div class="FCPC conversion">
-					<h3>Fleet Color and Personal Color Conversion</h3>
-					<p>Swap colors 24-27 (configurable below) and 28-31 (fleet colors)</p>
-					<p>Does not effect mimics</p>
-					<label for="swapStart">Modify starting place:</label><input id="swapStart" type="number" min="0" max="24" step="1" value="24"/>
-					<input type="button" id="colorSwap" value="Swap"/>
-				</div>
-			</div>
-		</section>
-		<section class="side">
-			<h2 class="dropdown" >LIMIT TO AREA ▼</h2>
-			<div class="down" id="region">
-				<p>Will Applly to Mass and single convert, may apply to blocklist in future. Blocks measured by origin.</p>
-				<label for="enableLTA">Enable:</label><input type="checkbox" id="enableLTA"/>
-				<label for="invertLTA">Invert:</label><input type="checkbox" id="invertLTA"/>
-				<label for="recursiveLTA">Add Sub Objects and Vehicles:</label><input type="checkbox" id="recursiveLTA"/>(you almost certainly don't want this, Sub Objects have there own origin)
-				<p>Length, positive is Forward</p>
-				<label for="Lmin">Back:</label><input id="Lmin" type="number" step="1" value="-100"/>
-				<label for="Lmax">Front:</label><input id="Lmax" type="number" step="1" value="100"/>
-				<p>Width, positive is Right</p>
-				<label for="Wmin">Left:</label><input id="Wmin" type="number" step="1" value="-100"/>
-				<label for="Wmax">Right:</label><input id="Wmax" type="number" step="1" value="100"/>
-				<p>Height, positive is Up</p>
-				<label for="Hmin">Down:</label><input id="Hmin" type="number" step="1" value="-100"/>
-				<label for="Hmax">Up:</label><input id="Hmax" type="number" step="1" value="100"/>
-				<p>Format W, H, l, when using the Health and AC tool in-game, Note: this is the origin of the highlighted block, not the current position of the cursor.</p>
-				<p>I know this isn't of much use without the renderer...</p>
-			</div>
-		</section>
-		<section class="side">
-			<h2 class="dropdown" >BLOCK LIST ▼</h2>
-			<div class="down" id="blocklist">
-				
-			</div>
-		</section>
-		<section class="side">
-			<h2 class="dropdown" >CONSTRUCT DATA ▼</h2>
-			<div class="down" id="data">
-				
-			</div>
-		</section>
+			<label for="gears">Gears:</label><input id="gears" type="number" step="1" value="6" min="2" max="24"/><br/>
+			<label for="first">First Gear:</label><input id="first" type="number" step="0.01" value="4" min=".1" max="30"/><br/>
+			<label for="top">Top Gear:</label><input id="top" type="number" step="0.01" value=".75" min=".1" max="30"/><br/>
+			<label for="max">Target Max:</label><input id="max" type="number" step="1" value="2400" min="0" max="72000"/><br/>
+			<input type="button" id="go" value="calculate"/>
+		</div><!-- end input -->
+		<div id="output">
+		
+		</div>
 	</div>
 </body>
 </html>
