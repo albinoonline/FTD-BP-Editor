@@ -9,6 +9,8 @@ color pallet exporting
 Fix when loading older BP's, alert user to resave older BP, error: Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'CreatorReadableName')
 
 Future:
+get decking working agein
+inporter to autodetect if things should share same types? EX: if the only difference is a number, and if it does not already have a reference
 when iterating through the dictionary's (both of them), use indexof, rather than looping
 Limit color choice to allow selection of multiple colors
 hide DL button if a processes is in progress?
@@ -326,7 +328,7 @@ window.onload = function() {
 	
 	function singleConvert(){//handles updating after singleConvertRecursion
 		//ensure valid input:
-		if (replaceTo>0){
+		if (replaceTo !== -1){
 			blueprint["Blueprint"]=singleConvertRecursion(blueprint["Blueprint"]);
 			//update meta data(set modified to true, set some other values (like cost) to some obviously wrong value)
 			///---------------------------------------------------------ToDo
@@ -336,7 +338,7 @@ window.onload = function() {
 			error.innerHTML+="<br/>Nothing to convert to";
 		}
 	}
-	function singleConvertRecursion(target){//convert swaths of blocks to other blocks
+	function singleConvertRecursion(target){//convert block of one id to another
 		//parse
 		let cFrom = parseFloat(colorFromSingle.value);
 		let cTo = parseFloat(colorToSingle.value);
