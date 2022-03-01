@@ -14,8 +14,8 @@
 	<div id='pagewrapper'>
 		<header>
 			<h1>Albino's Blueprint Fuckery</h1>
-			<a href="https://github.com/albinoonline/FTD-BP-Editor">Browse on Github</a>
-			<p>NYT= Not Yet Implemented, i'll get around to it, the editor may not be working ATM, working on a fix, should be out in an hour or two</p>
+			<a href="https://github.com/albinoonline/FTD-BP-Editor">Browse on Github</a> <a href="https://www.reddit.com/user/albinocreeper">u/albinocreeper on reddit</a>
+			<p>NYT= Not Yet Implemented, i'll get around to it</p>
 		</header>
 		<div id="fileinput">
 			<span id="bpspan">
@@ -36,54 +36,91 @@
 			<div class="down"><canvas id="viewer"></canvas></div>
 		</section>
 		<section class="side">
-			<h2 class="dropdown" >SINGLE REPLACE(NYI) ▼</h2>
-			<div class="down" id="singleReplace"></div>
-		</section>
-		<section class="side">
-			<h2 class="dropdown" >MASS REPLACE ▼</h2>
-			<div class="down" id="massConverter" >
+			<h2 class="dropdown" >SINGLE PAINT AND REPLACE (NYI)▼</h2>
+			<div class="down" id="singleReplace">
 				<h3>Convert From:</h3>
-				<p>Note: Appliqué and Decking do not properly mass replace, but do paint fine.
-					<label for="armorFrom">Chose block type:</label>
-					<select name="armorFrom" id="armorFrom">
-						<option value="All">All Blocks</option>
-						<option value="Armor">All Armor</option>
-						<option value="Light-weight Alloy Block">Alloy</option>
-						<option value="Glass block">Glass</option><!--yup glass block is undercase. FFS -->
-						<option value="Heavy Armour">Heavy Armor</option>
-						<option value="Lead Block">Lead</option>
-						<option value="Metal Block">Metal</option>
-						<option value="Rubber Block">Rubber</option>
-						<option value="Stone Block">Stone</option>
-						<option value="Wood Block">Wood</option>
-						<option value="Applique Panel">Appliqué</option>
-						<option value="Reinforced Wood">Decking</option>
-						<option value="Other">Non armor</option>
-					</select>
+				
+				<div id="singleFromInfo"><p>Select a block from the block list menu</p></div>
+				<p>
+					<label for="colorFromEnableSingle">Limit color choice?</label>
+					<input type="checkbox" id="colorFromEnableSingle" name="colorFromEnableSingle">
 				</p>
 				<p>
-					<label for="colorFrom">Limit color choice? leave empty to ignore</label>
-					<input type="number" id="colorFrom" name="colorFrom" min="0" max="31"/>
+					<label for="colorFromSingle">Limited Color:</label>
+					<input type="number" id="colorFromSingle" name="colorFromSingle" min="0" max="31" disabled/>
 				</p>
 					<h3>Convert To:</h3>
+					<p>Search for a block to replace, note this tool may not play nice when converting blocks of different sizes.</p>
+					
+					<label for="singleSearch">Enter block name:</label>
+					<input type="text" id="singleSearch" name="singleSearch"/>
+					<div id="singleToInfo"></div>
 				<p>
-					<label for="armorTo">Chose block type:</label>
-					<select name="armorTo" id="armorTo">
-						<option value="None">No conversion</option>
-						<option value="Light-weight Alloy Block">Alloy</option>
-						<option value="Glass block">Glass</option>
-						<option value="Heavy Armour">Heavy Armor</option>
-						<option value="Lead Block">Lead</option>
-						<option value="Metal Block">Metal</option>
-						<option value="Rubber Block">Rubber</option>
-						<option value="Stone Block">Stone</option>
-						<option value="Wood Block">Wood</option>
-						<option value="Delete">Destroy(NYI)</option>
-					</select>
+					<label for="colorToEnableSingle">Repaint?</label>
+					<input type="checkbox" id="colorToEnableSingle" name="colorToEnableSingle">
 				</p>
 				<p>
-					<label for="colorFrom">Recolor to: leave empty to ignore</label>
-					<input type="number" id="colorTo" name="colorTo" min="0" max="31"/>
+					<label for="colorToSingle">Repaint to:</label>
+					<input type="number" id="colorToSingle" name="colorToSingle" min="0" max="31" disabled/>
+				</p>
+				
+				<input type="button" id="singleConverterBttn" value="Convert"/> 
+			</div>
+			
+			
+			</div>
+		</section>
+		<section class="side">
+			<h2 class="dropdown" >MASS PAINT AND REPLACE ▼</h2>
+			<div class="down" id="massConverter" >
+				<h3>Convert From:</h3>
+				<p>Note: Appliqué and Decking do not properly mass replace, but do paint fine. (Note to self: figure out why, I forget :P)</p>
+				<label for="armorFrom">Chose blocks to convert:</label>
+				<select name="armorFrom" id="armorFrom">
+					<option value="All">All Blocks</option>
+					<option value="Armor">All Armor</option>
+					<option value="light-weight alloy block">Alloy</option>
+					<option value="glass block">Glass</option>
+					<option value="heavy armour">Heavy Armor</option>
+					<option value="lead block">Lead</option>
+					<option value="metal block">Metal</option>
+					<option value="rubber block">Rubber</option>
+					<option value="stone block">Stone</option>
+					<option value="wood block">Wood</option>
+					<option value="applique panel">Appliqué</option>
+					<!-- <option value="reinforced wood">Decking</option> standards, not everything in FTD uses the same one...-->
+					<option value="Other">Non armor</option>
+				</select>
+				
+				<p>
+					<label for="colorFromEnable">Limit color choice?</label>
+					<input type="checkbox" id="colorFromEnable" name="colorFromEnable">
+				</p>
+				<p>
+					<label for="colorFrom">Limited Color:</label>
+					<input type="number" id="colorFrom" name="colorFrom" min="0" max="31" disabled/>
+				</p>
+					<h3>Convert To:</h3>
+				<label for="armorTo">Chose what to convert to:</label>
+				<select name="armorTo" id="armorTo">
+					<option value="None">No conversion</option>
+					<option value="light-weight alloy block">Alloy</option>
+					<option value="glass block">Glass</option>
+					<option value="heavy armour">Heavy Armor</option>
+					<option value="lead block">Lead</option>
+					<option value="metal block">Metal</option>
+					<option value="rubber block">Rubber</option>
+					<option value="stone block">Stone</option>
+					<option value="wood block">Wood</option>
+					<option value="Delete">Destroy(NYI)</option>
+				</select>
+				<p>
+					<label for="colorToEnable">Repaint?</label>
+					<input type="checkbox" id="colorToEnable" name="colorToEnable">
+				</p>
+				<p>
+					<label for="colorTo">Repaint to:</label>
+					<input type="number" id="colorTo" name="colorTo" min="0" max="31" disabled/>
 				</p>
 				
 				<input type="button" id="massConverterBttn" value="Convert"/> 
@@ -96,8 +133,9 @@
 				
 				<div id="colorControll">
 					<h3>Color Editor:</h3>
-					<p>when adjusting alpha, be mindful that the background is gray</p>
-					<p>the preview window will eventually have either textures or base colors of wood, metal, alloy and heavy armor as a background rather than grey</p>
+					<p>When adjusting alpha, be mindful that the background is currently gray</p>
+					<p>The preview window will, in future, have either textures or base colors of wood, metal, alloy and heavy armor as a background rather than grey</p>
+					<p>I havent looked into *how* shininess is encoded in red, so messing with red will almost certainly change shininess, and Shiny doesn't work</p>
 					<div id="preview"></div>
 					<div id="colorManInput"><!--vertical manual entry and readout-->
 						<span>
@@ -161,6 +199,7 @@
 					<p>Does not effect decorations, as those are not painted normally</p>
 					<label for="swapStart">Modify starting place:</label><input id="swapStart" type="number" min="0" max="24" step="1" value="24"/>
 					<input type="button" id="colorSwap" value="Swap"/>
+					<p>Technically this just overwrites non Fleet Colors, since fleet colors are automatically overwritten on design load. What?? i'm lazy.</p>
 				</div>
 			</div>
 		</section>

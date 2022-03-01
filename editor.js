@@ -1,18 +1,25 @@
 /*
 ToDo:
-hide DL button if a processes is in progress?
+This release:
+add reddit link
+single block type replace tool
+The Maybe pile:
+dont show dropdowns until a bp is loaded
+color tooltips with RGBAS
 color pallet exporting
+Fix when loading older BP's, alert user to resave older BP, error: Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'CreatorReadableName')
+
+Future:
+Limit color choice to allow selection of multiple colors
+hide DL button if a processes is in progress?
 streamline replacer
 make the "not form" nicer looking
 make dl a function rather than shoving it in an event listener?
 blocklist sort/additional info (parent block (ex:wood slopes parent is wood block)), origin mod
-	// single block type replace tool (will also be a button under blocklist, bring up a replace to drop down)
 renderer: 2 moded color mode, and material mode.
 	block locater: add a button to each line of the blocklist that will highlight the blocks in the renderer
 fully map the blueprint file
 	color viewer/editor (mising shiny, camostuffs)
-		fleet to personal color button, moving fleet colors down 4+ (selectable) and copying COL data
-		random colors
 	get delete working
 
 mass subobject replacing, maybe even with firing restrictions kept
@@ -22,7 +29,7 @@ have an all armor and standard armor dropdown option for mass replace
 warn if armorfrom is All, AND armorto is NOT None. also if all or all armor is selected, with delete, also note if app or deck is selected, it is not fully supported
 error div condenser/ error function that checks previous errors, and just adds a number, like the console
 other replace tool:(switches between the two types)
-	ammo clips,	plates,	doors/hatches
+	ammo clips,	plates,	doors/hatches, basicly a quick reference for single replace.
 vehicle stat block, list SCI info, number of sub constructs(in total, top level, deepest chain) and sub vehicle names, weapon systems firepower 
 region definer, limit changes to massConvert and other functions to defined regions
 	blueprint split/translate tool translater
@@ -30,11 +37,8 @@ region definer, limit changes to massConvert and other functions to defined regi
 blueprint merger?
 cashe mods
 reformat the CSI
-spin block exceptions for replacer tool
+spin block/turret/piston exceptions for replacer tool
 include vehicle type in top bar, ex: vehicle, fortress or structure
-include a link to the github on the page
-dont show dropdowns until a bp is loaded
-color tooltips with RGBAS
 
 replacer tool: Wood Block Variant handler
 */
@@ -50,17 +54,30 @@ window.onload = function() {
 	const error = document.getElementById('error');//top banner for use with errors
 	const blocklist = document.getElementById('blocklist'); // blocklist output panel
 	const dropdowns = document.getElementsByClassName("dropdown");//dropdowns
+	const DL = document.getElementById('DL'); 
+	const miscData = document.getElementById("data");//construct data
 	
 	//mass convert
 	const armorFrom = document.getElementById('armorFrom'); 
+	const colorFromEnable = document.getElementById('colorFromEnable'); 
 	const colorFrom = document.getElementById('colorFrom'); 
 	const armorTo = document.getElementById('armorTo'); 
 	const colorTo = document.getElementById('colorTo'); 
-	const DL = document.getElementById('DL'); 
-	const miscData = document.getElementById("data");//construct data
-	const colorTool = document.getElementById("colorTool");//the color tool div
+	const colorToEnable = document.getElementById('colorToEnable'); 
+	//single convert
+	const armorFromSingle = document.getElementById('armorFromSingle'); 
+	const colorFromEnableSingle = document.getElementById('colorFromEnableSingle'); 
+	const colorFromSingle = document.getElementById('colorFromSingle'); 
+	const armorToSingle = document.getElementById('armorToSingle'); 
+	const colorToSingle = document.getElementById('colorToSingle'); 
+	const colorToEnableSingle = document.getElementById('colorToEnableSingle'); 
+	const singleFromInfo = document.getElementById('singleFromInfo'); 
+	const singleToInfo = document.getElementById('singleToInfo'); 
+	const singleConverterBttn = document.getElementById('singleConverterBttn'); 
+	const singleSearch = document.getElementById('singleSearch'); 
 	
 	//color
+	const colorTool = document.getElementById("colorTool");//the color tool div
 	const preview = document.getElementById("preview");//the color label
 	const red = document.getElementById("red");//the red input
 	const green = document.getElementById("green");//the green input
@@ -85,6 +102,9 @@ window.onload = function() {
 	const Wmax = document.getElementById("Wmax");
 	
 	var blueprint = {};//for storing the BP
+	var toReplace =-1//for storing what is to be replaced in the single replace function
+	var replaceTo =-1//for storing what we replace to in the single replace function
+	
 	//add event listeners
 	
 	//swap FCPC
@@ -100,28 +120,38 @@ window.onload = function() {
 		//recolor blocks
 		colorSwapRecursion(blueprint["Blueprint"]);
 	});
-	///out of place for testing
-	function colorSwapRecursion(target){
-		//parseint
-		let start = parseInt(swapStart.value);
-		//create alias
-		let BCI=target["BCI"];
-		//recolor blocks
-		for(i in BCI){
-			if((start <=BCI[i]) && (BCI[i] <=start+3)){//is the index in the PC?
-				//yes shift colors
-				BCI[i] +=(28-start);
-			} else if (28 <=BCI[i]){//is the index in the FC?
-				//yes shift colors
-				BCI[i] +=(start-28);
-			} //unaffected colors
-		}
-		//recursion, through subobjects, and yes we'll drill through them all
-		for(let i in target["SCs"]){
-			colorSwapRecursion(target["SCs"][i]);
-		}//end recursion
-	}
 	
+	//single replace search
+	singleSearch.addEventListener("input", function(){
+		//get text
+		let text = singleSearch.value.toLowerCase();
+		//check if length is longer than 3
+		if (text.length < 3){
+			singleToInfo.innerHTML="<h4>Use 3 characters.</h4>";
+			return;//if text is to small just leave.
+		}
+		//else we need to search
+		//clear and prep results
+		singleToInfo.innerHTML="<h4>Results:</h4>";
+		//filter
+		Object.keys(dictionary).forEach(function(o){
+			//if theres a match
+			if (dictionary[o].readableName.toLowerCase().indexOf(text) >-1){
+				//push to page
+				singleToInfo.innerHTML+=`<button type="button" class="replaceToLink" value=${o}>Name:${dictionary[o].readableName} Mod:${dictionary[o].mod}</button>`;
+				//set up eventlisteners for the button
+				let replaceToLink= document.getElementsByClassName("replaceToLink");
+				for (let i = 0; i < replaceToLink.length; i++){
+					replaceToLink[i].addEventListener("click", function(){
+						//update replaceTo
+						replaceTo=replaceToLink[i].value;
+						//replace the searchlist with blockinfo
+						singleToInfo.innerHTML=`<h4>Selected:</h4> Name:${dictionary[replaceTo]["readableName"]}, Mod:${dictionary[replaceTo]["mod"]}, FullID:${replaceTo}`;
+					});
+				}//loop results
+			}//if match
+		});//loop dictionary
+	});
 	
 	//colorSquares update editor
 	for (let i of colorSquares){
@@ -149,6 +179,33 @@ window.onload = function() {
 			
 		});
 	}
+	
+	//color enable buttons (mass replace)
+	colorFromEnable.addEventListener("input", function(){
+		//reset value 
+		colorFrom.value="";
+		//update colorFrom
+		colorFrom.disabled = !colorFromEnable.checked;
+	});
+	colorToEnable.addEventListener("input", function(){
+		//reset value 
+		colorTo.value="";
+		//update colorto
+		colorTo.disabled = !colorToEnable.checked;
+	});
+	colorFromEnableSingle.addEventListener("input", function(){
+		//reset value 
+		colorFromSingle.value="";
+		//update colorFrom
+		colorFromSingle.disabled = !colorFromEnableSingle.checked;
+	});
+	colorToEnableSingle.addEventListener("input", function(){
+		//reset value 
+		colorToSingle.value="";
+		//update colorto
+		colorToSingle.disabled = !colorToEnableSingle.checked;
+	});
+	
 	//color range and number linkages
 	for (let i of colorRange){
 		let text = i.previousElementSibling;
@@ -214,6 +271,27 @@ window.onload = function() {
 			colorSquares[i].style.backgroundColor= RGBA;
 		}
 	}
+	
+	function colorSwapRecursion(target){
+		//parseint
+		let start = parseInt(swapStart.value);
+		//create alias
+		let BCI=target["BCI"];
+		//recolor blocks
+		for(i in BCI){
+			if((start <=BCI[i]) && (BCI[i] <=start+3)){//is the index in the PC?
+				//yes shift colors
+				BCI[i] +=(28-start);
+			} else if (28 <=BCI[i]){//is the index in the FC?
+				//yes shift colors
+				BCI[i] +=(start-28);
+			} //unaffected colors
+		}
+		//recursion, through subobjects, and yes we'll drill through them all
+		for(let i in target["SCs"]){
+			colorSwapRecursion(target["SCs"][i]);
+		}//end recursion
+	}
 	function previewUpdate(){//updates the color preview box
 		//clearly a very complicated function, but i wanted to avoid copying it many times
 		///when shiny is added it will adjust the background color
@@ -248,8 +326,6 @@ window.onload = function() {
 	function massConvert(){//handles updating after massConvertRecursion
 		//let the converter fill the blueprint
 		blueprint["Blueprint"]=massConvertRecursion(blueprint["Blueprint"]);
-		//console.log(blueprint);
-		BPfill(blueprint);
 		//update meta data(set modified to true, set some other values (like cost) to some obviously wrong value)
 		///---------------------------------------------------------ToDo
 		//update page 
@@ -283,7 +359,7 @@ window.onload = function() {
 		
 		//are we at the top level?
 		let topLevel=target["blueprintName"] == blueprint["Name"];
-		//is LTA enabled?
+		//is LTA (limit to area) enabled? considering whether recursionis enabled and where we are.
 		if (recursiveLTA.checked ? (enableLTA.checked && topLevel) : enableLTA.checked){
 			//iterate through blocks
 			for(i in target["BLP"]){
@@ -292,7 +368,7 @@ window.onload = function() {
 					//yes creata a variable to store progress
 					let valid = true;
 					
-					//position format is W, H, l, was string, converted to an array
+					//position format is W, H, l, was string, convert to an array
 					let WHL = target["BLP"][i].split(",");
 					//make not a string
 					WHL = WHL.map(Number);
@@ -304,28 +380,25 @@ window.onload = function() {
 					valid = (Lmin.value <= WHL[2]) && (WHL[2] <= Lmax.value) && valid;
 					//if valid is true the block is within bounds, check to see if it must be inverted. (this is a XOR operator)
 					positions[i] = (invertLTA.checked ? !valid : valid);
-					console.log("valid"+valid);
-					console.log("inverted"+invertLTA.checked);
-					console.log("labled"+positions[i]);
 				}//else block is already removed from positions
 			}//end block loop
 		}
-		
-		//now positions is sorted by color, we need to sort by block
+		//now positions is sorted by color and position. we need to sort by block
 		
 		//array of all armors
-		let allArmors =["Glass block", "Heavy Armour", "Lead Block", "Rubber Block", "Stone Block", "Light-weight Alloy Block", "Metal Block", "Wood Block", "Applique Panel", "Reinforced Wood", "Alloy Plate", "Metal Plate","Truss 1m"];
+		let allArmors =["glass block", "heavy armour", "lead block", "rubber block", "stone block", "light-weight alloy block", "metal block", "wood block", "applique panel", "reinforced wood", "alloy plate", "metal plate","truss 1m"];
+		//reinforced wood does not properly self reference, this may cause issues if the dictionary is not edited after raw import
 		//yes the generic name of the truss is always 1m, no i don't know why
-		//array of changale armors
-		let armors =["Glass block", "Heavy Armour", "Lead Block", "Rubber Block", "Stone Block", "Light-weight Alloy Block", "Metal Block", "Wood Block"];
+		//array of changable armors, yes the block for glass is lowercase, and heavy armor has no block
+		let armors =["glass block", "heavy armour", "lead block", "rubber block", "stone block", "light-weight alloy block", "metal block", "wood block"];
 		switch(armorFrom.value){
-			case "All"://do nothing
+			case "All"://remove nothing
 			break;//leave
 			case "Armor"://any armor type
 				//loop through each position
 				for(i in positions){
 					if (positions[i]){//no need to check false
-						//assume false
+						//assume false (to keep parody with below)
 						positions[i] = false;
 						//get the block object
 						let block = translator(target["BlockIds"][i]);
@@ -468,6 +541,7 @@ window.onload = function() {
 		//console.log(target);
 		return target;//return target
 	}
+	
 	//importer, fills out the dictionary
 	async function Modparse(){//this function imports files to the dictionary
 		blocklist.innerHTML ='<h2>Imported:</h2>';
@@ -487,7 +561,7 @@ window.onload = function() {
 			//data[DisplayName], all after #?!
 			searchableName = searchableName.slice(searchableName.indexOf("#?!")+3);
 			//remove parenthesis quotes and spaces, make lowercase, 
-			searchableName = searchableName.replace(/() /g,"").toLowerCase();///======================this failed to work grrrr
+			searchableName = searchableName.replace(/() /g,"").toLowerCase();///======================this failed to work grrrr, i thinki fixed it?
 			//make instances of left and right to l or r (to be safe)
 			searchableName = searchableName.replace("left","l").replace("right","r");
 			
@@ -496,10 +570,17 @@ window.onload = function() {
 			// remove ### and everything after ".", replace underscores
 			mod = mod.slice(3, mod.indexOf(".")).replace("_"," ");
 			
-			//this reference is used to identify the "class" of block, since ot refrences the perent block, the perent block has no refrence, so we refrence ourselves
-			let reference = readableName;
+			//this reference is used to identify the "class" of block, since it references the parent block, the parent block has no reference, so we reference ourselves
+			//im making references lower case
+			let reference ="";
+			//do we need to overwrite the reference with a real one?
 			if (typeof data["IdToDuplicate"] != "undefined"){
-				reference = data["IdToDuplicate"]["Reference"]["Name"];
+				//yes block has real reference
+				reference = data["IdToDuplicate"]["Reference"]["Name"].toLowerCase();
+			} else {
+				//no block is self reference, make the name lowercase, since the references will be
+				readableName = readableName.toLowerCase();
+				reference = readableName;
 			}
 			
 			//fill dictionary
@@ -561,7 +642,7 @@ window.onload = function() {
 		for(let i in blocks){
 			//fill filtered blocks
 			let block = translator(i);
-			filteredBlocks.push({"num":blocks[i],"block":block});
+			filteredBlocks.push({"num":blocks[i],"block":block,"ShortID":i});
 			//fill reference blocks
 			//check dupe entry
 			//have we encountered the ref before?
@@ -585,11 +666,20 @@ window.onload = function() {
 			let block = filteredBlocks[i];
 			///==================================================================================ToDo (the replace button)
 			//make table with number of blocks, name, mod, replace buttons
-			list +=`<tr><th>${block['num']}</th><th>${block['block']['readableName']}</th><th>${block['block']['mod']}</th><th>${block['block']['reference']}</th><th>NYI</th></tr>`;
+			list +=`<tr><th>${block['num']}</th><th>${block['block']['readableName']}</th><th>${block['block']['mod']}</th><th>${block['block']['reference']}</th><th>
+			<button type="button" onclick="alert('Not yet implamented, but you clearly have some, ${block['num']} in fact');">L</button>
+			<button type="button" class="replaceLink" value=${block['ShortID']}>R</button>
+			</th></tr>`;
 		}
 		//end table
 		list +="</table>";
 		blocklist.innerHTML=list;
+		
+		//add event listener for replacelink class
+		let replaceLinks= document.getElementsByClassName("replaceLink");
+		for (let i = 0; i < replaceLinks.length; i++){
+			replaceLinks[i].addEventListener("click", function(){ autofillSingleReplace(replaceLinks[i].value)});
+		}
 		
 		//display CSI
 		
@@ -649,6 +739,15 @@ window.onload = function() {
 				
 			}
 		}//end for loop
+	}
+	function autofillSingleReplace(shortID){
+		//funtion called by the R button on bloklist
+		console.log();
+		//fill info in
+		let translated =translator(shortID);
+		let info = `<h4>Selected:</h4> Name:${translated["readableName"]}, Mod:${translated["mod"]}, TempID:${shortID}, FullID:${blueprint["ItemDictionary"][shortID]}`;
+		singleFromInfo.innerHTML=info;
+		toReplace=shortID;
 	}
 	
 	function translator(tempID){//this function will return a block object when fed a temp id

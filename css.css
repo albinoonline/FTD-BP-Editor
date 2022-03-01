@@ -124,7 +124,7 @@ input[type="range"] {
 	font-family: OCR-A, monospace;
 	font-size:1em;
 }
-#fileinput label, input[type=button] {
+#fileinput label, input[type=button], button{
 	background-color: #5555ee;
 	padding:.25em;
 	color: white;
@@ -133,7 +133,7 @@ input[type="range"] {
 	height: auto;
 }
 
-#fileinput label:hover, input[type=button]:hover {
+#fileinput label:hover, input[type=button]:hover,button:hover {
 	background-color: #ee5555;
 	color: white;
 }
