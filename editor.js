@@ -1,8 +1,7 @@
 /*
 ToDo:
 This release:
-add reddit link
-single block type replace tool
+
 The Maybe pile:
 dont show dropdowns until a bp is loaded
 color tooltips with RGBAS
@@ -10,6 +9,7 @@ color pallet exporting
 Fix when loading older BP's, alert user to resave older BP, error: Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'CreatorReadableName')
 
 Future:
+when iterating through the dictionary's (both of them), use indexof, rather than looping
 Limit color choice to allow selection of multiple colors
 hide DL button if a processes is in progress?
 streamline replacer
@@ -228,6 +228,7 @@ window.onload = function() {
 	Bpinput.addEventListener("change", function(){BPfill(BPparse())});//the file input for bp
 	Modinput.addEventListener("change", Modparse);//the file inout for modded files
 	massConverterBttn.addEventListener("click", massConvert);//the button for mass convert
+	singleConverterBttn.addEventListener("click", singleConvert);//the button for single convert
 	
 	//dropdowns
 	for (let i of dropdowns){
@@ -321,6 +322,135 @@ window.onload = function() {
 			//set display
 			div.style.display = "none";
 		}
+	}
+	
+	function singleConvert(){//handles updating after singleConvertRecursion
+		//ensure valid input:
+		if (replaceTo>0){
+			blueprint["Blueprint"]=singleConvertRecursion(blueprint["Blueprint"]);
+			//update meta data(set modified to true, set some other values (like cost) to some obviously wrong value)
+			///---------------------------------------------------------ToDo
+			//update page 
+			BPfill(blueprint);
+		} else {
+			error.innerHTML+="<br/>Nothing to convert to";
+		}
+	}
+	function singleConvertRecursion(target){//convert swaths of blocks to other blocks
+		//parse
+		let cFrom = parseFloat(colorFromSingle.value);
+		let cTo = parseFloat(colorToSingle.value);
+		
+		//does a blueprint exist?
+		if (typeof target === "undefined"){
+			error.innerHTML+="<br/>No BP";
+			return;//no BP, eject
+		}
+		//bp exists
+		//create an iterator array
+		let positions = Array(target["BCI"].length).fill(true);
+		
+		//do we limit color?
+		if(isNaN(cFrom)==false){
+			//remove blocks of incorrect color 
+			for(i in target["BCI"]){
+				//if the color matches this returns true, else false.
+				positions[i] = (target["BCI"][i] == cFrom);
+			}
+		}
+		
+		//sort by location (limit to area)
+		
+		//are we at the top level?
+		let topLevel=target["blueprintName"] == blueprint["Name"];
+		//is LTA (limit to area) enabled? considering whether recursionis enabled and where we are.
+		if (recursiveLTA.checked ? (enableLTA.checked && topLevel) : enableLTA.checked){
+			//iterate through blocks
+			for(i in target["BLP"]){
+				//only do valid blocks
+				if (positions[i]){
+					//yes creata a variable to store progress
+					let valid = true;
+					
+					//position format is W, H, l, was string, convert to an array
+					let WHL = target["BLP"][i].split(",");
+					//make not a string
+					WHL = WHL.map(Number);
+					//check width
+					valid = (Wmin.value <= WHL[0]) && (WHL[0] <= Wmax.value);
+					//check height
+					valid = (Hmin.value <= WHL[1]) && (WHL[1] <= Hmax.value) && valid;
+					//check length
+					valid = (Lmin.value <= WHL[2]) && (WHL[2] <= Lmax.value) && valid;
+					//if valid is true the block is within bounds, check to see if it must be inverted. (this is a XOR operator)
+					positions[i] = (invertLTA.checked ? !valid : valid);
+				}//else block is already removed from positions
+			}//end block loop
+		}
+		
+		console.log(positions);
+		//now positions is sorted by color and position. we need to sort by block
+		///sorting by block, maybe do before position check for calc speed
+		//toReplace contains the short ID of what we want removed
+		//loop positions
+		for(i in positions){
+			if (positions[i]){//no need to check false
+				// if reference block is equal to armor name, then set position accordingly
+				positions[i] = target["BlockIds"][i]==toReplace;
+				console.log(target["BlockIds"][i]);
+			}//end if 
+		}//end loop
+		
+		
+		//now we have sorted through blocks to modify, we need only modify it!
+		//paint
+		//do we need paint?
+		if(isNaN(cTo)==false){
+			//painting time 
+			for(i in positions){
+				if (positions[i] == true){//if this block is ok
+					target["BCI"][i] = cTo;//rewrite paint
+				}
+			}
+		}
+		//blocks painted, now need to be replaced
+		
+		for(i in positions){
+			if (positions[i]){//only do trues
+				//does it exist in the dictionary?
+				//id in case it doesn't
+				let id = -1;
+				//iterate through all items in the dictionary, writing to id if found
+				///leaving here for now, but indexof would be better, fix mass too
+				for(let k in blueprint["ItemDictionary"]){
+					if(blueprint["ItemDictionary"][k] == replaceTo){
+						id =k;
+					}
+				}
+				if(id ==-1){//no id found add one
+					id=1//make id positive
+					//find unpopulated id
+					while(typeof blueprint["ItemDictionary"][id] !== "undefined"){
+						id++
+					}
+					//id is now a valid unclaimed id
+					//populate id
+					blueprint["ItemDictionary"][id]=replaceTo;
+				} 
+				//now we have a valid id, time to actually replace
+				target["BlockIds"][i]=id;	
+				
+			}//end if
+		}//end loop
+		
+		//blocks replaced
+		
+		//recursion, through subobjects, and yes we'll drill through them all
+		for(let i in target["SCs"]){
+			target["SCs"][i] = massConvertRecursion(target["SCs"][i]);
+		}//end recursion
+		//console.log(target);
+		return target;//return target
 	}
 	
 	function massConvert(){//handles updating after massConvertRecursion
