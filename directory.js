@@ -64,14 +64,14 @@ var dictionary = {
 	},
 	"3bff8428-7481-4847-b00e-f0e49233b86d":{
 		"readableName":"4 Way pipe",
-		"searchableName":"4waypipe",
+		"searchableName":"",
 		"reference":"4 Way pipe",
 		"mod":"Core FuelEngine"
 	},
 	"819ef76e-1023-4f06-bfb1-96cd3e58ba88":{
-		"readableName":"5 Way Pipe",
-		"searchableName":"5waypipe",
-		"reference":"5 Way Pipe",
+		"readableName":"5 Way pipe",
+		"searchableName":"",
+		"reference":"5 Way pipe",
 		"mod":"Core FuelEngine"
 	},
 	"b633f303-0131-489a-ad4c-68b94fc5d93f":{
@@ -201,9 +201,9 @@ var dictionary = {
 		"mod":"Core SteamEngine"
 	},
 	"94c39cef-53e1-41b2-bbc6-94a869d79c64":{
-		"readableName":"6 Way Pipe",
-		"searchableName":"6waypipe",
-		"reference":"6 Way Pipe",
+		"readableName":"6 Way pipe",
+		"searchableName":"",
+		"reference":"6 Way pipe",
 		"mod":"Core FuelEngine"
 	},
 	"228e59f1-b3de-471a-931f-45735ae6ba7e":{
@@ -304,7 +304,7 @@ var dictionary = {
 	},
 	"267248a3-baaa-4653-83b3-ce478d600b17":{
 		"readableName":"Adapter",
-		"searchableName":"adapter",
+		"searchableName":"",
 		"reference":"Adapter",
 		"mod":"Core FuelEngine"
 	},
@@ -561,9 +561,9 @@ var dictionary = {
 		"mod":"Core ACDeco"
 	},
 	"23b1fef3-0556-4a51-88fc-d4a223c3e934":{
-		"readableName":"Anti Missile Cannon Controller",
-		"searchableName":"antimissilecannoncontroller",
-		"reference":"Anti Missile Cannon Controller",
+		"readableName":"Close-in weapon system controller",
+		"searchableName":"close-inweaponsystemcontroller",
+		"reference":"Close-in weapon system controller",
 		"mod":"Core AI"
 	},
 	"ac0f55b9-5ada-4109-9a86-31702c5597cd":{
@@ -657,75 +657,75 @@ var dictionary = {
 		"mod":"Core Misc"
 	},
 	"1e978876-5c69-45f1-9ba1-40b5ae560f9e":{
-		"readableName":"Wide wheel 1m mirror",
-		"searchableName":"widewheel1mmirror",
-		"reference":"Wide wheel 1m mirror",
+		"readableName":"Wide drive wheel 1m mirror",
+		"searchableName":"widedrivewheel1mmirror",
+		"reference":"Wide drive wheel 1m mirror",
 		"mod":"Core Land"
 	},
 	"91ef14fd-da81-4010-bfa6-0a9aafc7112b":{
-		"readableName":"Wide wheel 1m",
-		"searchableName":"widewheel1m",
-		"reference":"Wide wheel 1m",
+		"readableName":"Wide drive wheel 1m",
+		"searchableName":"widedrivewheel1m",
+		"reference":"Wide drive wheel 1m",
 		"mod":"Core Land"
 	},
 	"81db2a62-75ff-4d9a-aecb-10d3f8f4a47e":{
-		"readableName":"Wide wheel 3m mirror",
-		"searchableName":"widewheel3mmirror",
-		"reference":"Wide wheel 3m mirror",
+		"readableName":"Wide drive wheel 3m mirror",
+		"searchableName":"widedrivewheel3mmirror",
+		"reference":"Wide drive wheel 3m mirror",
 		"mod":"Core Land"
 	},
 	"e69cbb14-5df0-4645-8f11-93ce51207ff8":{
-		"readableName":"Wide wheel 3m",
-		"searchableName":"widewheel3m",
-		"reference":"Wide wheel 3m",
+		"readableName":"Wide drive wheel 3m",
+		"searchableName":"widedrivewheel3m",
+		"reference":"Wide drive wheel 3m",
 		"mod":"Core Land"
 	},
 	"bca2b4e8-2216-448b-b254-927833620756":{
-		"readableName":"Wide wheel 5m mirror",
-		"searchableName":"widewheel5mmirror",
-		"reference":"Wide wheel 5m mirror",
+		"readableName":"Wide drive wheel 5m mirror",
+		"searchableName":"widedrivewheel5mmirror",
+		"reference":"Wide drive wheel 5m mirror",
 		"mod":"Core Land"
 	},
 	"dddf2251-d1e6-4792-9270-c9250b610733":{
-		"readableName":"Wide wheel 5m turning mirror",
-		"searchableName":"widewheel5mturningmirror",
-		"reference":"Wide wheel 5m turning mirror",
+		"readableName":"Wide turning wheel 5m mirror",
+		"searchableName":"wideturningwheel5mmirror",
+		"reference":"Wide turning wheel 5m mirror",
 		"mod":"Core Land"
 	},
 	"435fd3cc-7a4e-45f4-b47d-47a5cdd9a4fc":{
-		"readableName":"Wide wheel 5m turning",
-		"searchableName":"widewheel5mturning",
-		"reference":"Wide wheel 5m turning",
+		"readableName":"Wide turning wheel 5m",
+		"searchableName":"wideturningwheel5m",
+		"reference":"Wide turning wheel 5m",
 		"mod":"Core Land"
 	},
 	"da173fac-8673-4ef7-aae5-d089e78ea6ce":{
-		"readableName":"Wide wheel 5m",
-		"searchableName":"widewheel5m",
-		"reference":"Wide wheel 5m",
+		"readableName":"Wide drive wheel 5m",
+		"searchableName":"widedrivewheel5m",
+		"reference":"Wide drive wheel 5m",
 		"mod":"Core Land"
 	},
 	"24032540-b488-4316-ada1-44952bd2bb0e":{
-		"readableName":"Wide wheel 1m turning mirror",
-		"searchableName":"widewheel1mturningmirror",
-		"reference":"Wide wheel 1m turning mirror",
+		"readableName":"Wide turning wheel 1m mirror",
+		"searchableName":"wideturningwheel1mmirror",
+		"reference":"Wide turning wheel 1m mirror",
 		"mod":"Core Land"
 	},
 	"6cf7ba0b-eee5-48a8-a714-f8a6ce76d186":{
-		"readableName":"Wide wheel turning 1m",
-		"searchableName":"widewheelturning1m",
-		"reference":"Wide wheel turning 1m",
+		"readableName":"Wide turning wheel 1m",
+		"searchableName":"wideturningwheel1m",
+		"reference":"Wide turning wheel 1m",
 		"mod":"Core Land"
 	},
 	"f601a728-1a00-4d9e-b23c-f78064cbf3a5":{
-		"readableName":"Wide wheel 3m turning mirror",
-		"searchableName":"widewheel3mturningmirror",
-		"reference":"Wide wheel 3m turning mirror",
+		"readableName":"Wide turning wheel 3m mirror",
+		"searchableName":"wideturningwheel3mmirror",
+		"reference":"Wide turning wheel 3m mirror",
 		"mod":"Core Land"
 	},
 	"9c92daaf-654d-4e4e-9976-c7348ee7898d":{
-		"readableName":"Wide wheel turning 3m",
-		"searchableName":"widewheelturning3m",
-		"reference":"Wide wheel turning 3m",
+		"readableName":"Wide turning wheel 3m",
+		"searchableName":"wideturningwheel3m",
+		"reference":"Wide turning wheel 3m",
 		"mod":"Core Land"
 	},
 	"74f9b43b-14d2-433c-acc0-8f0322427daa":{
@@ -928,7 +928,7 @@ var dictionary = {
 	},
 	"043e9b00-4a2f-41b8-bf2f-4aaa4442f138":{
 		"readableName":"Carburettor",
-		"searchableName":"carburettor",
+		"searchableName":"",
 		"reference":"Carburettor",
 		"mod":"Core FuelEngine"
 	},
@@ -1101,15 +1101,15 @@ var dictionary = {
 		"mod":"Core SteamEngine"
 	},
 	"d5016f16-6431-4e8f-b0cc-5f0f400b151a":{
-		"readableName":"Corner Pipe",
-		"searchableName":"cornerpipe",
-		"reference":"Corner Pipe",
+		"readableName":"Corner pipe",
+		"searchableName":"",
+		"reference":"Corner pipe",
 		"mod":"Core FuelEngine"
 	},
 	"01a87958-93cf-4efa-857f-10913b0573d9":{
-		"readableName":"Crank Shaft",
-		"searchableName":"crankshaft",
-		"reference":"Crank Shaft",
+		"readableName":"Crank shaft",
+		"searchableName":"",
+		"reference":"Crank shaft",
 		"mod":"Core FuelEngine"
 	},
 	"a0a6c5da-d68a-48dd-864f-e7632f8f6fde":{
@@ -1132,15 +1132,15 @@ var dictionary = {
 	},
 	"515ee20d-20d8-4195-bea5-213e6f1fd929":{
 		"readableName":"Cylinder",
-		"searchableName":"cylinder",
+		"searchableName":"",
 		"reference":"Cylinder",
 		"mod":"Core FuelEngine"
 	},
 	"ac102b13-115e-4f27-bab0-4e17baf92c7a":{
-		"readableName":"nce show",
+		"readableName":"Animation block",
 		"searchableName":"",
-		"reference":"nce show",
-		"mod":"ce sho"
+		"reference":"Animation block",
+		"mod":"Core Decorations"
 	},
 	"75ffb576-34c6-4dae-87a6-0f45d6482070":{
 		"readableName":"Deck Port",
@@ -1209,21 +1209,21 @@ var dictionary = {
 		"mod":"Core ACDeco"
 	},
 	"fc4f02ab-2e74-4deb-8d83-ca3da65c99ff":{
-		"readableName":"Drill Bit (Large)",
+		"readableName":"Drill Bit 3x3",
 		"searchableName":"drillbit(large)",
-		"reference":"Drill Bit (Large)",
+		"reference":"Drill Bit 3x3",
 		"mod":"Core Drill"
 	},
 	"edf0442a-4976-43f4-9a9c-66e43f0353ff":{
-		"readableName":"Drill Bit (Small)",
+		"readableName":"Drill Bit 1x1",
 		"searchableName":"drillbit(small)",
-		"reference":"Drill Bit (Small)",
+		"reference":"Drill Bit 1x1",
 		"mod":"Core Drill"
 	},
 	"1af0aadf-7edc-401a-9750-0074b8b46b6a":{
-		"readableName":"Drill Extension horizontal splitter",
-		"searchableName":"drillextensionhorizontalsplitter",
-		"reference":"Drill Extension horizontal splitter",
+		"readableName":"Drill Extension splitter",
+		"searchableName":"drillextensionsplitter",
+		"reference":"Drill Extension splitter",
 		"mod":"Core Drill"
 	},
 	"51cfbd8b-5223-4101-b4f3-f62872a82b58":{
@@ -1371,9 +1371,9 @@ var dictionary = {
 		"mod":"Core Structural"
 	},
 	"b6904047-0232-442f-b444-d99a440edf2f":{
-		"readableName":"ERA Armour",
-		"searchableName":"eraarmour",
-		"reference":"ERA Armour",
+		"readableName":"ERA",
+		"searchableName":"era",
+		"reference":"ERA",
 		"mod":"Core Structural"
 	},
 	"36eff35b-864d-4455-86e2-939996ca3f27":{
@@ -1384,7 +1384,7 @@ var dictionary = {
 	},
 	"ac5dda48-2bbf-453b-a4d5-517ae78499a1":{
 		"readableName":"Exhaust",
-		"searchableName":"exhaust",
+		"searchableName":"",
 		"reference":"Exhaust",
 		"mod":"Core FuelEngine"
 	},
@@ -1497,9 +1497,9 @@ var dictionary = {
 		"mod":"Core AI"
 	},
 	"4c24445d-a29b-446e-b03f-29e570e9d47d":{
-		"readableName":"Fuel Engine Generator",
-		"searchableName":"fuelenginegenerator",
-		"reference":"Fuel Engine Generator",
+		"readableName":"Fuel engine generator",
+		"searchableName":"",
+		"reference":"Fuel engine generator",
 		"mod":"Core FuelEngine"
 	},
 	"edb1b2eb-dac7-4c4f-8967-35f61c75fd93":{
@@ -1833,9 +1833,9 @@ var dictionary = {
 		"mod":"Core Struts"
 	},
 	"0c03433e-8947-4e7d-9dec-793526fe06d1":{
-		"readableName":"Heavy Armour",
+		"readableName":"Heavy armour",
 		"searchableName":"block",
-		"reference":"Heavy Armour",
+		"reference":"Heavy armour",
 		"mod":"Core Structural"
 	},
 	"62fc0360-f8ff-4ee7-90f2-92da6a26640c":{
@@ -2043,9 +2043,9 @@ var dictionary = {
 		"mod":"Core Missile"
 	},
 	"91d167b1-652f-4ac8-adc4-973b548ccd5d":{
-		"readableName":"Hull Pipe",
-		"searchableName":"hullpipe",
-		"reference":"Hull Pipe",
+		"readableName":"Hull pipe",
+		"searchableName":"",
+		"reference":"Hull pipe",
 		"mod":"Core FuelEngine"
 	},
 	"5bd210b0-2377-45c8-9287-ec607acbbe60":{
@@ -2283,9 +2283,9 @@ var dictionary = {
 		"mod":"Core Air"
 	},
 	"33b65ccc-58a0-487d-8b68-a997a71b0bfe":{
-		"readableName":"Junction Pipe",
-		"searchableName":"junctionpipe",
-		"reference":"Junction Pipe",
+		"readableName":"3 way T pipe",
+		"searchableName":"3waytpipe",
+		"reference":"3 way T pipe",
 		"mod":"Core FuelEngine"
 	},
 	"6c2979f0-365a-4e9c-88ee-7b9d931409cb":{
@@ -2343,9 +2343,9 @@ var dictionary = {
 		"mod":"Core Missile"
 	},
 	"25575b2b-223c-48f3-ab6f-7133d26e86e8":{
-		"readableName":"Large Radiator",
-		"searchableName":"largeradiator",
-		"reference":"Large Radiator",
+		"readableName":"Large radiator",
+		"searchableName":"",
+		"reference":"Large radiator",
 		"mod":"Core FuelEngine"
 	},
 	"c0a9174a-0685-48cc-a930-a3dadf614936":{
@@ -2535,9 +2535,9 @@ var dictionary = {
 		"mod":"Core SimpleWeapon"
 	},
 	"e71e6f97-fbe8-4bf5-9645-d15179ba0c17":{
-		"readableName":"Lead Block",
+		"readableName":"Lead block",
 		"searchableName":"block",
-		"reference":"Lead Block",
+		"reference":"Lead block",
 		"mod":"Core Structural"
 	},
 	"288e3778-900b-4bfd-a455-e94ed75c6ec2":{
@@ -2553,21 +2553,21 @@ var dictionary = {
 		"mod":"Core Decorations"
 	},
 	"3cc75979-18ac-46c4-9a5b-25b327d99410":{
-		"readableName":"Light-weight Alloy Block",
+		"readableName":"Light-weight alloy block",
 		"searchableName":"block",
-		"reference":"Light-weight Alloy Block",
+		"reference":"Light-weight alloy block",
 		"mod":"Core Structural"
 	},
 	"99a71734-3128-4535-bb9c-f69de5277f49":{
-		"readableName":"L-Junction Pipe (left)",
-		"searchableName":"l-junctionpipe(l)",
-		"reference":"L-Junction Pipe (left)",
+		"readableName":"L-Junction pipe (left)",
+		"searchableName":"",
+		"reference":"L-Junction pipe (left)",
 		"mod":"Core FuelEngine"
 	},
 	"2d546425-921e-4900-b249-fa5a1c7d5513":{
-		"readableName":"L-Junction Pipe (right)",
-		"searchableName":"l-junctionpipe(r)",
-		"reference":"L-Junction Pipe (right)",
+		"readableName":"L-Junction pipe (right)",
+		"searchableName":"",
+		"reference":"L-Junction pipe (right)",
 		"mod":"Core FuelEngine"
 	},
 	"ef545d00-c22d-4eed-bd76-74d6432e2974":{
@@ -2709,9 +2709,9 @@ var dictionary = {
 		"mod":"Core Missile"
 	},
 	"ab699540-efc8-4592-bc97-204f6a874b3a":{
-		"readableName":"Metal Block",
+		"readableName":"Metal block",
 		"searchableName":"block",
-		"reference":"Metal Block",
+		"reference":"Metal block",
 		"mod":"Core Structural"
 	},
 	"fd13443a-1f2e-45e1-8978-9b02541a8174":{
@@ -3027,9 +3027,9 @@ var dictionary = {
 		"mod":"Core CRAM"
 	},
 	"19945f75-8353-45e1-938f-a548fa05e05e":{
-		"readableName":"Packer x3 (manual orientation)",
-		"searchableName":"packerx3(manualorientation)",
-		"reference":"Packer x3 (manual orientation)",
+		"readableName":"Packer x3",
+		"searchableName":"packerx3",
+		"reference":"Packer x3",
 		"mod":"Core CRAM"
 	},
 	"ba1d3193-abc5-4b8c-a512-e8fffe95ad99":{
@@ -3304,7 +3304,7 @@ var dictionary = {
 	},
 	"da59d582-9254-4091-988e-b670dcabe84a":{
 		"readableName":"Radiator",
-		"searchableName":"radiator",
+		"searchableName":"",
 		"reference":"Radiator",
 		"mod":"Core FuelEngine"
 	},
@@ -3477,9 +3477,9 @@ var dictionary = {
 		"mod":"Core Resource"
 	},
 	"6c0bab88-aa88-4825-9cf5-55df36aa12b8":{
-		"readableName":"Rubber Block",
+		"readableName":"Rubber block",
 		"searchableName":"block",
-		"reference":"Rubber Block",
+		"reference":"Rubber block",
 		"mod":"Core Structural"
 	},
 	"41dbf539-27a7-4240-91ff-9ff523d008bf":{
@@ -3531,15 +3531,15 @@ var dictionary = {
 		"mod":"Core AI"
 	},
 	"e6b63003-67cc-4884-87ef-f791b1a3a30c":{
-		"readableName":"Separator",
-		"searchableName":"separator",
-		"reference":"Separator",
+		"readableName":"Separator (1m)",
+		"searchableName":"separator(1m)",
+		"reference":"Separator (1m)",
 		"mod":"Core Misc"
 	},
 	"ff8b571c-728e-4f81-9bad-3938ae8c540a":{
-		"readableName":"Sall axis shifting gears",
+		"readableName":"Small axis shifting gears",
 		"searchableName":"smallaxisshiftinggears",
-		"reference":"Sall axis shifting gears",
+		"reference":"Small axis shifting gears",
 		"mod":"Core SteamEngine"
 	},
 	"0fa43634-33a6-469e-9689-ffedb05b3a33":{
@@ -4191,9 +4191,9 @@ var dictionary = {
 		"mod":"Core Land"
 	},
 	"710ee212-563b-42f8-acd1-57515479524d":{
-		"readableName":"Stone Block",
+		"readableName":"Stone block",
 		"searchableName":"block",
-		"reference":"Stone Block",
+		"reference":"Stone block",
 		"mod":"Core Structural"
 	},
 	"45ce64f5-86ca-425a-8074-7603cdfc1d4a":{
@@ -4203,27 +4203,27 @@ var dictionary = {
 		"mod":"Core Laser"
 	},
 	"c27e460b-f3c3-4716-b20a-69f766d27f34":{
-		"readableName":"Straight Pipe (2m)",
-		"searchableName":"straightpipe(2m)",
-		"reference":"Straight Pipe (2m)",
+		"readableName":"Straight pipe (2m)",
+		"searchableName":"",
+		"reference":"Straight pipe (2m)",
 		"mod":"Core FuelEngine"
 	},
 	"6d0d9986-5871-4e5c-a415-6457552595eb":{
-		"readableName":"Straight Pipe (3m)",
-		"searchableName":"straightpipe(3m)",
-		"reference":"Straight Pipe (3m)",
+		"readableName":"Straight pipe (3m)",
+		"searchableName":"",
+		"reference":"Straight pipe (3m)",
 		"mod":"Core FuelEngine"
 	},
 	"663d3348-9700-487e-a30e-f472d933e859":{
-		"readableName":"Straight Pipe (4m)",
-		"searchableName":"straightpipe(4m)",
-		"reference":"Straight Pipe (4m)",
+		"readableName":"Straight pipe (4m)",
+		"searchableName":"",
+		"reference":"Straight pipe (4m)",
 		"mod":"Core FuelEngine"
 	},
 	"a160804b-15cc-46e2-8ffb-401c2aa01de6":{
-		"readableName":"Straight Pipe",
-		"searchableName":"straightpipe",
-		"reference":"Straight Pipe",
+		"readableName":"Straight pipe",
+		"searchableName":"",
+		"reference":"Straight pipe",
 		"mod":"Core FuelEngine"
 	},
 	"5ea1b039-9f46-45ac-b8d3-ba837f10f069":{
@@ -4246,7 +4246,7 @@ var dictionary = {
 	},
 	"47da23fc-17bb-4a66-9c6d-fb66fddb3be6":{
 		"readableName":"Supercharger",
-		"searchableName":"supercharger",
+		"searchableName":"",
 		"reference":"Supercharger",
 		"mod":"Core FuelEngine"
 	},
@@ -4329,9 +4329,9 @@ var dictionary = {
 		"mod":"Core Misc"
 	},
 	"e0f9e669-4748-4cde-be95-58e47e094253":{
-		"readableName":"Junction pipe",
-		"searchableName":"junctionpipe",
-		"reference":"Junction pipe",
+		"readableName":"Throughput pipe defunct",
+		"searchableName":"throughputpipedefunct",
+		"reference":"Throughput pipe defunct",
 		"mod":"Core FuelEngine"
 	},
 	"ae2bb239-d304-4037-b35d-eb7d3ded91bf":{
@@ -4503,75 +4503,75 @@ var dictionary = {
 		"mod":"Core Water"
 	},
 	"22524171-87ab-4fc3-80fb-ac5690b624b3":{
-		"readableName":"Wheel 3m mirror (turning)",
-		"searchableName":"wheel3mmirror(turning)",
-		"reference":"Wheel 3m mirror (turning)",
+		"readableName":"Turning wheel 3m mirror",
+		"searchableName":"turningwheel3mmirror",
+		"reference":"Turning wheel 3m mirror",
 		"mod":"Core Land"
 	},
 	"a5bb808a-ef3d-4262-84a6-6d245e3735ea":{
-		"readableName":"Wheel 3m mirror",
-		"searchableName":"wheel3mmirror",
-		"reference":"Wheel 3m mirror",
+		"readableName":"Drive wheel 3m mirror",
+		"searchableName":"drivewheel3mmirror",
+		"reference":"Drive wheel 3m mirror",
 		"mod":"Core Land"
 	},
 	"c05c88aa-96df-461e-832f-7d5591a24972":{
-		"readableName":"Wheel 3m (turning)",
-		"searchableName":"wheel3m(turning)",
-		"reference":"Wheel 3m (turning)",
+		"readableName":"Turning wheel 3m",
+		"searchableName":"turningwheel3m",
+		"reference":"Turning wheel 3m",
 		"mod":"Core Land"
 	},
 	"2ec29b39-8a90-475b-b116-e62c83db3e97":{
-		"readableName":"Wheel 3m",
-		"searchableName":"wheel3m",
-		"reference":"Wheel 3m",
+		"readableName":"Drive wheel 3m",
+		"searchableName":"drivewheel3m",
+		"reference":"Drive wheel 3m",
 		"mod":"Core Land"
 	},
 	"15d4be68-edf9-44ed-bfda-5522cd9da33f":{
-		"readableName":"Wheel 5m mirror (turning)",
-		"searchableName":"wheel5mmirror(turning)",
-		"reference":"Wheel 5m mirror (turning)",
+		"readableName":"Turning wheel 5m mirror",
+		"searchableName":"turningwheel5mmirror",
+		"reference":"Turning wheel 5m mirror",
 		"mod":"Core Land"
 	},
 	"78d6177b-345c-43d6-8e34-b28bf0a82659":{
-		"readableName":"Wheel 5m mirror",
-		"searchableName":"wheel5mmirror",
-		"reference":"Wheel 5m mirror",
+		"readableName":"Drive wheel 5m mirror",
+		"searchableName":"drivewheel5mmirror",
+		"reference":"Drive wheel 5m mirror",
 		"mod":"Core Land"
 	},
 	"c9c226ff-ebd3-4394-b6d5-d4796e0dd149":{
-		"readableName":"Wheel 5m (turning)",
-		"searchableName":"wheel5m(turning)",
-		"reference":"Wheel 5m (turning)",
+		"readableName":"Turning wheel 5m",
+		"searchableName":"turningwheel5m",
+		"reference":"Turning wheel 5m",
 		"mod":"Core Land"
 	},
 	"4ae3bc3c-c39e-4d6b-afab-d0e34d783bc5":{
-		"readableName":"Wheel 5m",
-		"searchableName":"wheel5m",
-		"reference":"Wheel 5m",
+		"readableName":"Drive wheel 5m",
+		"searchableName":"drivewheel5m",
+		"reference":"Drive wheel 5m",
 		"mod":"Core Land"
 	},
 	"a4fdfea1-1254-4f7b-9346-124dddb595bd":{
-		"readableName":"Wheel mirror (turning)",
-		"searchableName":"wheelmirror(turning)",
-		"reference":"Wheel mirror (turning)",
+		"readableName":"Turning wheel 1m mirror",
+		"searchableName":"turningwheel1mmirror",
+		"reference":"Turning wheel 1m mirror",
 		"mod":"Core Land"
 	},
 	"c384fa33-67c3-4915-a878-4245f4cdcecc":{
-		"readableName":"Wheel mirror",
-		"searchableName":"wheelmirror",
-		"reference":"Wheel mirror",
+		"readableName":"Drive wheel 1m mirror",
+		"searchableName":"drivewheel1mmirror",
+		"reference":"Drive wheel 1m mirror",
 		"mod":"Core Land"
 	},
 	"4363ead8-3cdd-4d95-b461-193dc928790d":{
-		"readableName":"Wheel (turning)",
-		"searchableName":"wheel(turning)",
-		"reference":"Wheel (turning)",
+		"readableName":"Turning wheel 1m",
+		"searchableName":"turningwheel1m",
+		"reference":"Turning wheel 1m",
 		"mod":"Core Land"
 	},
 	"f3f7620a-f281-4a3a-a75e-0106ef9c4eb8":{
-		"readableName":"Wheel",
-		"searchableName":"wheel",
-		"reference":"Wheel",
+		"readableName":"Drive wheel 1m",
+		"searchableName":"drivewheel1m",
+		"reference":"Drive wheel 1m",
 		"mod":"Core Land"
 	},
 	"7d005e15-c63a-44f0-b12e-b8599a9f0424":{
@@ -4587,9 +4587,9 @@ var dictionary = {
 		"mod":"Core Missile"
 	},
 	"d51549fd-2e38-4271-b85a-afded45400df":{
-		"readableName":"Window Block",
+		"readableName":"Window block",
 		"searchableName":"windowblock",
-		"reference":"Window Block",
+		"reference":"Window block",
 		"mod":"Core Structural"
 	},
 	"0fd8c160-7f2e-4921-8eef-ff2bd8785c1a":{
@@ -4647,9 +4647,9 @@ var dictionary = {
 		"mod":"Core Structural"
 	},
 	"9a0ae372-beb4-4009-b14e-36ed0715af73":{
-		"readableName":"Wood Block",
+		"readableName":"Wood block",
 		"searchableName":"block",
-		"reference":"Wood Block",
+		"reference":"Wood block",
 		"mod":"Core Structural"
 	},
 	"fb1276c4-ba55-4e62-8315-40d4bf8adbf2":{
@@ -4701,9 +4701,9 @@ var dictionary = {
 		"mod":"Core Resource"
 	},
 	"542cacd4-c366-4a76-8d01-4ace6c5ce619":{
-		"readableName":"X-Junction Pipe",
-		"searchableName":"x-junctionpipe",
-		"reference":"X-Junction Pipe",
+		"readableName":"X-Junction pipe",
+		"searchableName":"",
+		"reference":"X-Junction pipe",
 		"mod":"Core FuelEngine"
 	},
 	"99409fb0-d2a3-435d-8fd8-cf4a809236e7":{
@@ -10123,5 +10123,467 @@ var dictionary = {
 		"searchableName":"wedgefront(4m)",
 		"reference":"Wood Block",
 		"mod":"Core Structural"
+	},
+	"700c8381-fcd6-4f4a-b85c-c1e2de2813d0":{
+		"readableName":"Applique corner 0.5m (mirror)",
+		"searchableName":"appliquecorner0.5m(mirror)",
+		"reference":"Applique Panel",
+		"mod":"Core ACDeco"
+	},
+	"2fb6755f-46ba-4030-b993-3377070e9e14":{
+		"readableName":"Applique corner 0.5m",
+		"searchableName":"appliquecorner0.5m",
+		"reference":"Applique Panel",
+		"mod":"Core ACDeco"
+	},
+	"b2e97525-af75-4731-b7c7-505fb5e727a7":{
+		"readableName":"Applique corner 1.5m (mirror)",
+		"searchableName":"appliquecorner1.5m(mirror)",
+		"reference":"Applique Panel",
+		"mod":"Core ACDeco"
+	},
+	"d7a76933-2332-47f6-814e-69b882e5038f":{
+		"readableName":"Applique corner 1.5m",
+		"searchableName":"appliquecorner1.5m",
+		"reference":"Applique Panel",
+		"mod":"Core ACDeco"
+	},
+	"b128533d-4380-43ab-bf82-026fde9929e0":{
+		"readableName":"Applique corner 1m (mirror)",
+		"searchableName":"appliquecorner1m(mirror)",
+		"reference":"Applique Panel",
+		"mod":"Core ACDeco"
+	},
+	"f8c63d22-e3dc-41cd-97bb-7d7a1e2984c8":{
+		"readableName":"Applique corner 1m",
+		"searchableName":"appliquecorner1m",
+		"reference":"Applique Panel",
+		"mod":"Core ACDeco"
+	},
+	"eefe6a78-fda8-4538-a2e6-b11896b2b1f5":{
+		"readableName":"Applique corner 2.5m (mirror)",
+		"searchableName":"appliquecorner2.5m(mirror)",
+		"reference":"Applique Panel",
+		"mod":"Core ACDeco"
+	},
+	"6511fde1-7e8c-4bb1-afb6-c621be27c55a":{
+		"readableName":"Applique corner 2.5m",
+		"searchableName":"appliquecorner2.5m",
+		"reference":"Applique Panel",
+		"mod":"Core ACDeco"
+	},
+	"7d62608d-ed83-469c-ac61-4d020ef90dab":{
+		"readableName":"Applique corner 2m (mirror)",
+		"searchableName":"appliquecorner2m(mirror)",
+		"reference":"Applique Panel",
+		"mod":"Core ACDeco"
+	},
+	"65d42e77-a585-4af9-a5b7-7e1e61e3383f":{
+		"readableName":"Applique corner 2m",
+		"searchableName":"appliquecorner2m",
+		"reference":"Applique Panel",
+		"mod":"Core ACDeco"
+	},
+	"daa5a49e-b1b9-42c1-bf88-ad539bd37e86":{
+		"readableName":"Applique corner 3.5m (mirror)",
+		"searchableName":"appliquecorner3.5m(mirror)",
+		"reference":"Applique Panel",
+		"mod":"Core ACDeco"
+	},
+	"3d28e934-6002-4d45-bce8-6f7256bb1c29":{
+		"readableName":"Applique corner 3.5m",
+		"searchableName":"appliquecorner3.5m",
+		"reference":"Applique Panel",
+		"mod":"Core ACDeco"
+	},
+	"1848856b-3feb-4885-8a7b-98b42e7be553":{
+		"readableName":"Applique corner 3m (mirror)",
+		"searchableName":"appliquecorner3m(mirror)",
+		"reference":"Applique Panel",
+		"mod":"Core ACDeco"
+	},
+	"d80ec990-8ac7-483e-b95c-3843fb56008d":{
+		"readableName":"Applique corner 3m",
+		"searchableName":"appliquecorner3m",
+		"reference":"Applique Panel",
+		"mod":"Core ACDeco"
+	},
+	"04bf43a2-cce2-473e-996c-31387b5545eb":{
+		"readableName":"Applique corner 4.5m (mirror)",
+		"searchableName":"appliquecorner4.5m(mirror)",
+		"reference":"Applique Panel",
+		"mod":"Core ACDeco"
+	},
+	"b41f065a-b258-48ff-abf4-6fde124c208b":{
+		"readableName":"Applique corner 4.5m",
+		"searchableName":"appliquecorner4.5m",
+		"reference":"Applique Panel",
+		"mod":"Core ACDeco"
+	},
+	"7af10c62-ba00-461c-926f-b292717eb5fe":{
+		"readableName":"Applique corner 4m (mirror)",
+		"searchableName":"appliquecorner4m(mirror)",
+		"reference":"Applique Panel",
+		"mod":"Core ACDeco"
+	},
+	"0ddbbcd6-e226-4f8e-a2c5-9aa6b28b292a":{
+		"readableName":"Applique corner 4m",
+		"searchableName":"appliquecorner4m",
+		"reference":"Applique Panel",
+		"mod":"Core ACDeco"
+	},
+	"344b39ee-beae-4dd4-9693-4cb38dfc6b03":{
+		"readableName":"Pivot 2m",
+		"searchableName":"",
+		"reference":"ControlSurfacePivot",
+		"mod":"Core ControlSurfaces"
+	},
+	"a11496e4-8533-4e2f-8ee3-bf0aae50b4d1":{
+		"readableName":"Pivot 2m",
+		"searchableName":"",
+		"reference":"ControlSurfacePivot",
+		"mod":"Core ControlSurfaces"
+	},
+	"9177e247-50a4-4345-92df-88e89b2fc617":{
+		"readableName":"Pivot 3m",
+		"searchableName":"",
+		"reference":"ControlSurfacePivot",
+		"mod":"Core ControlSurfaces"
+	},
+	"d5b4c6b4-3fb3-4e8e-abea-06066c218eea":{
+		"readableName":"Pivot 3m",
+		"searchableName":"",
+		"reference":"ControlSurfacePivot",
+		"mod":"Core ControlSurfaces"
+	},
+	"24427e85-4575-4654-8d7d-a6133c14eafb":{
+		"readableName":"Pivot 4m",
+		"searchableName":"",
+		"reference":"ControlSurfacePivot",
+		"mod":"Core ControlSurfaces"
+	},
+	"f99e7998-4047-4958-988e-c4a0b39b147f":{
+		"readableName":"Pivot 4m",
+		"searchableName":"",
+		"reference":"ControlSurfacePivot",
+		"mod":"Core ControlSurfaces"
+	},
+	"371b89fc-4c2d-416a-a187-62adb945fbb1":{
+		"readableName":"Rudder 2m",
+		"searchableName":"2x1ruddersection",
+		"reference":"Rudder Square",
+		"mod":"Core Surface"
+	},
+	"61dd5eba-a1fb-4daf-8253-fdca7d8da311":{
+		"readableName":"Rudder 2m",
+		"searchableName":"2x1ruddersection",
+		"reference":"Rudder Square",
+		"mod":"Core Surface"
+	},
+	"4725a5bd-9dd7-4f64-9dc7-54274c324196":{
+		"readableName":"Rudder 3m",
+		"searchableName":"3x1ruddersection",
+		"reference":"Rudder Square",
+		"mod":"Core Surface"
+	},
+	"aa083ca5-dcc7-41c4-8261-bf191bc19fa5":{
+		"readableName":"Rudder 3m",
+		"searchableName":"3x1ruddersection",
+		"reference":"Rudder Square",
+		"mod":"Core Surface"
+	},
+	"732dc5e4-aee5-4f1a-92b0-09739fbf143c":{
+		"readableName":"Rudder 4m",
+		"searchableName":"4x1ruddersection",
+		"reference":"Rudder Square",
+		"mod":"Core Surface"
+	},
+	"cd70b835-0f39-4f01-a43c-34960a2087b8":{
+		"readableName":"Rudder 4m",
+		"searchableName":"4x1ruddersection",
+		"reference":"Rudder Square",
+		"mod":"Core Surface"
+	},
+	"bbfe300d-4d55-4cbd-8c99-ee0140db99d4":{
+		"readableName":"Rudder Pivot 2m",
+		"searchableName":"2x1pivot",
+		"reference":"Rudder Pivot Square",
+		"mod":"Core Surface"
+	},
+	"77c7e5ce-2ff2-4f81-ba44-2968781c18c7":{
+		"readableName":"Rudder Pivot 2m",
+		"searchableName":"2x1pivot",
+		"reference":"Rudder Pivot Square",
+		"mod":"Core Surface"
+	},
+	"14562dcc-7d5a-49d5-9a06-e788ceec5f0c":{
+		"readableName":"Rudder Pivot 3m",
+		"searchableName":"3x1pivot",
+		"reference":"Rudder Pivot Square",
+		"mod":"Core Surface"
+	},
+	"aabe0adb-fe09-4255-972e-b876cce1b77d":{
+		"readableName":"Rudder Pivot 3m",
+		"searchableName":"3x1pivot",
+		"reference":"Rudder Pivot Square",
+		"mod":"Core Surface"
+	},
+	"24acd11b-5c30-4f8b-a585-270bf54de6ba":{
+		"readableName":"Rudder Pivot 4m",
+		"searchableName":"4x1pivot",
+		"reference":"Rudder Pivot Square",
+		"mod":"Core Surface"
+	},
+	"d352e0e8-942e-4982-b2b9-46c17e9821f8":{
+		"readableName":"Rudder Pivot 4m",
+		"searchableName":"4x1pivot",
+		"reference":"Rudder Pivot Square",
+		"mod":"Core Surface"
+	},
+	"9be257da-2e20-4e40-affe-106c04946f73":{
+		"readableName":"Rudder Pivot Shaft 2m",
+		"searchableName":"2x1shaftpivot",
+		"reference":"Rudder Pivot Square",
+		"mod":"Core Surface"
+	},
+	"cd7c7590-a55f-4b86-af40-6159998a60fc":{
+		"readableName":"Rudder Pivot Shaft 2m",
+		"searchableName":"2x1shaftpivot",
+		"reference":"Rudder Pivot Square",
+		"mod":"Core Surface"
+	},
+	"bba933c2-d3a8-4eff-9615-70c197df8a8f":{
+		"readableName":"All-in-one CIWS controller",
+		"searchableName":"all-in-oneciwscontroller",
+		"reference":"All-in-one CIWS controller",
+		"mod":"Core AI"
+	},
+	"f1070c58-4f5d-40c2-b5ed-8c08673d71a5":{
+		"readableName":"All-in-one local weapon controller",
+		"searchableName":"all-in-onelocalweaponcontroller",
+		"reference":"All-in-one local weapon controller",
+		"mod":"Core AI"
+	},
+	"26628920-1c53-4e28-b578-eac6a108bab2":{
+		"readableName":"Ammo Clip (5m shells)",
+		"searchableName":"ammoclip(5mshells)",
+		"reference":"Ammo Clip (5m shells)",
+		"mod":"Core APS"
+	},
+	"2ab03e77-3805-4064-81c7-4bf21ebb242f":{
+		"readableName":"Ammo Clip (7m shells)",
+		"searchableName":"ammoclip(7mshells)",
+		"reference":"Ammo Clip (7m shells)",
+		"mod":"Core APS"
+	},
+	"7bb4572c-0ee5-42a5-b562-47a573757f41":{
+		"readableName":"Autoloader (5m shells)",
+		"searchableName":"autoloader(5mshells)",
+		"reference":"Autoloader (5m shells)",
+		"mod":"Core APS"
+	},
+	"704a2934-b07e-41cb-880d-91b3995152a9":{
+		"readableName":"Autoloader (7m shells)",
+		"searchableName":"autoloader(7mshells)",
+		"reference":"Autoloader (7m shells)",
+		"mod":"Core APS"
+	},
+	"88c3c6c4-c831-40ee-a8a4-ad3574556874":{
+		"readableName":"Clampy foot",
+		"searchableName":"clampyfoot",
+		"reference":"Clampy foot",
+		"mod":"Core Land"
+	},
+	"07d89ff6-b780-47af-b0bb-ed1aa6c04104":{
+		"readableName":"Docking station 1m",
+		"searchableName":"dockingstation1m",
+		"reference":"Docking station 1m",
+		"mod":"Core Misc"
+	},
+	"7dda1ddd-3839-4961-9f92-731c65165006":{
+		"readableName":"Wide Drill Bit 5x5",
+		"searchableName":"widedrillbit5x5",
+		"reference":"Wide Drill Bit 5x5",
+		"mod":"Core Drill"
+	},
+	"b88f9bdb-8366-4620-8bb0-4fb0a421519f":{
+		"readableName":"Drill Bit 5x5",
+		"searchableName":"drillbit5x5",
+		"reference":"Drill Bit 5x5",
+		"mod":"Core Drill"
+	},
+	"a1fb0330-6320-474d-b58c-f43830f6eff1":{
+		"readableName":"Wide Drill Bit 7x7",
+		"searchableName":"widedrillbit7x7",
+		"reference":"Wide Drill Bit 7x7",
+		"mod":"Core Drill"
+	},
+	"ff66ced4-c241-4d3a-b7e9-51e2db659095":{
+		"readableName":"Wide Drill Bit",
+		"searchableName":"widedrillbit",
+		"reference":"Wide Drill Bit",
+		"mod":"Core Drill"
+	},
+	"fb692c79-847a-4935-9275-741ff449ef77":{
+		"readableName":"Hydraulic recoil absorber (3m)",
+		"searchableName":"recoilabsorber(3m)",
+		"reference":"Hydraulic recoil absorber (3m)",
+		"mod":"Core APS"
+	},
+	"9c1e83ca-c225-41d9-bded-f9d6e8dc6bca":{
+		"readableName":"Hydraulic recoil absorber (5m)",
+		"searchableName":"recoilabsorber(5m)",
+		"reference":"Hydraulic recoil absorber (5m)",
+		"mod":"Core APS"
+	},
+	"83b06ab4-8278-4f8a-bd6f-bd26747dbd75":{
+		"readableName":"Hydraulic recoil absorber (7m)",
+		"searchableName":"recoilabsorber(7m)",
+		"reference":"Hydraulic recoil absorber (7m)",
+		"mod":"Core APS"
+	},
+	"7f797f00-46fc-42a6-888d-71bd3ed9af02":{
+		"readableName":"Large Launcher (reversed) left",
+		"searchableName":"largelauncher(reversed)l",
+		"reference":"Large Launcher (reversed) left",
+		"mod":"Core Missile"
+	},
+	"a27556f3-78a9-4a34-8adc-c31f812aed4f":{
+		"readableName":"Mimic: Empty",
+		"searchableName":"",
+		"reference":"Mimic: Empty",
+		"mod":"Core ACDeco"
+	},
+	"71a1775f-ecee-4f0c-8693-56cb5d94f5cc":{
+		"readableName":"Morph wood block",
+		"searchableName":"",
+		"reference":"Morph wood block",
+		"mod":"Core Structural"
+	},
+	"ebe5e7f6-894e-450c-b602-710538e82486":{
+		"readableName":"Long range lens",
+		"searchableName":"longrangelens",
+		"reference":"Long range lens",
+		"mod":"Core Laser"
+	},
+	"9500e5fb-4548-41de-934b-6a205bc7b1a1":{
+		"readableName":"Propeller blade",
+		"searchableName":"propellerblade",
+		"reference":"Propeller blade",
+		"mod":"Core Air"
+	},
+	"ff112d96-de76-40ff-89e2-b0f7ae0b8db0":{
+		"readableName":"Propeller hub extension",
+		"searchableName":"propellerhubextension",
+		"reference":"Propeller hub extension",
+		"mod":"Core Air"
+	},
+	"010b899b-b720-4f92-9ad9-1e5b49d91e54":{
+		"readableName":"Propeller hub",
+		"searchableName":"propellerhub",
+		"reference":"Propeller hub",
+		"mod":"Core Air"
+	},
+	"4c82fd24-9b09-4027-b8fc-b51c6f7cfb08":{
+		"readableName":"Large propeller blade",
+		"searchableName":"largepropellerblade",
+		"reference":"Large propeller blade",
+		"mod":"Core Air"
+	},
+	"4e6b4d5b-396f-47cc-97df-63dfc313311c":{
+		"readableName":"Large propeller hub extension",
+		"searchableName":"largepropellerhubextension",
+		"reference":"Large propeller hub extension",
+		"mod":"Core Air"
+	},
+	"f0cfb2e8-adc4-47f5-b438-4437226965ab":{
+		"readableName":"Large propeller hub",
+		"searchableName":"largepropellerhub",
+		"reference":"Large propeller hub",
+		"mod":"Core Air"
+	},
+	"227791eb-9d17-481e-bece-a2c4c292460e":{
+		"readableName":"Railgun Magnet Attaching Fixture 1 attachment",
+		"searchableName":"railgunmagnetattacher1attachment",
+		"reference":"Railgun Magnet Attaching Fixture 1 attachment",
+		"mod":"Core APS"
+	},
+	"3f0e0e85-2891-473d-bc22-03626afae27d":{
+		"readableName":"Rudder Pivot Square",
+		"searchableName":"1x1pivot",
+		"reference":"Rudder Pivot Square",
+		"mod":"Core Surface"
+	},
+	"26622409-60f8-43dd-afb9-f33853bf50c1":{
+		"readableName":"Separator (3m)",
+		"searchableName":"separator(3m)",
+		"reference":"Separator (3m)",
+		"mod":"Core Misc"
+	},
+	"9ce5e591-bb6b-4827-91af-5c8530210516":{
+		"readableName":"Separator Attachment (1m)",
+		"searchableName":"separatorattachment(1m)",
+		"reference":"Separator Attachment (1m)",
+		"mod":"Core Misc"
+	},
+	"12904332-3830-42bd-b34a-3cb522e2c6d6":{
+		"readableName":"Separator Attachment (3m)",
+		"searchableName":"separatorattachment(3m)",
+		"reference":"Separator Attachment (3m)",
+		"mod":"Core Misc"
+	},
+	"7cbc276b-2e3d-4037-9aa8-9fc8c1f7a4fc":{
+		"readableName":"Medium wheel 1m",
+		"searchableName":"",
+		"reference":"Medium wheel 1m",
+		"mod":"Core SteamEngine"
+	},
+	"24182e93-94d4-4b29-8795-a107b21b2695":{
+		"readableName":"Solid Ammo Clip (5m shells)",
+		"searchableName":"solidammoclip(5mshells)",
+		"reference":"Solid Ammo Clip (5m shells)",
+		"mod":"Core APS"
+	},
+	"00e9e62f-8b53-4cca-89ef-2a99a76766da":{
+		"readableName":"Solid Ammo Clip (7m shells)",
+		"searchableName":"solidammoclip(7mshells)",
+		"reference":"Solid Ammo Clip (7m shells)",
+		"mod":"Core APS"
+	},
+	"deaa6f94-9d44-43aa-afce-1c23425c3aa9":{
+		"readableName":"Large shaft drill extension",
+		"searchableName":"largeshaftdrillextension",
+		"reference":"Large shaft drill extension",
+		"mod":"Core SteamEngine"
+	},
+	"d00a6de3-be1a-4ae2-be0b-f7bb14d75052":{
+		"readableName":"Large steam drill head",
+		"searchableName":"largesteamdrillhead",
+		"reference":"Large steam drill head",
+		"mod":"Core SteamEngine"
+	},
+	"c125728d-3952-44cd-939e-84f8290fbd9f":{
+		"readableName":"Surge Protector 2m",
+		"searchableName":"surgeprotector2m",
+		"reference":"Surge Protector 2m",
+		"mod":"Core Misc"
+	},
+	"86fc7d73-2558-4dce-ad25-0825d2786063":{
+		"readableName":"Surge Protector 3m",
+		"searchableName":"surgeprotector3m",
+		"reference":"Surge Protector 3m",
+		"mod":"Core Misc"
+	},
+	"ac2d906e-4ff2-47bf-a8a8-4381a50ad5bc":{
+		"readableName":"Surge Protector 4m",
+		"searchableName":"surgeprotector4m",
+		"reference":"Surge Protector 4m",
+		"mod":"Core Misc"
+	},
+	"c6b9d38c-01e5-4a37-8493-2b7f7f1d74fb":{
+		"readableName":"Vehicle Controller Small",
+		"searchableName":"vehiclecontrollersmall",
+		"reference":"Vehicle Controller Small",
+		"mod":"Core Misc"
 	}
-};
+}
