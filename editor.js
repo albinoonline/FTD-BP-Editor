@@ -3,22 +3,26 @@ ToDo:
 This release:
 
 The Maybe pile:
+warn if armorfrom is All, AND armorto is NOT None. also if all or all armor is selected, with delete, also note if app or deck is selected, it is not fully supported
+error div condenser/ error function that checks previous errors, and just adds a number, like the console
 dont show dropdowns until a bp is loaded
 color tooltips with RGBAS
 color pallet exporting
+spin block/turret/piston exceptions for replacer tool
 Fix when loading older BP's, alert user to resave older BP, error: Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'CreatorReadableName')
+include vehicle type in top bar, ex: vehicle, fortress or structure
+cashe mods
+when iterating through the dictionary's (both of them), use indexof, rather than looping
 
 Future:
-get decking working agein
-inporter to autodetect if things should share same types? EX: if the only difference is a number, and if it does not already have a reference
-when iterating through the dictionary's (both of them), use indexof, rather than looping
-Limit color choice to allow selection of multiple colors
+allow selection of multiple colors and armor types as checkboxes, rather than picking one, all, or none
+inporter to autodetect if things should share same types? 
+	EX: if the only difference is a number, and if it does not already have a reference
+		do this by detecting <num>m, anb removing that, also would need to remove spaces and perenthisis, the same as making everything lowercase (and note the parent block as not readable anme)
 hide DL button if a processes is in progress?
-streamline replacer
 make the "not form" nicer looking
-make dl a function rather than shoving it in an event listener?
-blocklist sort/additional info (parent block (ex:wood slopes parent is wood block)), origin mod
-renderer: 2 moded color mode, and material mode.
+blocklist sort/count from reference block
+renderer: 2 modded color mode, and material mode.
 	block locater: add a button to each line of the blocklist that will highlight the blocks in the renderer
 fully map the blueprint file
 	color viewer/editor (mising shiny, camostuffs)
@@ -26,10 +30,6 @@ fully map the blueprint file
 
 mass subobject replacing, maybe even with firing restrictions kept
 
-have an all armor and standard armor dropdown option for mass replace
-	
-warn if armorfrom is All, AND armorto is NOT None. also if all or all armor is selected, with delete, also note if app or deck is selected, it is not fully supported
-error div condenser/ error function that checks previous errors, and just adds a number, like the console
 other replace tool:(switches between the two types)
 	ammo clips,	plates,	doors/hatches, basicly a quick reference for single replace.
 vehicle stat block, list SCI info, number of sub constructs(in total, top level, deepest chain) and sub vehicle names, weapon systems firepower 
@@ -37,10 +37,7 @@ region definer, limit changes to massConvert and other functions to defined regi
 	blueprint split/translate tool translater
 	TO DEMONSTRATE THE POWER OF THIS TOOL I WILL SAW THIS BOAT IN HALF (will be region restricted mass convert delete > delete)
 blueprint merger?
-cashe mods
 reformat the CSI
-spin block/turret/piston exceptions for replacer tool
-include vehicle type in top bar, ex: vehicle, fortress or structure
 
 replacer tool: Wood Block Variant handler
 */
