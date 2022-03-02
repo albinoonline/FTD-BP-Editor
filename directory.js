@@ -37,6 +37,7 @@ exoughst and other steam pipes
 
 
 refrence extractor:for(let i in dictionary){error.innerHTML+=dictionary[i]["reference"] +"<br/>"};
+mod extractor:for(let i in dictionary){error.innerHTML+=dictionary[i]["mod"] +"<br/>"};
 dictionary extractor error.innerHTML=JSON.stringify(dictionary);
 
 elements to add to dictionary: cost, weight, size.
@@ -592,7 +593,7 @@ var dictionary = {
 	},
 	"51f8afc5-b071-4639-9f96-693b952fdf80":{
 		"readableName":"applique panel",
-		"searchableName":"appliquepanel1m",
+		"searchableName":"block",
 		"reference":"applique panel",
 		"mod":"Core ACDeco"
 	},
@@ -3388,25 +3389,25 @@ var dictionary = {
 	},
 	"d92c5b73-d0fd-423e-98fc-76b1cd91b524":{
 		"readableName":"reinforced wood 2m",
-		"searchableName":"2mreinforceddecking",
-		"reference":"reinforced wood 2m",
+		"searchableName":"beam(2m)",
+		"reference":"reinforced wood",
 		"mod":"Core ACDeco"
 	},
 	"50bdd099-dd8d-43f8-b43d-dd14c60be096":{
 		"readableName":"reinforced wood 3m",
-		"searchableName":"3mreinforceddecking",
-		"reference":"reinforced wood 3m",
+		"searchableName":"beam(3m)",
+		"reference":"reinforced wood",
 		"mod":"Core ACDeco"
 	},
 	"6e2afb0f-97b6-4017-b14c-158146da6854":{
 		"readableName":"reinforced wood 4m",
-		"searchableName":"4mreinforceddecking",
-		"reference":"reinforced wood 4m",
+		"searchableName":"beam(4m)",
+		"reference":"reinforced wood",
 		"mod":"Core ACDeco"
 	},
 	"2f7f61ae-79f1-4139-a790-3f2c26bda4e4":{
 		"readableName":"reinforced wood",
-		"searchableName":"reinforceddecking",
+		"searchableName":"block",
 		"reference":"reinforced wood",
 		"mod":"Core ACDeco"
 	},
@@ -5452,19 +5453,19 @@ var dictionary = {
 	},
 	"5dc0032d-d532-4766-b081-4204947bcaa0":{
 		"readableName":"Applique Panel 2m",
-		"searchableName":"appliquepanel2m",
+		"searchableName":"beam(2m)",
 		"reference":"applique panel",
 		"mod":"Core ACDeco"
 	},
 	"195e0661-21dc-4fba-88f1-81481f3bf409":{
 		"readableName":"Applique Panel 3m",
-		"searchableName":"appliquepanel3m",
+		"searchableName":"beam(3m)",
 		"reference":"applique panel",
 		"mod":"Core ACDeco"
 	},
 	"1fa6e1a9-83fb-4efc-b9bc-19ea0d1005cb":{
 		"readableName":"Applique Panel 4m",
-		"searchableName":"appliquepanel4m",
+		"searchableName":"beam(4m)",
 		"reference":"applique panel",
 		"mod":"Core ACDeco"
 	},
@@ -5482,7 +5483,7 @@ var dictionary = {
 	},
 	"2eca89e0-5c2f-4b1c-a5bf-df5190e13ef4":{
 		"readableName":"Applique Slope 1m",
-		"searchableName":"appliqueslope1m",
+		"searchableName":"slope(1m)",
 		"reference":"applique panel",
 		"mod":"Core ACDeco"
 	},
@@ -5494,7 +5495,7 @@ var dictionary = {
 	},
 	"85ea264e-6ef0-48df-9adc-9b1a8fe15247":{
 		"readableName":"Applique Slope 2m",
-		"searchableName":"appliqueslope2m",
+		"searchableName":"slope(2m)",
 		"reference":"applique panel",
 		"mod":"Core ACDeco"
 	},
@@ -5506,7 +5507,7 @@ var dictionary = {
 	},
 	"f62c34b8-727e-4f6d-8d75-97c52631b7f9":{
 		"readableName":"Applique Slope 3m",
-		"searchableName":"appliqueslope3m",
+		"searchableName":"slope(3m)",
 		"reference":"applique panel",
 		"mod":"Core ACDeco"
 	},
@@ -5518,7 +5519,7 @@ var dictionary = {
 	},
 	"60bc1939-6207-4b3e-9f31-444ed626c775":{
 		"readableName":"Applique Slope 4m",
-		"searchableName":"appliqueslope4m",
+		"searchableName":"slope(4m)",
 		"reference":"applique panel",
 		"mod":"Core ACDeco"
 	},

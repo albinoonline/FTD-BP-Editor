@@ -12,7 +12,10 @@ body {
 	max-height :700px;
   overflow-x: hidden; /* Hide horizontal scrollbar, may not be needed */
 }
-
+.small {
+	margin: 0;
+	padding: 0;
+}
 #error {
 	background-color:#ff0000;
 }
@@ -86,6 +89,7 @@ input[type="range"] {
 .dropdown {
 	border: 5px solid black;
 	border-radius: 10px;
+	display:none;
 }
 .side h2 {
 	margin-top: 0;

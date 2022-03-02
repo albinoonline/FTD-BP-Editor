@@ -2,20 +2,18 @@
 ToDo:
 This release:
 
+
 The Maybe pile:
-warn if armorfrom is All, AND armorto is NOT None. also if all or all armor is selected, with delete, also note if app or deck is selected, it is not fully supported
-error div condenser/ error function that checks previous errors, and just adds a number, like the console
-dont show dropdowns until a bp is loaded
-color tooltips with RGBAS
+dynamicly add dropdowns for new mods added from the mod importer
 color pallet exporting
-spin block/turret/piston exceptions for replacer tool
 Fix when loading older BP's, alert user to resave older BP, error: Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'CreatorReadableName')
-include vehicle type in top bar, ex: vehicle, fortress or structure
+
 cashe mods
-when iterating through the dictionary's (both of them), use indexof, rather than looping
 
 Future:
-allow selection of multiple colors and armor types as checkboxes, rather than picking one, all, or none
+reformat the main page
+multi color selection, have 32 checkboxes (fun!)
+references: store id instead of name?-would make reading so much harder
 inporter to autodetect if things should share same types? 
 	EX: if the only difference is a number, and if it does not already have a reference
 		do this by detecting <num>m, anb removing that, also would need to remove spaces and perenthisis, the same as making everything lowercase (and note the parent block as not readable anme)
@@ -27,7 +25,10 @@ renderer: 2 modded color mode, and material mode.
 fully map the blueprint file
 	color viewer/editor (mising shiny, camostuffs)
 	get delete working
-
+	color tooltips with RGBAS
+	include vehicle type in top bar, ex: vehicle, fortress or structure
+	reformat the CSI
+	
 mass subobject replacing, maybe even with firing restrictions kept
 
 other replace tool:(switches between the two types)
@@ -37,7 +38,7 @@ region definer, limit changes to massConvert and other functions to defined regi
 	blueprint split/translate tool translater
 	TO DEMONSTRATE THE POWER OF THIS TOOL I WILL SAW THIS BOAT IN HALF (will be region restricted mass convert delete > delete)
 blueprint merger?
-reformat the CSI
+
 
 replacer tool: Wood Block Variant handler
 */
@@ -51,6 +52,7 @@ window.onload = function() {
 	const Modinput = document.getElementById('item');//mod input
 	const name = document.getElementById('bpname');//top middle section
 	const error = document.getElementById('error');//top banner for use with errors
+	const errorbttn = document.getElementById('errorbttn');//top banner for use with errors
 	const blocklist = document.getElementById('blocklist'); // blocklist output panel
 	const dropdowns = document.getElementsByClassName("dropdown");//dropdowns
 	const DL = document.getElementById('DL'); 
@@ -63,11 +65,10 @@ window.onload = function() {
 	const armorTo = document.getElementById('armorTo'); 
 	const colorTo = document.getElementById('colorTo'); 
 	const colorToEnable = document.getElementById('colorToEnable'); 
-	//single convert
-	const armorFromSingle = document.getElementById('armorFromSingle'); 
+	const armorFromInvert = document.getElementById('armorFromInvert'); 
+	//single convert 
 	const colorFromEnableSingle = document.getElementById('colorFromEnableSingle'); 
 	const colorFromSingle = document.getElementById('colorFromSingle'); 
-	const armorToSingle = document.getElementById('armorToSingle'); 
 	const colorToSingle = document.getElementById('colorToSingle'); 
 	const colorToEnableSingle = document.getElementById('colorToEnableSingle'); 
 	const singleFromInfo = document.getElementById('singleFromInfo'); 
@@ -76,7 +77,6 @@ window.onload = function() {
 	const singleSearch = document.getElementById('singleSearch'); 
 	
 	//color
-	const colorTool = document.getElementById("colorTool");//the color tool div
 	const preview = document.getElementById("preview");//the color label
 	const red = document.getElementById("red");//the red input
 	const green = document.getElementById("green");//the green input
@@ -101,8 +101,9 @@ window.onload = function() {
 	const Wmax = document.getElementById("Wmax");
 	
 	var blueprint = {};//for storing the BP
-	var toReplace =-1//for storing what is to be replaced in the single replace function
-	var replaceTo =-1//for storing what we replace to in the single replace function
+	var toReplace =-1;//for storing what is to be replaced in the single replace function
+	var replaceTo =-1;//for storing what we replace to in the single replace function
+	var errors = [[],[]];//array for storing errors
 	
 	//add event listeners
 	
@@ -112,14 +113,20 @@ window.onload = function() {
 		let start = parseInt(swapStart.value);
 		//parody FC, note we dont have to do anything with FC because the game overrides
 		//create alias
-		let col = blueprint["Blueprint"]["COL"];
-		col.splice(start, 4, col[28],col[29],col[30],col[31])
+		let col = blueprint.Blueprint.COL;
+		col.splice(start, 4, col[28],col[29],col[30],col[31]);
 		//reload color squares
 		colorUpdate(blueprint);
 		//recolor blocks
-		colorSwapRecursion(blueprint["Blueprint"]);
+		colorSwapRecursion(blueprint.Blueprint);
 	});
-	
+	//clear errros bttn
+	errorbttn.addEventListener("click", function(){
+		//reset errors 
+		errors = [[],[]];
+		//clear error
+		error.innerHTML="";
+	});
 	//single replace search
 	singleSearch.addEventListener("input", function(){
 		//get text
@@ -145,7 +152,7 @@ window.onload = function() {
 						//update replaceTo
 						replaceTo=replaceToLink[i].value;
 						//replace the searchlist with blockinfo
-						singleToInfo.innerHTML=`<h4>Selected:</h4> Name:${dictionary[replaceTo]["readableName"]}, Mod:${dictionary[replaceTo]["mod"]}, FullID:${replaceTo}`;
+						singleToInfo.innerHTML=`<h4>Selected:</h4> Name:${dictionary[replaceTo].readableName}, Mod:${dictionary[replaceTo].mod}, FullID:${replaceTo}`;
 					});
 				}//loop results
 			}//if match
@@ -162,7 +169,7 @@ window.onload = function() {
 			
 			//load values into rgba
 			//create an array of the colors variable to process with
-			let color = blueprint["Blueprint"]["COL"][parseInt(i.innerHTML)].split(",");
+			let color = blueprint.Blueprint.COL[parseInt(i.innerHTML)].split(",");
 			//parseint the array.=
 			color=color.map(x => parseFloat(x));
 			//change text fields
@@ -211,41 +218,41 @@ window.onload = function() {
 		//range to text
 		i.addEventListener("input", function(){
 			//update preview
-			previewUpdate()
+			previewUpdate();
 			//change value
 			text.value= i.value;
 		});
 		//text to range
 		text.addEventListener("input", function(){
 			//update preview
-			previewUpdate()
+			previewUpdate();
 			//change value
 			i.value	= text.value;
 		});
 	}
 	
-	Bpinput.addEventListener("change", function(){BPfill(BPparse())});//the file input for bp
+	Bpinput.addEventListener("change", function(){BPfill(BPparse());});//the file input for bp
 	Modinput.addEventListener("change", Modparse);//the file inout for modded files
 	massConverterBttn.addEventListener("click", massConvert);//the button for mass convert
 	singleConverterBttn.addEventListener("click", singleConvert);//the button for single convert
 	
 	//dropdowns
 	for (let i of dropdowns){
-		i.addEventListener("click", function(){dropdown(i)});
+		i.addEventListener("click", function(){dropdown(i);});
 	}
 	
 	//dl button
 	DL.addEventListener('click', () => {
 		//is therer a blueprint?
-		if (typeof blueprint["Name"] == "undefined"){
-			error.innerHTML+="<br/>Bo BP";
+		if (typeof blueprint.Name == "undefined"){
+			errorLog("Bo BP");
 			return;
 		}
 		//make a temp a tag and force download
 		let a = document.createElement('a');
 		let file = new Blob([JSON.stringify(blueprint)], {type: 'text/plain'});
 		a.href= URL.createObjectURL(file);
-		a.download = blueprint["Name"]+"_mod.blueprint";
+		a.download = blueprint.Name+"_mod.blueprint";
 		a.click();
 		URL.revokeObjectURL(a.href);
 	});
@@ -256,7 +263,7 @@ window.onload = function() {
 		///shiny is encoded in red for some reason
 		//apply for camo is vehicledata[208], 0 for true? and 7 for false? apply camo seems to be fucking everywhere
 		//colors
-		let COL=BP["Blueprint"]["COL"];
+		let COL=BP.Blueprint.COL;
 		//loop through all colors
 		for(let i =0; i<COL.length;i++){
 			//create a variable to process with
@@ -276,9 +283,9 @@ window.onload = function() {
 		//parseint
 		let start = parseInt(swapStart.value);
 		//create alias
-		let BCI=target["BCI"];
+		let BCI=target.BCI;
 		//recolor blocks
-		for(i in BCI){
+		for(let i in BCI){
 			if((start <=BCI[i]) && (BCI[i] <=start+3)){//is the index in the PC?
 				//yes shift colors
 				BCI[i] +=(28-start);
@@ -288,8 +295,8 @@ window.onload = function() {
 			} //unaffected colors
 		}
 		//recursion, through subobjects, and yes we'll drill through them all
-		for(let i in target["SCs"]){
-			colorSwapRecursion(target["SCs"][i]);
+		for(let i in target.SCs){
+			colorSwapRecursion(target.SCs[i]);
 		}//end recursion
 	}
 	function previewUpdate(){//updates the color preview box
@@ -302,7 +309,7 @@ window.onload = function() {
 		//update color square
 		editing.style.backgroundColor=RGBA;
 		//update COL
-		blueprint["Blueprint"]["COL"][parseInt(editing.innerHTML)]= `${red.value},${green.value},${blue.value},${alpha.value}`;
+		blueprint.Blueprint.COL[parseInt(editing.innerHTML)]= `${red.value},${green.value},${blue.value},${alpha.value}`;
 	}
 	
 	function dropdown(Htag){//operates the dropdowns
@@ -326,13 +333,15 @@ window.onload = function() {
 	function singleConvert(){//handles updating after singleConvertRecursion
 		//ensure valid input:
 		if (replaceTo !== -1){
-			blueprint["Blueprint"]=singleConvertRecursion(blueprint["Blueprint"]);
+			//disable the donwnload button
+			DL.disabled=true;
+			blueprint.Blueprint=singleConvertRecursion(blueprint.Blueprint);
 			//update meta data(set modified to true, set some other values (like cost) to some obviously wrong value)
 			///---------------------------------------------------------ToDo
 			//update page 
 			BPfill(blueprint);
 		} else {
-			error.innerHTML+="<br/>Nothing to convert to";
+			errorLog("Nothing to convert to");
 		}
 	}
 	function singleConvertRecursion(target){//convert block of one id to another
@@ -342,63 +351,60 @@ window.onload = function() {
 		
 		//does a blueprint exist?
 		if (typeof target === "undefined"){
-			error.innerHTML+="<br/>No BP";
+			errorLog("No BP");
 			return;//no BP, eject
 		}
 		//bp exists
 		//create an iterator array
-		let positions = Array(target["BCI"].length).fill(true);
+		let positions = Array(target.BCI.length).fill(true);
 		
 		//do we limit color?
 		if(isNaN(cFrom)==false){
 			//remove blocks of incorrect color 
-			for(i in target["BCI"]){
+			for(let i in target.BCI){
 				//if the color matches this returns true, else false.
-				positions[i] = (target["BCI"][i] == cFrom);
+				positions[i] = (target.BCI[i] == cFrom);
 			}
 		}
+		//sort by block
+		//loop positions
+		for(let i in positions){
+			if (positions[i]){//no need to check false
+				// if reference block is equal to armor name, then set position accordingly
+				positions[i] = target.BlockId[i]==toReplace;
+				console.log(target.BlockIds[i]);
+			}//end if 
+		}//end loop
 		
 		//sort by location (limit to area)
 		
 		//are we at the top level?
-		let topLevel=target["blueprintName"] == blueprint["Name"];
+		let topLevel=target.blueprintName == blueprint.Name;
 		//is LTA (limit to area) enabled? considering whether recursionis enabled and where we are.
 		if (recursiveLTA.checked ? (enableLTA.checked && topLevel) : enableLTA.checked){
 			//iterate through blocks
-			for(i in target["BLP"]){
+			for(let i in target.BLP){
 				//only do valid blocks
 				if (positions[i]){
 					//yes creata a variable to store progress
 					let valid = true;
 					
 					//position format is W, H, l, was string, convert to an array
-					let WHL = target["BLP"][i].split(",");
+					let WHL = target.BLP[i].split(",");
 					//make not a string
 					WHL = WHL.map(Number);
 					//check width
 					valid = (Wmin.value <= WHL[0]) && (WHL[0] <= Wmax.value);
 					//check height
-					valid = (Hmin.value <= WHL[1]) && (WHL[1] <= Hmax.value) && valid;
+					valid = valid && (Hmin.value <= WHL[1]) && (WHL[1] <= Hmax.value);
 					//check length
-					valid = (Lmin.value <= WHL[2]) && (WHL[2] <= Lmax.value) && valid;
+					valid = valid && (Lmin.value <= WHL[2]) && (WHL[2] <= Lmax.value);
 					//if valid is true the block is within bounds, check to see if it must be inverted. (this is a XOR operator)
 					positions[i] = (invertLTA.checked ? !valid : valid);
 				}//else block is already removed from positions
 			}//end block loop
 		}
-		
-		console.log(positions);
-		//now positions is sorted by color and position. we need to sort by block
-		///sorting by block, maybe do before position check for calc speed
-		//toReplace contains the short ID of what we want removed
-		//loop positions
-		for(i in positions){
-			if (positions[i]){//no need to check false
-				// if reference block is equal to armor name, then set position accordingly
-				positions[i] = target["BlockIds"][i]==toReplace;
-				console.log(target["BlockIds"][i]);
-			}//end if 
-		}//end loop
+		//now positions is sorted by position, lol.
 		
 		
 		//now we have sorted through blocks to modify, we need only modify it!
@@ -406,38 +412,37 @@ window.onload = function() {
 		//do we need paint?
 		if(isNaN(cTo)==false){
 			//painting time 
-			for(i in positions){
+			for(let i in positions){
 				if (positions[i] == true){//if this block is ok
-					target["BCI"][i] = cTo;//rewrite paint
+					target.BCI[i] = cTo;//rewrite paint
 				}
 			}
 		}
 		//blocks painted, now need to be replaced
 		
-		for(i in positions){
+		for(let i in positions){
 			if (positions[i]){//only do trues
 				//does it exist in the dictionary?
 				//id in case it doesn't
 				let id = -1;
 				//iterate through all items in the dictionary, writing to id if found
-				///leaving here for now, but indexof would be better, fix mass too
-				for(let k in blueprint["ItemDictionary"]){
-					if(blueprint["ItemDictionary"][k] == replaceTo){
+				for(let k in blueprint.ItemDictionary){
+					if(blueprint.ItemDictionary[k] == replaceTo){
 						id =k;
 					}
 				}
 				if(id ==-1){//no id found add one
-					id=1//make id positive
+					id=1;//make id positive
 					//find unpopulated id
-					while(typeof blueprint["ItemDictionary"][id] !== "undefined"){
-						id++
+					while(typeof blueprint.ItemDictionary[id] !== "undefined"){
+						id++;
 					}
 					//id is now a valid unclaimed id
 					//populate id
-					blueprint["ItemDictionary"][id]=replaceTo;
+					blueprint.ItemDictionary[id]=replaceTo;
 				} 
 				//now we have a valid id, time to actually replace
-				target["BlockIds"][i]=id;	
+				target.BlockIds[i]=id;	
 				
 			}//end if
 		}//end loop
@@ -445,16 +450,19 @@ window.onload = function() {
 		//blocks replaced
 		
 		//recursion, through subobjects, and yes we'll drill through them all
-		for(let i in target["SCs"]){
-			target["SCs"][i] = massConvertRecursion(target["SCs"][i]);
+		for(let i in target.SCs){
+			target.SCs[i] = massConvertRecursion(target.SCs[i]);
 		}//end recursion
 		//console.log(target);
 		return target;//return target
 	}
 	
 	function massConvert(){//handles updating after massConvertRecursion
+		//disable the donwnload button
+		DL.disabled=true;
+		
 		//let the converter fill the blueprint
-		blueprint["Blueprint"]=massConvertRecursion(blueprint["Blueprint"]);
+		blueprint.Blueprint=massConvertRecursion(blueprint.Blueprint);
 		//update meta data(set modified to true, set some other values (like cost) to some obviously wrong value)
 		///---------------------------------------------------------ToDo
 		//update page 
@@ -468,45 +476,45 @@ window.onload = function() {
 		
 		//does a blueprint exist?
 		if (typeof target === "undefined"){
-			error.innerHTML+="<br/>No BP";
+			errorLog("No BP");
 			return;//no BP, eject
 		}
 		//bp exists
 		//create an iterator array
-		let positions = Array(target["BCI"].length).fill(true);
+		let positions = Array(target.BCI.length).fill(true);
 		
 		//do we limit color?
 		if(isNaN(cFrom)==false){
 			//remove blocks of incorrect color 
-			for(i in target["BCI"]){
+			for(let i in target.BCI){
 				//if the color matches this returns true, else false.
-				positions[i] = (target["BCI"][i] == cFrom);
+				positions[i] = (target.BCI[i] == cFrom);
 			}
 		}
 		
 		//sort by location (limit to area)
 		
 		//are we at the top level?
-		let topLevel=target["blueprintName"] == blueprint["Name"];
+		let topLevel=target.blueprintName == blueprint.Name;
 		//is LTA (limit to area) enabled? considering whether recursionis enabled and where we are.
 		if (recursiveLTA.checked ? (enableLTA.checked && topLevel) : enableLTA.checked){
 			//iterate through blocks
-			for(i in target["BLP"]){
+			for(let i in target.BLP){
 				//only do valid blocks
 				if (positions[i]){
 					//yes creata a variable to store progress
 					let valid = true;
 					
 					//position format is W, H, l, was string, convert to an array
-					let WHL = target["BLP"][i].split(",");
+					let WHL = target.BLP[i].split(",");
 					//make not a string
 					WHL = WHL.map(Number);
 					//check width
 					valid = (Wmin.value <= WHL[0]) && (WHL[0] <= Wmax.value);
 					//check height
-					valid = (Hmin.value <= WHL[1]) && (WHL[1] <= Hmax.value) && valid;
+					valid = valid && (Hmin.value <= WHL[1]) && (WHL[1] <= Hmax.value);
 					//check length
-					valid = (Lmin.value <= WHL[2]) && (WHL[2] <= Lmax.value) && valid;
+					valid = valid && (Lmin.value <= WHL[2]) && (WHL[2] <= Lmax.value);
 					//if valid is true the block is within bounds, check to see if it must be inverted. (this is a XOR operator)
 					positions[i] = (invertLTA.checked ? !valid : valid);
 				}//else block is already removed from positions
@@ -514,61 +522,82 @@ window.onload = function() {
 		}
 		//now positions is sorted by color and position. we need to sort by block
 		
+		//we need a list of pre armors selection, so we can easily invert them after
+		let preArmorPositions = positions;
+		
 		//array of all armors
-		let allArmors =["glass block", "heavy armour", "lead block", "rubber block", "stone block", "light-weight alloy block", "metal block", "wood block", "applique panel", "reinforced wood", "alloy plate", "metal plate","truss 1m"];
+		let allArmors =["glass block", "heavy armour", "lead block", "rubber block", "stone block", "light-weight alloy block", "metal block", "wood block", "applique panel", "reinforced wood", "alloy plate", "metal plate","truss 1m", "standard door", "door hatch metal", "door hatch alloy", "door bulkhead metal", "door bulkhead alloy"];
 		//reinforced wood does not properly self reference, this may cause issues if the dictionary is not edited after raw import
 		//yes the generic name of the truss is always 1m, no i don't know why
-		//array of changable armors, yes the block for glass is lowercase, and heavy armor has no block
-		let armors =["glass block", "heavy armour", "lead block", "rubber block", "stone block", "light-weight alloy block", "metal block", "wood block"];
 		switch(armorFrom.value){
-			case "All"://remove nothing
+			case "all"://remove nothing
 			break;//leave
-			case "Armor"://any armor type
+			case "armor"://any armor type
 				//loop through each position
-				for(i in positions){
+				for(let i in positions){
 					if (positions[i]){//no need to check false
-						//assume false (to keep parody with below)
-						positions[i] = false;
 						//get the block object
-						let block = translator(target["BlockIds"][i]);
+						let block = translator(target.BlockIds[i]);
 						
 						//see if the blocks refrence is in the armor list
 						let index = allArmors.indexOf(block.reference);
 						// is the block an armor?
-						if( index != -1){
-							//yes 
-							positions[i] = true;
-						}//end is armor if
-					}//end position if 
-				}//end loop
-			break;
-			case "Other"://above, but inverted
-				//loop through each position
-				for(i in positions){
-					if (positions[i]){//no need to check false
-						//get the block object
-						let block = translator(target["BlockIds"][i]);
-						
-						//see if the blocks reference is in the armor list
-						let index = allArmors.indexOf(block.reference);
-						// is the block an armor?
-						if( index != -1){
-							//yes 
+						if( index == -1){
+							//no 
 							positions[i] = false;
 						}//end is armor if
 					}//end position if 
 				}//end loop
 			break;
-			default:// its a specific armor
+			//multicase, all the armors 
+			case "glass block":
+			case "heavy armour":
+			case "lead block":
+			case "rubber block":
+			case "stone block":
+			case "light-weight alloy block":
+			case "metal block":
+			case "wood block":
+			case "applique panel":
+			case "reinforced wood":
 				//loop through
-				for(i in positions){
+				for(let i in positions){
 					if (positions[i]){//no need to check false
-						// if reference block is equal to armor name, then set position accordingly
-						positions[i] = translator(target["BlockIds"][i]).reference ==armorFrom.value;
+						// if reference block is equal to armor name, position stays true, else, false
+						positions[i] = translator(target.BlockIds[i]).reference ==armorFrom.value;
 					}//end if 
+				}//end loop
+			break;
+			default://is the block from the armorFrom.value mod?
+				//loop through each position
+				for(let i in positions){
+					if (positions[i]){//no need to check false
+						//get the block object
+						let block = translator(target.BlockIds[i]);
+						
+						// is the block of the mod?
+						if(block.mod !=armorFrom.value){
+							//no
+							positions[i] = false;
+						}//end is armor if
+					}//end position if 
 				}//end loop
 			//'break'
 		}//end switch
+		
+		//see if we need to invert
+		if (armorFromInvert.checked){
+			//we do loop positions
+			for(let i in positions){
+				//was the position already false?
+				if (preArmorPositions[i]){
+					//no, we need to switch these
+					//invert
+					positions[i] = !positions[i];
+				}//end if 
+			}//end loop
+		}//end if
+		
 		
 		//console.log(positions);
 		//now we have sorted through blocks to modify, we need only modify it!
@@ -576,29 +605,51 @@ window.onload = function() {
 		//do we need paint?
 		if(isNaN(cTo)==false){
 			//painting time 
-			for(i in positions){
+			for(let i in positions){
 				if (positions[i] == true){// if this block is ok
-					target["BCI"][i] = cTo;//rewrite paint
+					target.BCI[i] = cTo;//rewrite paint
 				}
 			}
 		}
 		//blocks painted, now need to be replaced
 		
+		//exempt anything from Core Construct
+		//loop through each position
+		for(let i in positions){
+			if (positions[i]){//no need to check false
+				//get the block object
+				let block = translator(target.BlockIds[i]);
+				
+				// is the block a subvehicle spawner
+				if(block.searchableName =="subvehiclespawner"){
+					//yes
+					positions[i] = false;
+				}// is the block of Core Construct?
+				if(block.mod =="Core Construct"){
+					//yes
+					positions[i] = false;
+				}
+			}//end position if 
+		}//end loop
+		
+		//array of changable armors (armor with all shapes and slopes)
+		let armors =["glass block", "heavy armour", "lead block", "rubber block", "stone block", "light-weight alloy block", "metal block", "wood block", "applique panel", "reinforced wood"];
+		
 		switch(armorTo.value){
-			case "None"://do nothing
+			case "none"://do nothing
 			break;//leave
-			case "Delete"://ka-boom
+			case "delete"://ka-boom
 				//what could go wrong
 				///-------------------------------------------------ToDo
 			break;
 			default:// its a specific armor
 				//loop through each position
-				for(i in positions){
+				for(let i in positions){
 					if (positions[i]){//only do trues
 						//assume false
 						positions[i] = false;
 						//get the block object
-						let block = translator(target["BlockIds"][i]);
+						let block = translator(target.BlockIds[i]);
 						
 						//see if the blocks reference is in the armor list
 						let index = armors.indexOf(block.reference);
@@ -621,7 +672,6 @@ window.onload = function() {
 								//check current shape vs new shape
 								shape = block.searchableName == dictionary[j].searchableName;
 							} else {
-								//need an exeption for subobjectblocks and subveicle spawner
 								//check block vs new shape
 								shape = "block" == dictionary[j].searchableName;
 							}
@@ -633,27 +683,27 @@ window.onload = function() {
 								//id in case it doesn't
 								let id = -1;
 								//iterate through all items in the dictionary, writing to id if found
-								for(let k in blueprint["ItemDictionary"]){
-									if(blueprint["ItemDictionary"][k] == j){
+								for(let k in blueprint.ItemDictionary){
+									if(blueprint.ItemDictionary[k] == j){
 										id =k;
 									}
 								}
 								if(id ==-1){//no id found add one
-									id=1//make id positive
+									id=1;//make id positive
 									//find unpopulated id
-									while(typeof blueprint["ItemDictionary"][id] !== "undefined"){
-										id++
+									while(typeof blueprint.ItemDictionary[id] !== "undefined"){
+										id++;
 									}
 									//populate id
-									blueprint["ItemDictionary"][id]=j;
+									blueprint.ItemDictionary[id]=j;
 									//console.log(id+": "+j);
 								} 
 								//now we have a valid id, time to actually replace
-								target["BlockIds"][i]=id;									
+								target.BlockIds[i]=id;									
 							}
 						}//end add through dictionary
 						if (found ==false){
-							error.innerHTML+="<br/>tried to replace:"+block.readableName +" failed, not found ";
+							errorLog("tried to replace:"+block.readableName +" failed, not found "+armorTo.value+" varient: "+block.searchableName);
 						}
 					}//end if
 				}//end loop
@@ -664,10 +714,9 @@ window.onload = function() {
 		//blocks replaced
 		
 		//recursion, through subobjects, and yes we'll drill through them all
-		for(let i in target["SCs"]){
-			target["SCs"][i] = massConvertRecursion(target["SCs"][i]);
+		for(let i in target.SCs){
+			target.SCs[i] = massConvertRecursion(target.SCs[i]);
 		}//end recursion
-		//console.log(target);
 		return target;//return target
 	}
 	
@@ -681,21 +730,21 @@ window.onload = function() {
 			//console.log(Object.keys(data));
 			
 			//needs to be a human reabable name of the block
-			let readableName = data["DisplayName"];
+			let readableName = data.DisplayName;
 			//data[DisplayName], all after #?!
 			readableName = readableName.slice(readableName.indexOf("#?!")+3);
 			
 			//needs to reduce likelyhood of typed errors
-			let searchableName = data["InventoryNameOverride"];
+			let searchableName = data.InventoryNameOverride;
 			//data[DisplayName], all after #?!
 			searchableName = searchableName.slice(searchableName.indexOf("#?!")+3);
 			//remove parenthesis quotes and spaces, make lowercase, 
-			searchableName = searchableName.replace(/() /g,"").toLowerCase();///======================this failed to work grrrr, i thinki fixed it?
+			searchableName = searchableName.replace(/() /g,"").toLowerCase();///======================this failed to work grrrr, i think i fixed it no i didn't?
 			//make instances of left and right to l or r (to be safe)
 			searchableName = searchableName.replace("left","l").replace("right","r");
 			
 			//the mod the block is from
-			let mod = data["DisplayName"];
+			let mod = data.DisplayName;
 			// remove ### and everything after ".", replace underscores
 			mod = mod.slice(3, mod.indexOf(".")).replace("_"," ");
 			
@@ -703,9 +752,9 @@ window.onload = function() {
 			//im making references lower case
 			let reference ="";
 			//do we need to overwrite the reference with a real one?
-			if (typeof data["IdToDuplicate"] != "undefined"){
+			if (typeof data.IdToDuplicate != "undefined"){
 				//yes block has real reference
-				reference = data["IdToDuplicate"]["Reference"]["Name"].toLowerCase();
+				reference = data.IdToDuplicate.Reference.Name.toLowerCase();
 			} else {
 				//no block is self reference, make the name lowercase, since the references will be
 				readableName = readableName.toLowerCase();
@@ -713,14 +762,14 @@ window.onload = function() {
 			}
 			
 			//fill dictionary
-			dictionary[data["ComponentId"]["Guid"]] = {
+			dictionary[data.ComponentId.Guid] = {
 				"readableName":readableName,
 				"searchableName":searchableName,
 				"reference":reference,
 				"mod":mod
 			};
 			//log info
-			blocklist.innerHTML +='<p>'+readableName+"("+searchableName+') as '+data["ComponentId"]["Guid"]+' with reference: '+reference + " from mod: "+ mod+'</p>';
+			blocklist.innerHTML +='<p>'+readableName+"("+searchableName+') as '+data.ComponentId.Guid+' with reference: '+reference + " from mod: "+ mod+'</p>';
 		}
 	}
 
@@ -741,7 +790,7 @@ window.onload = function() {
 		//store blocklist
 		let list="";
 		//fill name info
-		name.innerHTML = data["Name"]+" V"+data["Version"]+ " By: "+data["Blueprint"]["AuthorDetails"]["CreatorReadableName"];
+		name.innerHTML = data.Name+" V"+data.Version+ " By: "+data.Blueprint.AuthorDetails.CreatorReadableName;
 		// fill colors 
 		colorUpdate(data);
 				
@@ -749,11 +798,11 @@ window.onload = function() {
 		//start table
 		list=" <table><thead><tr><th>Block Count</th><th>Block Name</th><th>Block Mod</th><th>Block Reference</th><th>Locate and Replace</th></tr></thead>";
 		//define blocks variable for holding blocks
-		let blocks = []
+		let blocks = [];
 		
-		for(let i in  data["Blueprint"]["BlockIds"]){
+		for(let i in  data.Blueprint.BlockIds){
 			//id is block id
-			let id = data["Blueprint"]["BlockIds"][i];
+			let id = data.Blueprint.BlockIds[i];
 			
 			//have we encountered the block before?
 			if(typeof blocks[id] == "undefined"){
@@ -775,10 +824,10 @@ window.onload = function() {
 			//fill reference blocks
 			//check dupe entry
 			//have we encountered the ref before?
-			if(typeof refBlock[block["reference"]] == "undefined"){
-				refBlock[block["reference"]]=blocks[i];//no add entry
+			if(typeof refBlock[block.reference] == "undefined"){
+				refBlock[block.reference]=blocks[i];//no add entry
 			} else {
-				refBlock[block["reference"]]+=blocks[i];//yes increment entry
+				refBlock[block.reference]+=blocks[i];//yes increment entry
 			}
 		}
 		/*
@@ -788,16 +837,16 @@ window.onload = function() {
 		
 		//sort filtered blocks
 		filteredBlocks = filteredBlocks.sort(function(a, b) {
-			return b["num"] -a["num"];
+			return b.num -a.num;
 		});
 		//display filtered blocks
 		for (let i in filteredBlocks){
 			let block = filteredBlocks[i];
 			///==================================================================================ToDo (the replace button)
 			//make table with number of blocks, name, mod, replace buttons
-			list +=`<tr><th>${block['num']}</th><th>${block['block']['readableName']}</th><th>${block['block']['mod']}</th><th>${block['block']['reference']}</th><th>
-			<button type="button" onclick="alert('Not yet implamented, but you clearly have some, ${block['num']} in fact');">L</button>
-			<button type="button" class="replaceLink" value=${block['ShortID']}>R</button>
+			list +=`<tr><th>${block.num}</th><th>${block.block.readableName}</th><th>${block.block.mod}</th><th>${block.block.reference}</th><th>
+			<button type="button" onclick="alert('Not yet implamented, but you clearly have some, ${block.num} in fact');">L</button>
+			<button type="button" class="replaceLink" value=${block.ShortID}>R</button>
 			</th></tr>`;
 		}
 		//end table
@@ -807,7 +856,7 @@ window.onload = function() {
 		//add event listener for replacelink class
 		let replaceLinks= document.getElementsByClassName("replaceLink");
 		for (let i = 0; i < replaceLinks.length; i++){
-			replaceLinks[i].addEventListener("click", function(){ autofillSingleReplace(replaceLinks[i].value)});
+			replaceLinks[i].addEventListener("click", function(){ autofillSingleReplace(replaceLinks[i].value);});
 		}
 		
 		//display CSI
@@ -851,46 +900,72 @@ window.onload = function() {
 		known[66] = {name:"Simple Weapon Firepower"};//simple cannon firepower
 		
 		// loopthrough
-		for(let i in data["Blueprint"]["CSI"]){
+		for(let i in data.Blueprint.CSI){
 			// do we know what this is?
 			if(typeof known[i] == "undefined"){
 				//unknown index
-				miscData.innerHTML +="<p>Unknown"+i+": "+data["Blueprint"]["CSI"][i]+"</p>";
+				miscData.innerHTML +="<p>Unknown"+i+": "+data.Blueprint.CSI[i]+"</p>";
 			} else if(typeof known[i].translate == "undefined") {
 				//known index, non translated
-				miscData.innerHTML +="<p>"+known[i].name+": "+data["Blueprint"]["CSI"][i]+"</p>";
-			} else if(typeof known[i].translate[data["Blueprint"]["CSI"][i]] == "undefined"){
+				miscData.innerHTML +="<p>"+known[i].name+": "+data.Blueprint.CSI[i]+"</p>";
+			} else if(typeof known[i].translate[data.Blueprint.CSI[i]] == "undefined"){
 				//known index, translation unknown
-				miscData.innerHTML +="<p>"+known[i].name+" Unknown: "+data["Blueprint"]["CSI"][i]+"</p>";
+				miscData.innerHTML +="<p>"+known[i].name+" Unknown: "+data.Blueprint.CSI[i]+"</p>";
 			} else {
 				//known index, translated
-				miscData.innerHTML +="<p>"+known[i].name+": "+known[i].translate[data["Blueprint"]["CSI"][i]]+"</p>";
+				miscData.innerHTML +="<p>"+known[i].name+": "+known[i].translate[data.Blueprint.CSI[i]]+"</p>";
 				
 			}
 		}//end for loop
+		//make the page visable
+		
+		//enable the donwnload button
+		DL.disabled=false;
+		for (let i of dropdowns){
+			i.style.display="block";
+		}
+		///alert("BP updated"); this got annoying fast
 	}
 	function autofillSingleReplace(shortID){
 		//funtion called by the R button on bloklist
 		console.log();
 		//fill info in
 		let translated =translator(shortID);
-		let info = `<h4>Selected:</h4> Name:${translated["readableName"]}, Mod:${translated["mod"]}, TempID:${shortID}, FullID:${blueprint["ItemDictionary"][shortID]}`;
+		let info = `<h4>Selected:</h4> Name:${translated.readableName}, Mod:${translated.mod}, TempID:${shortID}, FullID:${blueprint.ItemDictionary[shortID]}`;
 		singleFromInfo.innerHTML=info;
 		toReplace=shortID;
 	}
-	
+	function errorLog(text){
+		//0 contains the error, and 1 contains the count
+		//see if error has previusly existed
+		let index =errors[0].indexOf(text);
+		if( index ==-1){
+			//set index to what it will be
+			index = errors[0].length;
+			//it does not, add it
+			errors[0].push(text);
+			errors[1].push(0);
+		}
+		//add to the error count 
+		errors[1][index]++
+		//redisplay the list of errors
+		error.innerHTML="";
+		for(let i =0; i<errors[0].length;i++){
+			error.innerHTML+=`<p class="small">[${errors[1][i]}]${errors[0][i]}</p>`;
+		}
+	}
 	function translator(tempID){//this function will return a block object when fed a temp id
 		//get the perminent id of the block
-		let id = blueprint["ItemDictionary"][tempID];
+		let id = blueprint.ItemDictionary[tempID];
 		//do we have this block in the dictionary?
 		if (typeof dictionary[id] == "undefined"){
 			//no
 			console.log("Unknown Block: "+id+" ID: "+tempID);
-			error.innerHTML+="<br/>Unknown Block: "+id+" ID: "+tempID;
+			errorLog("Unknown Block: "+id+" ID: "+tempID);
 			return "none" ;
 		} else {
 			//yes return the object
 			return dictionary[id];
 		}
 	}
-}
+};

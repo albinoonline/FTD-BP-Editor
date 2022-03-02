@@ -28,6 +28,7 @@
 			<span id="filespan">
 				<label for="item">Import Modded Items Here</label>
 				<input type="file" id="item" name="item" accept='.itemduplicateandmodify,.item' multiple>
+				<input type="button" id="errorbttn" value="Clear Errors"/>
 			</span>
 		</div><!-- end fileinput -->
 		<div id="error"></div>
@@ -74,11 +75,13 @@
 			<h2 class="dropdown" >MASS PAINT AND REPLACE ▼</h2>
 			<div class="down" id="massConverter" >
 				<h3>Convert From:</h3>
-				<p>Note: Appliqué and Decking do not properly mass replace, but do paint fine. (Note to self: figure out why, I forget :P)</p>
+				<p>Note: Appliqué and Decking cannot replace corners, and Appliqué .5m measures cannot convert, due no no block existing, but they do paint fine.</p>
+				<p>Note: Blocks from Core Construct, and the subvehicle spawner cannot be mass-replaced, to prevent you from deleting subconstructs, if you truly wish to do this, use single replace.</p>
+				<p>Note: "Armor" counts appliqué, decking, plates, trusses and doors in addition to "normal armor". It is intended to be used for painting, and has weird effects when trying to replace. To disclude those, and include ERA and light blocks, choose core structural.</p>
 				<label for="armorFrom">Chose blocks to convert:</label>
 				<select name="armorFrom" id="armorFrom">
-					<option value="All">All Blocks</option>
-					<option value="Armor">All Armor</option>
+					<option value="all">All Blocks</option>
+					<option value="armor">All Armor</option>
 					<option value="light-weight alloy block">Alloy</option>
 					<option value="glass block">Glass</option>
 					<option value="heavy armour">Heavy Armor</option>
@@ -88,9 +91,39 @@
 					<option value="stone block">Stone</option>
 					<option value="wood block">Wood</option>
 					<option value="applique panel">Appliqué</option>
-					<option value="reinforced wood">Decking</option> <!-- note: manual editing of dictionary required on update-->
-					<option value="Other">Non armor</option>
+					<option value="reinforced wood">Decking</option>
+					<option value="Core ACDeco">Core ACDeco</option>
+					<option value="Core AI">Core AI</option>
+					<option value="Core Air">Core Air</option>
+					<option value="Core APS">Core APS</option>
+					<option value="Core Construct">Core Construct</option>
+					<option value="Core ControlSurfaces">Core ControlSurfaces</option>
+					<option value="Core CRAM">Core CRAM</option>
+					<option value="Core Decorations">Core Decorations</option>
+					<option value="Core Depreciated">Core Depreciated</option>
+					<option value="Core Drill">Core Drill</option>
+					<option value="Core FuelEngine">Core FuelEngine</option>
+					<option value="Core Land">Core Land</option>
+					<option value="Core Laser">Core Laser</option>
+					<option value="Core Misc">Core Misc</option>
+					<option value="Core Missile">Core Missile</option>
+					<option value="Core NuclearEngine">Core NuclearEngine</option>
+					<option value="Core Resource">Core Resource</option>
+					<option value="Core RingShields">Core RingShields</option>
+					<option value="Core SimpleWeapon">Core SimpleWeapon</option>
+					<option value="Core SteamEngine">Core SteamEngine</option>
+					<option value="Core Structural">Core Structural</option>
+					<option value="Core Struts">Core Struts</option>
+					<option value="Core Surface">Core Surface</option>
+					<option value="Core WarpDrive">Core WarpDrive</option>
+					<option value="Core Water">Core Water</option>
+					<option value="ExampleMod">ExampleMod</option>
 				</select>
+				
+				<p>
+					<label for="armorFromInvert">Invert block selection?</label>
+					<input type="checkbox" id="armorFromInvert" name="armorFromInvert">
+				</p>
 				
 				<p>
 					<label for="colorFromEnable">Limit color choice?</label>
@@ -103,7 +136,7 @@
 					<h3>Convert To:</h3>
 				<label for="armorTo">Chose what to convert to:</label>
 				<select name="armorTo" id="armorTo">
-					<option value="None">No conversion</option>
+					<option value="none">No conversion</option>
 					<option value="light-weight alloy block">Alloy</option>
 					<option value="glass block">Glass</option>
 					<option value="heavy armour">Heavy Armor</option>
@@ -112,7 +145,9 @@
 					<option value="rubber block">Rubber</option>
 					<option value="stone block">Stone</option>
 					<option value="wood block">Wood</option>
-					<option value="Delete">Destroy(NYI)</option>
+					<option value="applique panel">Appliqué</option>
+					<option value="reinforced wood">Decking</option>
+					<option value="delete">Destroy(NYI)</option>
 				</select>
 				<p>
 					<label for="colorToEnable">Repaint?</label>
@@ -133,8 +168,7 @@
 				
 				<div id="colorControll">
 					<h3>Color Editor:</h3>
-					<p>When adjusting alpha, be mindful that the background is currently gray</p>
-					<p>The preview window will, in future, have either textures or base colors of wood, metal, alloy and heavy armor as a background rather than grey</p>
+					<p>When adjusting alpha, be mindful that the background is currently gray. The preview window will, in future, have either textures or base colors of wood, metal, alloy and heavy armor as a background rather than grey.</p>
 					<p>I havent looked into *how* shininess is encoded in red, so messing with red will almost certainly change shininess, and Shiny doesn't work</p>
 					<div id="preview"></div>
 					<div id="colorManInput"><!--vertical manual entry and readout-->
