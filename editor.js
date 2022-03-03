@@ -790,7 +790,7 @@ window.onload = function() {
 		//store blocklist
 		let list="";
 		//fill name info
-		name.innerHTML = data.Name+" V"+data.Version+ " By: "+data.Blueprint.AuthorDetails.CreatorReadableName;
+		name.innerHTML = data.Name+" V"+data.Version+ " By: "+data.Blueprint.AuthorDetails.CreatorReadableName+" Cost:"+data.SavedMaterialCost+" materials";
 		// fill colors 
 		colorUpdate(data);
 				
